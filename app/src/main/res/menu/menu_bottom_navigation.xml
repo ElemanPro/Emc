@@ -5,25 +5,25 @@
         android:id="@+id/action_call"
         android:checked="true"
         android:icon="@drawable/fan"
-        android:title="@string/tab1"
+        android:title="غسالات"
         app:showAsAction="ifRoom" />
-    <item
+  <!--  <item
         android:id="@+id/action_chat"
         android:checked="false"
         android:icon="@drawable/ring"
         android:title="@string/tab2"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="ifRoom" />-->
     <item
         android:id="@+id/action_contact"
         android:checked="false"
         android:icon="@drawable/television"
-        android:title="@string/tab3"
+        android:title="تكيفيات"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_washer"
         android:checked="true"
         android:icon="@drawable/fan"
-        android:title="غسالات"
+        android:title="تلفزيونات"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_refreger"

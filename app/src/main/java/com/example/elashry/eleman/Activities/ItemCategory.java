@@ -54,20 +54,20 @@ public class ItemCategory extends AppCompatActivity {
                             case R.id.action_call:
                                 viewPager.setCurrentItem(0);
                                 break;
-                            case R.id.action_chat:
+                            /*case R.id.action_chat:
+                                viewPager.setCurrentItem(1);
+                                break;*/
+                            case R.id.action_contact:
                                 viewPager.setCurrentItem(1);
                                 break;
-                            case R.id.action_contact:
+                            case R.id.action_washer:
                                 viewPager.setCurrentItem(2);
                                 break;
-                            case R.id.action_washer:
+                            case R.id.action_refreger:
                                 viewPager.setCurrentItem(3);
                                 break;
-                            case R.id.action_refreger:
-                                viewPager.setCurrentItem(4);
-                                break;
                             case R.id.action_botgaz:
-                                viewPager.setCurrentItem(5);
+                                viewPager.setCurrentItem(4);
                                 break;
 
                         }

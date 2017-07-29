@@ -89,7 +89,7 @@
         android:background="@color/white_greyish" />
 
     <EditText
-        android:id="@+id/num"
+        android:id="@+id/type"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -97,7 +97,7 @@
         android:drawableRight="@drawable/confirm_password"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
-        android:hint="@string/num"
+        android:hint="@string/type"
         android:inputType="number"
         android:padding="10dp"
         android:singleLine="true"
@@ -108,23 +108,51 @@
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:background="@color/white_greyish" />
-
     <EditText
-        android:id="@+id/arive"
+        android:id="@+id/dman"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
-        android:drawableRight="@drawable/email"
+        android:drawableRight="@drawable/confirm_password"
         android:drawablePadding="8dp"
         android:gravity="center_vertical"
-        android:hint="@string/arrive"
-        android:inputType="text"
+        android:hint="موقف الجهاز من الضمان"
+        android:inputType="number"
         android:padding="10dp"
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="16sp" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/white_greyish" />
+    <EditText
+        android:id="@+id/marka"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@android:color/transparent"
+        android:drawableRight="@drawable/confirm_password"
+        android:drawablePadding="8dp"
+        android:gravity="center_vertical"
+        android:hint="ماركة الجهاز"
+        android:inputType="number"
+        android:padding="10dp"
+        android:singleLine="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="16sp" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/white_greyish" />
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1px"
+        android:background="@color/white_greyish" />
+
 
     <CheckBox
         android:id="@+id/terms_conditions"
@@ -143,7 +171,7 @@
         android:layout_marginTop="15dp"
         android:background="@drawable/loginbutton_selector"
         android:padding="3dp"
-        android:text="@string/signUp"
+        android:text="طلب"
         android:textColor="@color/background_color"
         android:textSize="17sp"
         android:textStyle="bold" />

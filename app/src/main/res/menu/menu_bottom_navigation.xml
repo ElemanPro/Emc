@@ -4,32 +4,34 @@
     <item
         android:id="@+id/action_call"
         android:checked="true"
-        android:icon="@drawable/fan"
+        android:icon="@drawable/washer"
         android:title="غسالات"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_contact"
         android:checked="false"
-        android:icon="@drawable/television"
-        android:title="تكيفيات"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_washer"
-        android:checked="true"
-        android:icon="@drawable/fan"
-        android:title="تلفزيونات"
-        app:showAsAction="ifRoom" />
-    <item
-        android:id="@+id/action_refreger"
-        android:checked="false"
-        android:icon="@drawable/ring"
+        android:icon="@drawable/refrigerator"
         android:title="ثلاجات"
+
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_botgaz"
         android:checked="false"
-        android:icon="@drawable/television"
+        android:icon="@drawable/oven"
         android:title="بوتجازات"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_washer"
+        android:checked="false"
+        android:icon="@drawable/ttv"
+        android:title="شاشات"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_refreger"
+        android:checked="false"
+        android:icon="@drawable/tv"
+        android:title="تلفزيونات"
+        app:showAsAction="ifRoom" />
+
 </menu>

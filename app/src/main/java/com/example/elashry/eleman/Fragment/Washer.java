@@ -1,27 +1,22 @@
 package com.example.elashry.eleman.Fragment;
 
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.example.elashry.eleman.Activities.Category;
-import com.example.elashry.eleman.Activities.Detail;
-import com.example.elashry.eleman.Activities.ItemCategory;
 import com.example.elashry.eleman.R;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class CallsFragment extends Fragment {
+public class Washer extends Fragment {
 
 
-    public CallsFragment() {
+    public Washer() {
         // Required empty public constructor
     }
 
@@ -40,7 +35,7 @@ public class CallsFragment extends Fragment {
 //                startActivity(i);
 //            }
 //        });
-        return inflater.inflate(R.layout.fragment_calls, container, false);
+        return inflater.inflate(R.layout.washer, container, false);
 
 
     }

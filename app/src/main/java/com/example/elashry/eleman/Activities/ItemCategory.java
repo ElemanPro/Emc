@@ -10,11 +10,11 @@ import android.view.MenuItem;
 
 import com.example.elashry.eleman.Adapter.ViewPagerAdapter;
 import com.example.elashry.eleman.Fragment.Botgaaz;
-import com.example.elashry.eleman.Fragment.CallsFragment;
-import com.example.elashry.eleman.Fragment.ChatFragment;
-import com.example.elashry.eleman.Fragment.ContactsFragment;
-import com.example.elashry.eleman.Fragment.Refrigerator;
-import com.example.elashry.eleman.Fragment.Washers;
+import com.example.elashry.eleman.Fragment.Washer;
+import com.example.elashry.eleman.Fragment.Refredge;
+import com.example.elashry.eleman.Fragment.TV;
+import com.example.elashry.eleman.Fragment.Oven;
+import com.example.elashry.eleman.Fragment.Televtion;
 import com.example.elashry.eleman.R;
 
 
@@ -24,12 +24,11 @@ public class ItemCategory extends AppCompatActivity {
     //This is our viewPager
     private ViewPager viewPager;
 
-    ChatFragment chatFragment;
-    CallsFragment callsFragment;
-    ContactsFragment contactsFragment;
-    Botgaaz botgaaz;
-    Refrigerator refrigerator;
-    Washers washers;
+    Refredge refredge;
+    Washer washer;
+    TV tv;
+    Oven oven;
+    Televtion televtion;
     MenuItem prevMenuItem;
 
     @Override
@@ -118,21 +117,19 @@ public class ItemCategory extends AppCompatActivity {
 
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
-        callsFragment=new CallsFragment();
-        chatFragment=new ChatFragment();
-        contactsFragment=new ContactsFragment();
+        washer=new Washer();
+        refredge=new Refredge();
+        tv=new TV();
 
-        washers=new Washers();
-        botgaaz=new Botgaaz();
-        refrigerator=new Refrigerator();
+        televtion=new Televtion();
+        oven=new Oven();
 
-        adapter.addFragment(callsFragment);
-        adapter.addFragment(chatFragment);
-        adapter.addFragment(contactsFragment);
+        adapter.addFragment(washer);
+        adapter.addFragment(refredge);
+        adapter.addFragment(tv);
 
-        adapter.addFragment(washers);
-        adapter.addFragment(refrigerator);
-        adapter.addFragment(botgaaz);
+        adapter.addFragment(televtion);
+        adapter.addFragment(oven);
         viewPager.setAdapter(adapter);
     }
 }

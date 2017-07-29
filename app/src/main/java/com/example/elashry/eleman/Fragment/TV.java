@@ -13,10 +13,10 @@ import com.example.elashry.eleman.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Refrigerator extends Fragment {
+public class TV extends Fragment {
 
 
-    public Refrigerator() {
+    public TV() {
         // Required empty public constructor
     }
 
@@ -25,7 +25,7 @@ public class Refrigerator extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.refrigerator, container, false);
+        return inflater.inflate(R.layout.tv, container, false);
     }
 
 }

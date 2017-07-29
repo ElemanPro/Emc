@@ -12,10 +12,10 @@
     <string name="newUser">Not a Member yet? Sign Up here.</string>
     <string name="fullName">الاسم المدير</string>
     <string name="mobileNumber">رقم التلفون</string>
-    <string name="location">العنوان</string>
-    <string name="num">العدد</string>
+    <string name="location"> العنوان</string>
+    <string name="type">نوع الجهاز</string>
     <string name="terms_conditions">متاكد من البيانات السابقه واريد الارسال</string>
-    <string name="signUp">حجز</string>
+    <string name="signUp">عمل اوردر صيانه</string>
     <string name="already_user">Already have Account? Login here.</string>
     <string name="registered_emailid">Please enter your Registered Email Id below:</string>
     <string name="submit">SUBMIT</string>

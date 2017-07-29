@@ -59,7 +59,7 @@
                             android:layout_width="70dp"
                             android:layout_height="80dp"
                             android:id="@+id/img1"
-                            android:src="@drawable/refrigerator" />
+                            android:src="@drawable/pp" />
 
 
 
@@ -92,7 +92,7 @@
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:id="@+id/img2"
-                            android:src="@drawable/engine" />
+                            android:src="@drawable/pair" />
 
                         <TextView
                             android:id="@+id/con"
@@ -126,7 +126,7 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/televisions" />
+                            android:src="@drawable/market" />
 
                         <TextView
                             android:id="@+id/telev"
@@ -134,7 +134,7 @@
                             android:paddingTop="@dimen/pad_10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="اجهزه "
+                            android:text="المتجر "
                             android:textStyle="bold"
                             android:textColor="@color/about_separator_color" />
                     </LinearLayout>
@@ -156,7 +156,7 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/fan" />
+                            android:src="@drawable/rigester" />
 
                         <TextView
                             android:id="@+id/fann"
@@ -164,7 +164,7 @@
                             android:paddingTop="@dimen/pad_10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="ماركات "
+                            android:text="حجز واعلان"
                             android:textStyle="bold"
                             android:textColor="@color/about_separator_color" />
                     </LinearLayout>
@@ -192,7 +192,7 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/television" />
+                            android:src="@drawable/about" />
 
                         <TextView
                             android:id="@+id/lcd"
@@ -222,7 +222,7 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
-                            android:src="@drawable/oven" />
+                            android:src="@drawable/contact" />
 
                         <TextView
                             android:id="@+id/other"

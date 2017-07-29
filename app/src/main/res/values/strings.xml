@@ -10,7 +10,7 @@
     <string name="forgot">Forgot password?</string>
     <string name="closebutton">Close Button for Activity</string>
     <string name="newUser">Not a Member yet? Sign Up here.</string>
-    <string name="fullName">الاسم ثلاثى</string>
+    <string name="fullName">الاسم المدير</string>
     <string name="mobileNumber">رقم التلفون</string>
     <string name="location">العنوان</string>
     <string name="num">العدد</string>
@@ -24,5 +24,15 @@
     <string name="tab1">CALLS</string>
     <string name="tab2">CHATS</string>
     <string name="tab3">CONTACTS</string>
+    <string name="password">كلمه المرور</string>
+    <string name="manager_txt">المدير</string>
+    <string name="login_text">تسجيل الدخول</string>
+    <string name="national_id">الرقم القومي</string>
+    <string name="managerName_txt">اسم المدير فارغ</string>
+    <string name="pass_empty">كلمه المرور فارغه</string>
+    <string name="id_empty">الرقم القومي فارغ</string>
+    <string name="check_manager_name">تأكد من اسم المدير</string>
+    <string name="check_manager_pass">تأكد من كلمه المرور</string>
+    <string name="check_manager_id">تأكد من الرقم القومي</string>
 
 </resources>

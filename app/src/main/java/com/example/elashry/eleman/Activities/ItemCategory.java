@@ -91,6 +91,7 @@ public class ItemCategory extends AppCompatActivity {
                 bottomNavigationView.getMenu().getItem(position).setChecked(true);
                 prevMenuItem = bottomNavigationView.getMenu().getItem(position);
 
+
             }
 
             @Override

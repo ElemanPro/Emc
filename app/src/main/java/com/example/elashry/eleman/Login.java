@@ -1,0 +1,149 @@
+package com.example.elashry.eleman;
+
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.SharedPreferences;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class Login extends AppCompatActivity {
+
+    private EditText login_managerName,login_managerPass,login_managerId;
+    private CheckBox login_managerCheckBox;
+    private Button   login_Btn;
+    private SharedPreferences spref;
+    private AlertDialog.Builder mBuilder;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+        //initilize view
+        init_View();
+
+        spref = getSharedPreferences("SaveManagerData",MODE_PRIVATE);
+        boolean saved =spref.getBoolean("saved",false);
+
+        if (saved)
+        {
+            String mngr_name  = spref.getString("manager_name","");
+            String mnger_pass = spref.getString("manager_pass","");
+            String mngr_id    = spref.getString("manager_id","");
+
+            login_managerName.setText(mngr_name);
+            login_managerPass.setText(mnger_pass);
+            login_managerId.setText(mngr_id);
+            login_managerCheckBox.setChecked(true);
+        }
+        else
+            {
+                login_managerName.setText(null);
+                login_managerPass.setText(null);
+                login_managerId.setText(null);
+            }
+
+
+        login_managerCheckBox.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                if (login_managerCheckBox.isChecked())
+                {
+                    String mngr_name  =login_managerName.getText().toString();
+                    String mnger_pass =login_managerPass.getText().toString();
+                    String mngr_id    =login_managerId.getText().toString();
+
+                    spref                           = getSharedPreferences("SaveManagerData",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = spref.edit();
+                    editor.putBoolean("saved",true);
+                    editor.putString("manager_name",mngr_name);
+                    editor.putString("manager_pass",mnger_pass);
+                    editor.putString("manager_id",mngr_id);
+                    editor.commit();
+                    editor.apply();
+
+
+                }
+                else
+                {
+                    spref                           = getSharedPreferences("SaveManagerData",MODE_PRIVATE);
+                    SharedPreferences.Editor editor = spref.edit();
+                    editor.clear();
+                    editor.commit();
+                    editor.apply();
+                }
+
+            }
+        });
+        login_Btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String mngr_name  =login_managerName.getText().toString().toLowerCase();
+                String mnger_pass =login_managerPass.getText().toString();
+                String mngr_id    =login_managerId.getText().toString();
+
+                if (TextUtils.isEmpty(mngr_name))
+                {
+                    create_AlertDialog(getString(R.string.managerName_txt));
+                }
+                else if (TextUtils.isEmpty(mnger_pass))
+                {
+                    create_AlertDialog(getString(R.string.pass_empty));
+                }
+                else if (TextUtils.isEmpty(mngr_id))
+                {
+                    create_AlertDialog(getString(R.string.id_empty));
+                }
+                else if (!mngr_name.equals("emad"))
+                    {
+                        create_AlertDialog(getString(R.string.check_manager_name));
+                    }
+                    else if (!mnger_pass.equals("123"))
+                    {
+                        create_AlertDialog(getString(R.string.check_manager_pass));
+                    }
+                    else if (!mngr_id.equals("1"))
+                    {
+                        create_AlertDialog(getString(R.string.check_manager_id));
+                    }
+                    else
+                        {
+                            Toast.makeText(Login.this, "loged in successfully", Toast.LENGTH_SHORT).show();
+                        }
+            }
+        });
+    }
+
+    private void init_View() {
+        login_managerName     = (EditText) findViewById(R.id.login_managerName);
+        login_managerPass     = (EditText) findViewById(R.id.login_managerPass);
+        login_managerId       = (EditText) findViewById(R.id.login_managerId);
+        login_managerCheckBox = (CheckBox) findViewById(R.id.login_managerCheckBox);
+        login_Btn             = (Button) findViewById(R.id.login_Btn);
+
+        //////////////////////////////////////////////////////
+        mBuilder = new AlertDialog.Builder(this);
+
+    }
+
+    private void create_AlertDialog(String msg)
+    {
+        final AlertDialog mDialog = mBuilder.create();
+        mBuilder.setMessage(msg);
+        mBuilder.setCancelable(false);
+        mBuilder.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
+                mDialog.dismiss();
+            }
+        });
+        mBuilder.show();
+    }
+
+
+}

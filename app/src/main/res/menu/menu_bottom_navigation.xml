@@ -7,12 +7,7 @@
         android:icon="@drawable/fan"
         android:title="غسالات"
         app:showAsAction="ifRoom" />
-  <!--  <item
-        android:id="@+id/action_chat"
-        android:checked="false"
-        android:icon="@drawable/ring"
-        android:title="@string/tab2"
-        app:showAsAction="ifRoom" />-->
+
     <item
         android:id="@+id/action_contact"
         android:checked="false"

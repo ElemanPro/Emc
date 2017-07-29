@@ -24,9 +24,6 @@ public class ItemCategory extends AppCompatActivity {
     //This is our viewPager
     private ViewPager viewPager;
 
-
-    //Fragments
-
     ChatFragment chatFragment;
     CallsFragment callsFragment;
     ContactsFragment contactsFragment;

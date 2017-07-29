@@ -20,6 +20,7 @@ public class Category extends AppCompatActivity {
         img = (ImageView) findViewById(R.id.img1);
         img2 = (ImageView) findViewById(R.id.img2);
 
+
         img.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

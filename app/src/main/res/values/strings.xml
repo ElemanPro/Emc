@@ -35,4 +35,10 @@
     <string name="check_manager_pass">تأكد من كلمه المرور</string>
     <string name="check_manager_id">تأكد من الرقم القومي</string>
 
+    <string-array name="mySpinner">
+        <item>داخل الضمان</item>
+        <item>خارج الضمان</item>
+
+    </string-array>
+
 </resources>

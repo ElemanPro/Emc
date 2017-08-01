@@ -7,7 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradiant_color"
-    tools:context="com.example.elashry.eleman.Login">
+    tools:context="com.example.elashry.eleman.Activities.Login">
 
     <RelativeLayout
         android:layout_width="match_parent"

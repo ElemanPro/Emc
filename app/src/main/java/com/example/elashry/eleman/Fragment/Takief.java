@@ -33,8 +33,7 @@ import java.util.List;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class Botgaaz extends Fragment {
-
+public class Takief extends Fragment {
     private RecyclerView mrRecyclerView;
     private Context mContext;
     private List<Product_Model> pro_List;
@@ -42,7 +41,7 @@ public class Botgaaz extends Fragment {
     private TextView nopro_txt;
     private LinearLayout progBar_container;
 
-    public Botgaaz() {
+    public Takief() {
         // Required empty public constructor
     }
 
@@ -51,18 +50,18 @@ public class Botgaaz extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.botgaaz,container,false);
+        View view = inflater.inflate(R.layout.takief,container,false);
         init_View(view);
         Get_proData(products_url);
         return view;
-        }
+    }
     private void Get_proData(String products_url) {
 
         new Asyn_task().execute(products_url);
     }
     private void init_View(View view) {
         mContext =view.getContext();
-        mrRecyclerView = (RecyclerView) view.findViewById(R.id.oven_recyView);
+        mrRecyclerView = (RecyclerView) view.findViewById(R.id.takief_recyView);
         mrRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mrRecyclerView.setVisibility(View.GONE);
 
@@ -89,9 +88,9 @@ public class Botgaaz extends Fragment {
                             {
                                 try {
                                     object =response.getJSONObject(index);
-                                    if (object.get("cat_id_fk").toString().equals("3"))
+                                    if (object.get("cat_id_fk").toString().equals("6"))
                                     {
-                                        pro_List.add(new Product_Model("بوتاجازات",object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
+                                        pro_List.add(new Product_Model("تلاجات",object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();

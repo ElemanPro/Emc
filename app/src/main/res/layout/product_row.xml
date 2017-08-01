@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:weightSum="3"
+        >
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="0dp"
+            android:layout_weight=".8"
+            android:layout_height="120dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/conditioner"
+            />
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight="1.4"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="3"
+            >
+            <TextView
+                android:id="@+id/product_categ"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
+                android:textSize="@dimen/txt_size"
+                android:gravity="right|center"
+
+                />
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"                android:scrollHorizontally="true"
+                android:ellipsize="end"
+                android:textSize="@dimen/txt_size"
+                android:gravity="right|center"
+                />
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:inputType="textMultiLine"                android:scrollHorizontally="true"
+                android:ellipsize="end"
+                android:textSize="@dimen/txt_size"
+                android:gravity="right|center"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_weight=".8"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:weightSum="3"
+            >
+
+            <TextView
+                android:text="القسم :"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="right|center"
+                />
+            <TextView
+                android:text="إسم الجهاز :"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="right|center"
+
+                />
+            <TextView
+                android:text="السعر :"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:maxLines="1"
+                android:scrollHorizontally="true"
+                android:ellipsize="end"
+                android:textStyle="bold"
+                android:textColor="@color/colorPrimary"
+                android:gravity="right|center"
+
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+</android.support.v7.widget.CardView>

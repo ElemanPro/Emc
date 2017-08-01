@@ -1,4 +1,4 @@
-package com.example.elashry.eleman;
+package com.example.elashry.eleman.Activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.elashry.eleman.R;
 
 public class Login extends AppCompatActivity {
 

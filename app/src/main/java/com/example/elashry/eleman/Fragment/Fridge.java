@@ -1,9 +1,9 @@
 package com.example.elashry.eleman.Fragment;
 
-
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -29,11 +29,11 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-
 /**
- * A simple {@link Fragment} subclass.
+ * Created by Delta on 01/08/2017.
  */
-public class Botgaaz extends Fragment {
+
+public class Fridge extends Fragment {
 
     private RecyclerView mrRecyclerView;
     private Context mContext;
@@ -42,27 +42,21 @@ public class Botgaaz extends Fragment {
     private TextView nopro_txt;
     private LinearLayout progBar_container;
 
-    public Botgaaz() {
-        // Required empty public constructor
-    }
-
-
+    @Nullable
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.botgaaz,container,false);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(R.layout.fridge,container,false);
         init_View(view);
         Get_proData(products_url);
         return view;
-        }
+    }
     private void Get_proData(String products_url) {
 
         new Asyn_task().execute(products_url);
     }
     private void init_View(View view) {
         mContext =view.getContext();
-        mrRecyclerView = (RecyclerView) view.findViewById(R.id.oven_recyView);
+        mrRecyclerView = (RecyclerView) view.findViewById(R.id.fridge_recyView);
         mrRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mrRecyclerView.setVisibility(View.GONE);
 
@@ -89,9 +83,9 @@ public class Botgaaz extends Fragment {
                             {
                                 try {
                                     object =response.getJSONObject(index);
-                                    if (object.get("cat_id_fk").toString().equals("3"))
+                                    if (object.get("cat_id_fk").toString().equals("2"))
                                     {
-                                        pro_List.add(new Product_Model("بوتاجازات",object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
+                                        pro_List.add(new Product_Model("تلاجات",object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
@@ -126,5 +120,4 @@ public class Botgaaz extends Fragment {
         }
 
     }
-
 }

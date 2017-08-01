@@ -9,7 +9,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.elashry.eleman.Login;
 import com.example.elashry.eleman.R;
 
 public class Category extends AppCompatActivity {

@@ -25,7 +25,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.Detail" />
         <activity android:name=".Activities.ItemCategory" />
-        <activity android:name=".Login"></activity>
+        <activity android:name=".Activities.Login"></activity>
     </application>
 
 </manifest>

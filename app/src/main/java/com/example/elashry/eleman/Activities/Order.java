@@ -29,27 +29,23 @@ import java.util.Map;
 
 import static com.example.elashry.eleman.R.array.mySpinner;
 
-public class Maintenance extends AppCompatActivity {
+public class Order extends AppCompatActivity {
     Button b1;
-    EditText cname,cphone,caddress,dtype, dateorder ,marka ,damage;
+    EditText cname,cphone,caddress,amount,Odate;
     Calendar myCalendar;
-    Spinner spinner;
     ProgressDialog progressDialog;
     String ss;
-     String [] state=new String[]{"داخل الضمان ","خارج الضمان"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maintenance);
-        b1= (Button) findViewById(R.id.signUpBtn);
-        dateorder= (EditText) findViewById(R.id.date);
-        spinner= (Spinner) findViewById(R.id.mySpinner);
-        cname= (EditText) findViewById(R.id.fullName);
-        cphone= (EditText) findViewById(R.id.mobileNumber);
-        caddress= (EditText) findViewById(R.id.location);
-        dtype= (EditText) findViewById(R.id.type);
-        marka= (EditText) findViewById(R.id.marka);
-        damage= (EditText) findViewById(R.id.damage);
+        setContentView(R.layout.activity_order);
+        b1= (Button) findViewById(R.id.order);
+        Odate= (EditText) findViewById(R.id.date);
+        cname= (EditText) findViewById(R.id.cname);
+        cphone= (EditText) findViewById(R.id.cphone);
+        caddress= (EditText) findViewById(R.id.address);
+        amount= (EditText) findViewById(R.id.quintity);
+
 
 
 
@@ -60,7 +56,7 @@ public class Maintenance extends AppCompatActivity {
 //                startActivity(i);
 //            }
 //        });
-          myCalendar = Calendar.getInstance();
+        myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -75,30 +71,15 @@ public class Maintenance extends AppCompatActivity {
 
         };
 
-        dateorder.setOnClickListener(new View.OnClickListener() {
+        Odate.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // TODO Auto-generated method stub
-                new DatePickerDialog(Maintenance.this, date, myCalendar
+                new DatePickerDialog(Order.this, date, myCalendar
                         .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
-        });
-
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // your code here
-                ss=state[position];
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
-            }
-
         });
 
 
@@ -111,15 +92,15 @@ public class Maintenance extends AppCompatActivity {
         String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        dateorder.setText(sdf.format(myCalendar.getTime()));
+        Odate.setText(sdf.format(myCalendar.getTime()));
     }
 
     public void registerOrder(View view) {
         if(   cname.getText().toString().isEmpty()&&cphone.getText().toString().isEmpty()&&
-                caddress.getText().toString().isEmpty()&&dtype.getText().toString().isEmpty()&&
-                dateorder.getText().toString().isEmpty()&&marka.getText().toString().isEmpty()&&damage.getText().toString().isEmpty())
+                caddress.getText().toString().isEmpty()&&amount.getText().toString().isEmpty()&&
+                Odate.getText().toString().isEmpty())
         {
-            Toast.makeText(Maintenance.this,"You Should Enter data",Toast.LENGTH_LONG).show();
+            Toast.makeText(Order.this,"You Should Enter data",Toast.LENGTH_LONG).show();
         }else
         {
 
@@ -154,12 +135,9 @@ public class Maintenance extends AppCompatActivity {
                     Map<String, String> params = new HashMap<String, String>();
                     params.put("client_name", cname.getText().toString());
                     params.put("client_phone", cphone.getText().toString());
-                    params.put("client_location", caddress.getText().toString());
-                    params.put("device_type", dtype.getText().toString());
-                    params.put("warranty_state", ss);
-                    params.put("device_brand", marka.getText().toString());
-                    params.put("order_date", dateorder.getText().toString());
-                    params.put("damage_type", damage.getText().toString());
+                    params.put("order_location", caddress.getText().toString());
+                    params.put("quantity", amount.getText().toString());
+                    params.put("order_date", Odate.getText().toString());
 
                     return params;
                 }

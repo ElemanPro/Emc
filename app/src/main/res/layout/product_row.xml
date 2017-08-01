@@ -7,19 +7,150 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
-        android:weightSum="3"
-        >
+        android:background="@color/background_color"
+        android:weightSum="2"
+        ><LinearLayout
+        android:layout_width="0dp"
+        android:layout_weight=".6"
+        android:background="@color/background_color"
+        android:orientation="vertical"
+        android:layout_height="120dp">
         <ImageView
             android:id="@+id/product_image"
-            android:layout_width="0dp"
-            android:layout_weight=".8"
-            android:layout_height="120dp"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
             android:scaleType="centerCrop"
             android:src="@drawable/conditioner"
+
             />
+        <Button
+            android:layout_marginTop="@dimen/pad_5dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_color"
+            android:textColor="@color/background_color"
+            android:textSize="20dp"
+            android:backgroundTint="@color/white"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:text="حجز"
+            android:id="@+id/reg"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/linear"
+        android:layout_width="0dp"
+        android:background="@color/background_color"
+        android:layout_weight="1.4"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
         <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/product_categ"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="right"
+                android:maxLength="12"
+                android:padding="5dp"
+                android:textColor="#fff"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="right"
+                android:text="  القسم"
+                android:drawableRight="@drawable/cat"
+                android:maxLength="12"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dad8d8" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/product_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="right"
+                android:maxLength="12"
+                android:padding="5dp"
+                android:textColor="#fff"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="right"
+                android:text=" اسم الجهاز"
+                android:drawableRight="@drawable/dname"
+                android:maxLength="12"
+                android:padding="5dp"
+                android:textColor="@color/white"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dad8d8" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/product_price"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="right"
+                android:maxLength="12"
+                android:padding="5dp"
+                android:textColor="#fff"
+                android:textSize="14dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="#0000"
+                android:gravity="right"
+                android:text="السعر"
+                android:maxLength="12"
+                android:padding="5dp"
+                android:drawableRight="@drawable/price"
+                android:textColor="@color/white"
+                android:textSize="16dp" />
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="#dad8d8" /></LinearLayout>
+      <!--  <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1.4"
+            android:background="@color/background_color"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:weightSum="3"
@@ -41,7 +172,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:inputType="textMultiLine"                android:scrollHorizontally="true"
+                android:inputType="textMultiLine"
+                android:scrollHorizontally="true"
                 android:ellipsize="end"
                 android:textSize="@dimen/txt_size"
                 android:gravity="right|center"
@@ -51,7 +183,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="1"
-                android:inputType="textMultiLine"                android:scrollHorizontally="true"
+                android:inputType="textMultiLine"
+                android:scrollHorizontally="true"
                 android:ellipsize="end"
                 android:textSize="@dimen/txt_size"
                 android:gravity="right|center"
@@ -61,6 +194,7 @@
         <LinearLayout
             android:layout_width="0dp"
             android:layout_weight=".8"
+            android:background="@color/background_color"
             android:layout_height="match_parent"
             android:orientation="vertical"
             android:weightSum="3"
@@ -104,7 +238,7 @@
                 android:gravity="right|center"
 
                 />
-        </LinearLayout>
+        </LinearLayout>-->
     </LinearLayout>
 
 </android.support.v7.widget.CardView>

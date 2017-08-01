@@ -14,7 +14,7 @@ import com.example.elashry.eleman.R;
 public class Category extends AppCompatActivity {
 
     private Toolbar mCat_ToolBar;
-    ImageView img ,img2;
+    ImageView img ,img2 ,img3,img4,img5,img6;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +23,10 @@ public class Category extends AppCompatActivity {
         init_View();
         img = (ImageView) findViewById(R.id.img1);
         img2 = (ImageView) findViewById(R.id.img2);
+        img3 = (ImageView) findViewById(R.id.img3);
+        img4 = (ImageView) findViewById(R.id.img4);
+        img5 = (ImageView) findViewById(R.id.img5);
+        img6 = (ImageView) findViewById(R.id.img6);
 
 
         img.setOnClickListener(new View.OnClickListener() {
@@ -39,6 +43,33 @@ public class Category extends AppCompatActivity {
             public void onClick(View v) {
                 Intent i =new Intent(Category.this,ItemCategory.class);
                 startActivity(i);
+            }
+        });
+
+        img3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(Category.this,Order.class);
+                startActivity(i);
+            }
+        });
+        img4.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+        img5.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i =new Intent(Category.this,Contact.class);
+                startActivity(i);
+            }
+        });
+        img6.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
             }
         });
     }

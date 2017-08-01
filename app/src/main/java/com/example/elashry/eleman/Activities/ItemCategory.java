@@ -15,7 +15,7 @@ import com.example.elashry.eleman.Fragment.Washer;
 import com.example.elashry.eleman.R;
 
 
-public class ItemCategory extends AppCompatActivity {
+public class  ItemCategory extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout mTab;

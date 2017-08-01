@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#394948</color>
-    <color name="colorPrimaryDark">#394948</color>
-    <color name="colorAccent">#62a604</color>
+    <color name="colorPrimary">#7B1FA2</color>
+    <color name="colorPrimaryDark">#6A1B9A</color>
+    <color name="colorAccent">#026810</color>
 
-    <color name="background_color">#009688</color>
+    <color name="background_color">#9C27B0</color>
 
     <color name="white_greyish">#EEEEEE</color>
     <color name="button_selectorcolor">#9E9E9E</color>
@@ -27,7 +27,7 @@
     <color name="accent_color">@color/colorAccent</color>
     <color name="statusBarColor">@color/blue</color>
     <color name="drawerArrowColor">@color/accent_color</color>
-    <color name="theme_primary" >@color/colorPrimaryDark</color>
+    <color name="theme_primary">@color/colorPrimaryDark</color>
     <color name="theme_primary_text_inverted">@color/text_color</color>
     <color name="theme_secondary_text_inverted">#451213</color>
 
@@ -38,4 +38,6 @@
     <color name="tab_enable">#FFFFFF</color>
     <color name="tab_checked">#F3CD70</color>
     <color name="tab_unchecked">#FFFFFF</color>
+
+    <color name="black_overlay">#66000000</color>
 </resources>

@@ -20,7 +20,7 @@
     </android.support.design.widget.AppBarLayout>
     <ScrollView
         android:layout_width="match_parent"
-        android:background="@drawable/gradiant_color"
+        android:background="@color/background_color"
 
         android:layout_height="match_parent">
 
@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="491dp"
                 android:layout_marginBottom="5dp"
-                android:background="@drawable/gradiant_color"
+                android:background="@color/background_color"
                 android:orientation="vertical"
                 android:paddingBottom="50dp"
                 android:paddingLeft="6dp"
@@ -126,6 +126,7 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
+                            android:id="@+id/img4"
                             android:src="@drawable/market" />
 
                         <TextView
@@ -156,6 +157,7 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
+                            android:id="@+id/img3"
                             android:src="@drawable/rigester" />
 
                         <TextView
@@ -192,6 +194,7 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
+                            android:id="@+id/img6"
                             android:src="@drawable/about" />
 
                         <TextView
@@ -222,6 +225,7 @@
                         <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
+                            android:id="@+id/img5"
                             android:src="@drawable/contact" />
 
                         <TextView

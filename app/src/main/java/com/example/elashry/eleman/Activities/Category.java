@@ -69,7 +69,8 @@ public class Category extends AppCompatActivity {
         img6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i =new Intent(Category.this,About.class);
+                startActivity(i);
             }
         });
     }

@@ -31,8 +31,6 @@
     <color name="theme_primary_text_inverted">@color/text_color</color>
     <color name="theme_secondary_text_inverted">#451213</color>
 
-    <color name="colorBackground">#FFFFFF</color>
-    <color name="colorTextPrimary">#FFFFFF</color>
 
     <color name="tab_disable">#979797</color>
     <color name="tab_enable">#FFFFFF</color>
@@ -40,4 +38,18 @@
     <color name="tab_unchecked">#FFFFFF</color>
 
     <color name="black_overlay">#66000000</color>
+
+
+    <color name="primary">#000000</color>
+    <color name="primary_dark">#000000</color>
+    <color name="primary_light">#7B1FA2</color>
+    <color name="accent">#000000</color>
+    <color name="primary_text">#ffffff</color>
+    <color name="secondary_text">#d9d4d4</color>
+    <color name="icons">#FFFFFF</color>
+    <color name="divider">#6A1B9A</color>
+    <color name="background">#7B1FA2</color>
+    <color name="backgroundDark">#6A1B9A</color>
+    <color name="txt">#985df7</color>
+
 </resources>

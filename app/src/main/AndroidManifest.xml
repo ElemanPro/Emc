@@ -29,7 +29,7 @@
         <activity android:name=".Activities.Matgar" />
         <activity android:name=".Activities.Order" />
         <activity android:name=".Activities.Contact" />
-        <activity android:name=".Activities.About"></activity>
+        <activity android:name=".Activities.About" android:theme="@style/AppThemeCustom"></activity>
     </application>
 
 </manifest>

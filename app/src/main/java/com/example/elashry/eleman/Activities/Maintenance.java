@@ -2,12 +2,10 @@ package com.example.elashry.eleman.Activities;
 
 import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
@@ -26,8 +24,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
-
-import static com.example.elashry.eleman.R.array.mySpinner;
 
 public class Maintenance extends AppCompatActivity {
     Button b1;
@@ -124,6 +120,7 @@ public class Maintenance extends AppCompatActivity {
         {
 
 
+            Toast.makeText(Maintenance.this,cname.getText().toString()+"\n"+cphone.getText().toString()+"\n"+caddress.getText().toString()+"\n"+dtype.getText().toString()+"\n"+ss+"\n"+ marka.getText().toString()+"\n"+dateorder.getText().toString()+"\n"+damage.getText().toString(), Toast.LENGTH_SHORT).show();
 
             progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
             progressDialog.show();
@@ -152,14 +149,14 @@ public class Maintenance extends AppCompatActivity {
                 protected Map<String, String> getParams() {
                     // Posting params to register url
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("client_name", cname.getText().toString());
-                    params.put("client_phone", cphone.getText().toString());
-                    params.put("client_location", caddress.getText().toString());
-                    params.put("device_type", dtype.getText().toString());
-                    params.put("warranty_state", ss);
-                    params.put("device_brand", marka.getText().toString());
-                    params.put("order_date", dateorder.getText().toString());
-                    params.put("damage_type", damage.getText().toString());
+                    params.put("client_name",cname.getText().toString());
+                    params.put("client_phone",cphone.getText().toString());
+                    params.put("client_location",caddress.getText().toString());
+                    params.put("device_type",dtype.getText().toString());
+                    params.put("warranty_state",ss);
+                    params.put("device_brand",marka.getText().toString());
+                    params.put("damage_type",damage.getText().toString());
+                    params.put("order_date",dateorder.getText().toString());
 
                     return params;
                 }

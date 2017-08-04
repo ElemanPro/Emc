@@ -2,6 +2,7 @@ package com.example.elashry.eleman.Activities;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -10,8 +11,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.Toast;
 
+import com.example.elashry.eleman.Manager;
 import com.example.elashry.eleman.R;
 
 public class Login extends AppCompatActivity {
@@ -115,13 +116,18 @@ public class Login extends AppCompatActivity {
                     }
                     else
                         {
-                            Toast.makeText(Login.this, "loged in successfully", Toast.LENGTH_SHORT).show();
+                           startActivity(new Intent(Login.this, Manager.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            login_managerName.setText(null);
+                            login_managerPass.setText(null);
+                            login_managerId.setText(null);
                         }
             }
         });
     }
 
     private void init_View() {
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
         login_managerName     = (EditText) findViewById(R.id.login_managerName);
         login_managerPass     = (EditText) findViewById(R.id.login_managerPass);
         login_managerId       = (EditText) findViewById(R.id.login_managerId);

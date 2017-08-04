@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardBackgroundColor="@color/colorPrimary">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:weightSum="2"
+        >
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_weight=".3"
+            android:layout_height="match_parent"
+            android:src="@drawable/camera_icon"
+            android:scaleType="center"
+            />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1.7"
+            android:layout_height="match_parent"
+            android:text="Add Photo"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            android:textSize="18sp"
+            android:gravity="left|center"
+            android:layout_marginLeft="15dp"
+            />
+    </LinearLayout>
+</android.support.v7.widget.CardView>

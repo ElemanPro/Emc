@@ -45,5 +45,7 @@
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="backdrop_title">مركز الايمان للصيانه </string>
+    <string name="backdrop_subtitle">كل ماتريده بضغطه زر واحده </string>
 
 </resources>

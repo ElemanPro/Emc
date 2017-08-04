@@ -21,11 +21,10 @@ import com.example.elashry.eleman.R;
 
 import java.util.HashMap;
 
+
 public class Category extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     private SliderLayout mDemoSlider;
-    String value, description;
-    TextView Sname, Sdesc;
 
     private Toolbar mCat_ToolBar;
     ImageView img ,img2 ,img3,img4,img5,img6;
@@ -33,7 +32,36 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
+        mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
+        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
+        file_maps.put("عبوده العشماوى", R.drawable.cover);
+        file_maps.put(" صيدلية الامل", R.drawable.repair);
+        file_maps.put("شركة سيمي  كولون ", R.drawable.semi);
+        file_maps.put(" مركز الايمان", R.drawable.pic);
+        file_maps.put(" غلاب لخدمات المحمول", R.drawable.cover);
+        file_maps.put("  معتز لخدات الدش", R.drawable.tv);
+        file_maps.put(" الشناوى للانترنت", R.drawable.cover);
+
+
+        for (String name : file_maps.keySet()) {
+            TextSliderView textSliderView = new TextSliderView(this);
+            // initialize a SliderLayout
+            textSliderView.description(name)
+                    .image(file_maps.get(name))
+                    .setScaleType(BaseSliderView.ScaleType.Fit)
+                    .setOnSliderClickListener(this);
+
+            //add your extra information
+            textSliderView.bundle(new Bundle());
+            textSliderView.getBundle().putString("extra", name);
+             mDemoSlider.addSlider(textSliderView);
+        }
+        mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+        mDemoSlider.setCustomAnimation(new DescriptionAnimation());
+        mDemoSlider.setDuration(3000);
+        mDemoSlider.addOnPageChangeListener(this);
         init_View();
         img = (ImageView) findViewById(R.id.img1);
         img2 = (ImageView) findViewById(R.id.img2);
@@ -70,7 +98,8 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent i =new Intent(Category.this,Matgar.class);
+                startActivity(i);
             }
         });
         img5.setOnClickListener(new View.OnClickListener() {
@@ -88,36 +117,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
             }
         });
 
-        mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
-        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("عبوده العشماوى", R.drawable.oven);
-        file_maps.put(" صيدلية الامل", R.drawable.repair);
-        file_maps.put("شركة سيمي  كولون ", R.drawable.semi);
-        file_maps.put(" مركز الايمان", R.drawable.pic);
-        file_maps.put(" غلاب لخدمات المحمول", R.drawable.phone);
-        file_maps.put("  معتز لخدات الدش", R.drawable.tv);
-        file_maps.put(" الشناوى للانترنت", R.drawable.locate);
-
-
-        for (String name : file_maps.keySet()) {
-            TextSliderView textSliderView = new TextSliderView(this);
-            // initialize a SliderLayout
-            textSliderView.description(name)
-                    .image(file_maps.get(name))
-                    .setScaleType(BaseSliderView.ScaleType.Fit)
-                    .setOnSliderClickListener(this);
-
-            //add your extra information
-            textSliderView.bundle(new Bundle());
-            textSliderView.getBundle().putString("extra", name);
-//            mDemoSlider.addSlider(textSliderView);
-        }
-        mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-        mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-        mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-        mDemoSlider.setDuration(3000);
-        mDemoSlider.addOnPageChangeListener(this);
     }
 
     private void init_View() {

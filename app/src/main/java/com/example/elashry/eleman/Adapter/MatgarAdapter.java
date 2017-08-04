@@ -48,7 +48,7 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.album_card, parent, false);
+                .inflate(R.layout.matgar_card, parent, false);
 
         return new MyViewHolder(itemView);
     }

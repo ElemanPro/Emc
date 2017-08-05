@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
@@ -8,136 +8,42 @@
     android:fitsSystemWindows="true"
     android:fillViewport="true"
     >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.example.elashry.eleman.Manager"
-    android:orientation="vertical"
-    >
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
+        android:id="@+id/mngr_appBar"
+
 
         >
-
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/mngr_toolBar"
+            android:id="@+id/_mngr_mtoolBar"
             ></android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
-    <EditText
-        android:id="@+id/pro_Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="اسم المنتج"
-        android:layout_marginBottom="10dp"
-        />
-    <EditText
-        android:id="@+id/pro_Price"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="السعر"
-        android:layout_marginBottom="10dp"
-        />
-   <!-- <EditText
-        android:id="@+id/client_Name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="اسم العميل"
-        android:layout_marginBottom="10dp"
-        />
-    <EditText
-        android:id="@+id/client_Phone"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="رقم المحمول"
-        android:layout_marginBottom="10dp"
-        />
-    <EditText
-        android:id="@+id/client_address"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="العنوان"
-        android:layout_marginBottom="10dp"
-        />
-    <EditText
-        android:id="@+id/dev_type"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="نوع الجهاز"
-        android:layout_marginBottom="10dp"
-        />
 
-    <EditText
-        android:id="@+id/dev_state"
+    <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="الحاله"
-        android:layout_marginBottom="10dp"
-        />
-    <EditText
-        android:id="@+id/dev_brand"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="العنوان"
-        android:layout_marginBottom="10dp"
-        />
-    <EditText
-        android:id="@+id/dev_damage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="العطل"
-        android:layout_marginBottom="10dp"
-        />-->
-    <Spinner
-        android:id="@+id/spinner_pro_Type"
-        android:layout_width="match_parent"
-        android:layout_height="40dp"
-        app:backgroundTint="@color/colorPrimary"
-        android:layout_marginBottom="10dp"
+        android:id="@+id/mngr_viewPager"
+        android:layout_below="@+id/mngr_appBar"
+        android:layout_above="@+id/mngr_mTab"
+
         >
 
-    </Spinner>
-    <LinearLayout
+    </android.support.v4.view.ViewPager>
+    <android.support.design.widget.TabLayout
+        android:id="@+id/mngr_mTab"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:weightSum="2"
-        android:layout_marginBottom="10dp"
-        >
-        <ImageView
-            android:id="@+id/pro_Image"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="150dp"
-            android:scaleType="centerCrop"
-            />
-        <TextView
-            android:id="@+id/upload_Image"
-            android:layout_gravity="center"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="اضافه صوره"
-            android:textSize="18sp"
-            android:drawableRight="@drawable/upload_icon"
-            android:gravity="right|center"
-
-
-
-            />
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/addPro_Btn"
-        android:layout_width="match_parent"
-        android:layout_height="55dp"
-        android:text="اضافه"
-        android:textSize="18sp"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
-        android:textColor="@color/white"
-        android:textStyle="bold"
-        />
-</LinearLayout>
-</ScrollView>
+        app:tabSelectedTextColor="@color/white"
+        app:tabMode="fixed"
+        app:tabTextColor="@color/white"
+        app:tabIndicatorHeight="5dp"
+
+        >
+
+    </android.support.design.widget.TabLayout>
+</RelativeLayout>

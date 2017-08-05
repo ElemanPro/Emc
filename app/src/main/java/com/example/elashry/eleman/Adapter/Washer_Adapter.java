@@ -1,17 +1,19 @@
 package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
+import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -40,7 +42,10 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
 
     @Override
     public void onBindViewHolder(ViewHoler holder, int position) {
-        Picasso.with(mContext).load(Uri.parse(pro_List.get(position).getPro_Image_url().toString())).into(holder.product_image);
+       // Picasso.with(mContext).load(Uri.parse(pro_List.get(position).getPro_Image_url().toString())).into(holder.product_image);
+
+        Toast.makeText(mContext,pro_List.get(position).getPro_Image_url().toString() , Toast.LENGTH_SHORT).show();
+        holder.product_image.setImageBitmap(getBitmapFromString(pro_List.get(position).getPro_Image_url().toString()));
         holder.product_categ.setText(pro_List.get(position).getPro_Categ().toString());
         holder.product_name.setText(pro_List.get(position).getPro_Name().toString());
         holder.product_price.setText(pro_List.get(position).getPro_Price().toString());
@@ -64,5 +69,11 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
 
         }
 
+    }
+    private Bitmap getBitmapFromString(String imageString)
+    {
+        byte [] arr = Base64.decode(imageString,Base64.DEFAULT);
+        Bitmap bitmap = BitmapFactory.decodeByteArray(arr,0,arr.length);
+        return bitmap;
     }
 }

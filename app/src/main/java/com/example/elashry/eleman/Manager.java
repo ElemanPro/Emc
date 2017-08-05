@@ -4,12 +4,16 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -42,6 +46,7 @@ public class Manager extends AppCompatActivity {
     private final String pro_url ="http://semicolonsoft.com/app/api/find/products";
     int pro_categ = 0;
     private AlertDialog.Builder mDialog;
+    private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -190,6 +195,12 @@ public class Manager extends AppCompatActivity {
         mDialog.setCancelable(false);
 
 
+        //////////////////////////////////////////////
+        mToolbar = (Toolbar) findViewById(R.id.mngr_toolBar);
+        setSupportActionBar(mToolbar);
+
+
+
     }
 
     @Override
@@ -201,6 +212,7 @@ public class Manager extends AppCompatActivity {
             {
                 uri = data.getData();
                 pro_Image.setImageURI(uri);
+                Log.e("uri",uri.toString());
             }
 
         }
@@ -210,7 +222,7 @@ public class Manager extends AppCompatActivity {
             {
                 Bitmap bitmap = (Bitmap) data.getExtras().get("data");
                 uri           =getUriFrom_Bitmap(bitmap,Manager.this);
-
+                Log.e("uri",uri.toString());
                 pro_Image.setImageURI(uri);
 
             }
@@ -226,5 +238,30 @@ public class Manager extends AppCompatActivity {
         String path = MediaStore.Images.Media.insertImage(mContext.getContentResolver(),bitmap,"title",null);
         return Uri.parse(path);
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.mngr_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId()==R.id.mngr_signout)
+        {
+            SharedPreferences spref = getSharedPreferences("loginspref",MODE_PRIVATE);
+            spref.edit().clear().commit();
+            finish();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(Intent.ACTION_MAIN);
+        intent.addCategory(Intent.CATEGORY_HOME);
+        startActivity(intent);
     }
 }

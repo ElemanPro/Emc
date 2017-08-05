@@ -20,7 +20,7 @@ public class Login extends AppCompatActivity {
     private EditText login_managerName,login_managerPass,login_managerId;
     private CheckBox login_managerCheckBox;
     private Button   login_Btn;
-    private SharedPreferences spref;
+    private SharedPreferences spref,login_spref;
     private AlertDialog.Builder mBuilder;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,6 +28,18 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
         //initilize view
         init_View();
+
+
+        login_spref = getSharedPreferences("loginspref",MODE_PRIVATE);
+        boolean save_data = login_spref.getBoolean("save_mnger",false);
+        if (save_data==true)
+        {
+            Intent intent = new Intent(Login.this, Manager.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+
+
+        }
 
         spref = getSharedPreferences("SaveManagerData",MODE_PRIVATE);
         boolean saved =spref.getBoolean("saved",false);
@@ -116,7 +128,8 @@ public class Login extends AppCompatActivity {
                     }
                     else
                         {
-                           startActivity(new Intent(Login.this, Manager.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            createShared("loginspref",mngr_name,mnger_pass,mngr_id);
+                            startActivity(new Intent(Login.this, Manager.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             login_managerName.setText(null);
                             login_managerPass.setText(null);
                             login_managerId.setText(null);
@@ -151,6 +164,18 @@ public class Login extends AppCompatActivity {
             }
         });
         mBuilder.show();
+    }
+
+    private void createShared(String shared_name,String mngr_name,String mngr_pass,String mngr_id)
+    {
+        SharedPreferences spref = getSharedPreferences(shared_name,MODE_PRIVATE);
+        SharedPreferences.Editor editor = spref.edit();
+        editor.putBoolean("save_mnger",true);
+        editor.putString("mngr_name",mngr_name);
+        editor.putString("mngr_pass",mngr_pass);
+        editor.putString("mngr_id",mngr_id);
+        editor.apply();
+        editor.commit();
     }
 
 

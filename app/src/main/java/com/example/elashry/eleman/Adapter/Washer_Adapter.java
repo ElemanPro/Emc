@@ -63,5 +63,6 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
             product_price     = (TextView) itemView.findViewById(R.id.product_price);
 
         }
+
     }
 }

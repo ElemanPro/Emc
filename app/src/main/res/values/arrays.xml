@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="spinner_array">
+        <item>غسالات</item>
+        <item>تلاجات</item>
+        <item>بوتاجازات</item>
+        <item>تيليفزيونات</item>
+        <item>شاشات</item>
+        <item>تكييفات</item>
+    </string-array>
+</resources>

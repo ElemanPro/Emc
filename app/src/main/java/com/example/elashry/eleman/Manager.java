@@ -28,6 +28,7 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.elashry.eleman.Activities.Category;
 
 import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
@@ -260,8 +261,6 @@ public class Manager extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(Intent.ACTION_MAIN);
-        intent.addCategory(Intent.CATEGORY_HOME);
-        startActivity(intent);
+        startActivity(new Intent(Manager.this, Category.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }

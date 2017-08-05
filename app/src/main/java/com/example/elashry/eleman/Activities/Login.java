@@ -129,7 +129,7 @@ public class Login extends AppCompatActivity {
                     else
                         {
                             createShared("loginspref",mngr_name,mnger_pass,mngr_id);
-                            startActivity(new Intent(Login.this, Manager.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+                            startActivity(new Intent(Login.this, Manager.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
                             login_managerName.setText(null);
                             login_managerPass.setText(null);
                             login_managerId.setText(null);

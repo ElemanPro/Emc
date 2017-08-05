@@ -125,7 +125,7 @@ public class Maintenance extends AppCompatActivity {
             progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
             progressDialog.show();
             StringRequest strReq = new StringRequest(Request.Method.POST,
-                    "http://semicolonsoft.com/app/api/find/maintenance", new Response.Listener<String>() {
+                    "http://semicolonsoft.com/app/api/addmentanaceorder", new Response.Listener<String>() {
 
                 @Override
                 public void onResponse(String response) {

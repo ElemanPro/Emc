@@ -1,33 +1,20 @@
 package com.example.elashry.eleman.Fragment;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.elashry.eleman.Adapter.Washer_Adapter;
-import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.MaintenanceModel;
-import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -53,7 +40,7 @@ public class Maintenance extends Fragment {
     }
     private void Get_ordData(String maintenance_url) {
 
-        new Maintenance.Asyn_task().execute(maintenance_url);
+      //  new Maintenance.Asyn_task().execute(maintenance_url);
     }
     private void init_View(View view) {
         mContext =view.getContext();
@@ -61,12 +48,12 @@ public class Maintenance extends Fragment {
         mrRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mrRecyclerView.setVisibility(View.GONE);
 
-        progBar_container = (LinearLayout) view.findViewById(R.id.progressBar_container);
+       /* progBar_container = (LinearLayout) view.findViewById(R.id.progressBar_container);
         progBar_container.setVisibility(View.VISIBLE);
-
+*/
 
     }
-    private class Asyn_task extends AsyncTask<String, Void,Void>
+   /* private class Asyn_task extends AsyncTask<String, Void,Void>
     {
 
         @Override
@@ -93,9 +80,9 @@ public class Maintenance extends Fragment {
                             }
                             if (order_List.size()>0)
                             {
-                                mrRecyclerView.setVisibility(View.VISIBLE);
+                               *//* mrRecyclerView.setVisibility(View.VISIBLE);
                                 progBar_container.setVisibility(View.GONE);
-                            }
+                         *//*   }
                             else if (order_List.size()==0)
                             {
                                 nopro_txt.setVisibility(View.VISIBLE);
@@ -117,6 +104,6 @@ public class Maintenance extends Fragment {
             return null;
         }
 
-    }
+    }*/
 }
 

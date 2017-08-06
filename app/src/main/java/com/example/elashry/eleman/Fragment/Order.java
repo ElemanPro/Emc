@@ -15,11 +15,17 @@ import android.view.ViewGroup;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.elashry.eleman.Adapter.OrderAdapter;
 import com.example.elashry.eleman.Controller;
+import com.example.elashry.eleman.Model.OrderModel;
 import com.example.elashry.eleman.R;
 
 import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Delta on 06/08/2017.
@@ -59,7 +65,24 @@ public class Order extends Fragment {
                         @Override
                         public void onResponse(JSONArray response) {
                             Log.e("data",response.toString());
+                            List<OrderModel> orderList = new ArrayList<>();
                             JSONObject object;
+                            for (int index =0;index<response.length();index++)
+                            {
+                                try {
+                                    object =response.getJSONObject(index);
+                                    orderList.add(new OrderModel(object.get("order_id_pk").toString(),object.get("product_id_fk").toString(),object.get("quantity").toString(),object.get("client_name").toString(),object.get("client_phone").toString(),object.get("order_date").toString(),object.get("order_location").toString()));
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+
+                            if (orderList.size()>0)
+                            {
+                                OrderAdapter adapter = new OrderAdapter(mContext,orderList);
+                                mRecyclerView.setAdapter(adapter);
+                            }
 
                         }
                     }

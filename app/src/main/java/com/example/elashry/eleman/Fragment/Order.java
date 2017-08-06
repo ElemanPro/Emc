@@ -20,6 +20,7 @@ public class Order extends Fragment {
 
     private RecyclerView mRecyclerView;
     Context mContext;
+    private final String order_url ="http://semicolonsoft.com/app/api/find/orders";
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

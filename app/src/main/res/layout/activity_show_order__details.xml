@@ -1,0 +1,485 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.elashry.eleman.Activities.ShowOrder_Details">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:id="@+id/progressBar_container"
+        android:visibility="gone"
+
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loading...."
+            android:textSize="18sp"
+
+            />
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            />
+
+    </LinearLayout>
+    <TextView
+        android:id="@+id/nopro_txt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="لا يوجد اي منتجات لعرضها"
+        android:textSize="18sp"
+        android:gravity="center"
+        android:visibility="gone"
+        />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:fillViewport="true"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+
+        >
+
+        <LinearLayout
+            android:id="@+id/order_data_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="5dp"
+            android:visibility="gone"
+            >
+            <android.support.v7.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/background_color"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                app:contentPadding="5dp"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="بيانات العميل"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+
+                    />
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardBackgroundColor="@color/background_color"
+
+                >
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        android:background="@android:color/transparent"
+
+                        >
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/order_details_clientname"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:background="#ffffff"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="#160e60"
+                                android:textSize="@dimen/main_text_size"
+                                android:textStyle="italic"
+                                android:inputType="textMultiLine"
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".7"
+                                android:background="#d2ace6"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="اسم العميل"
+                                android:textColor="#160e60"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:maxLines="1"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:background="#160e60" />
+
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/order_details_client_phone"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:background="#ffffff"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="#160e60"
+                                android:textSize="@dimen/main_text_size"
+                                android:textStyle="italic"
+                                android:inputType="textMultiLine"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".7"
+                                android:background="#d2ace6"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="المحمول"
+                                android:textColor="#160e60"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:maxLines="1"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:background="#160e60" />
+
+
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+
+            <android.support.v7.widget.CardView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:cardBackgroundColor="@color/background_color"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                android:layout_gravity="center"
+                android:layout_marginTop="15dp"
+                app:contentPadding="5dp"
+                android:layout_marginBottom="20dp"
+                >
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="بيانات الجهاز"
+                    android:textSize="20sp"
+                    android:textColor="@color/white"
+
+                    />
+            </android.support.v7.widget.CardView>
+            <android.support.v7.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp"
+                app:cardBackgroundColor="@color/background_color"
+
+                >
+
+                    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="5dp"
+                        android:background="@android:color/transparent"
+
+                        >
+                        <ImageView
+                            android:id="@+id/order_details_devimage"
+                            android:layout_width="match_parent"
+                            android:layout_height="190dp"
+                            android:scaleType="centerCrop"
+
+                            />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/order_details_devcateg"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:background="#ffffff"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="#160e60"
+                                android:textSize="@dimen/main_text_size"
+                                android:textStyle="italic"
+                                android:inputType="textMultiLine"
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".7"
+                                android:background="#d2ace6"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="القسم"
+                                android:textColor="#160e60"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:maxLines="1"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:background="#160e60" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/order_details_devname"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:background="#ffffff"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="#160e60"
+                                android:textSize="@dimen/main_text_size"
+                                android:textStyle="italic"
+                                android:inputType="textMultiLine"
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".7"
+                                android:background="#d2ace6"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="اسم الجهاز"
+                                android:textColor="#160e60"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:maxLines="1"
+                                />
+
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:background="#160e60" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/order_details_devprice"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:background="#ffffff"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="#160e60"
+                                android:textSize="@dimen/main_text_size"
+                                android:textStyle="italic"
+                                android:inputType="textMultiLine"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".7"
+                                android:background="#d2ace6"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="السعر"
+                                android:textColor="#160e60"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:maxLines="1"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:background="#160e60" />
+
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/order_details_devquantity"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:background="#ffffff"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="#160e60"
+                                android:textSize="@dimen/main_text_size"
+                                android:textStyle="italic"
+                                android:inputType="textMultiLine"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".7"
+                                android:background="#d2ace6"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="الكمية"
+                                android:textColor="#160e60"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:maxLines="1"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:background="#160e60" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/order_details_order_address"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:background="#ffffff"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="#160e60"
+                                android:textSize="@dimen/main_text_size"
+                                android:textStyle="italic"
+                                android:inputType="textMultiLine"
+                                />
+
+                            <TextView
+                                android:id="@+id/textView"
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".7"
+                                android:background="#d2ace6"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="العنوان"
+                                android:textColor="#160e60"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:maxLines="1"
+                                />
+
+                        </LinearLayout>
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:background="#160e60" />
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+
+                            <TextView
+                                android:id="@+id/order_details_orderdate"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1.5"
+                                android:background="#ffffff"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:textColor="#160e60"
+                                android:textSize="@dimen/main_text_size"
+                                android:textStyle="italic"
+                                android:inputType="textMultiLine"
+
+                                />
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="match_parent"
+                                android:layout_weight=".7"
+                                android:background="#d2ace6"
+                                android:gravity="center"
+                                android:padding="10dp"
+                                android:text="تاريخ الطلب"
+                                android:textColor="#160e60"
+                                android:textSize="18dp"
+                                android:textStyle="bold"
+                                android:maxLines="1"
+                                />
+
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="2px"
+                            android:background="#160e60" />
+
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
+        </LinearLayout>
+
+    </ScrollView>
+</RelativeLayout>

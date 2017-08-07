@@ -1,14 +1,25 @@
 package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.elashry.eleman.Activities.ShowOrder_Details;
+import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.OrderModel;
 import com.example.elashry.eleman.R;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.List;
 
@@ -18,8 +29,9 @@ import java.util.List;
 
 public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
 
-    private Context mContext;
+    Context mContext;
     LayoutInflater inflater;
+    private final String products_url ="http://semicolonsoft.com/app/api/find/products";
     private List<OrderModel> order_List;
 
     public OrderAdapter(Context mContext, List<OrderModel> pro_List) {
@@ -30,19 +42,28 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
 
     @Override
     public OrderAdapter.ViewHoler onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.order_item,parent,false);
+        View view = inflater.inflate(R.layout.manager_order_row,parent,false);
         OrderAdapter.ViewHoler holer = new OrderAdapter.ViewHoler(view);
         return holer;
     }
 
     @Override
-    public void onBindViewHolder(OrderAdapter.ViewHoler holder, int position) {
+    public void onBindViewHolder(final OrderAdapter.ViewHoler holder, int position) {
+        OrderModel orderModel = new OrderModel(order_List.get(position).getOrder_id(),order_List.get(position).getProduct_id(),order_List.get(position).getQuantity(),order_List.get(position).getClient_name(),order_List.get(position).getClient_phone(),order_List.get(position).getOrder_date(),order_List.get(position).getOrder_address());
         holder.c_name.setText(order_List.get(position).getClient_name().toString());
-        holder.c_phone.setText(order_List.get(position).getClient_phone().toString());
-        holder.c_address.setText(order_List.get(position).getOrder_address().toString());
         holder.dev_quantity.setText(order_List.get(position).getQuantity().toString());
         holder.order_date.setText(order_List.get(position).getOrder_date().toString());
-
+        GetProData(holder,orderModel);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                OrderModel orderModel = new OrderModel(order_List.get(holder.getLayoutPosition()).getOrder_id(),order_List.get(holder.getLayoutPosition()).getProduct_id(),order_List.get(holder.getLayoutPosition()).getQuantity(),order_List.get(holder.getLayoutPosition()).getClient_name(),order_List.get(holder.getLayoutPosition()).getClient_phone(),order_List.get(holder.getLayoutPosition()).getOrder_date(),order_List.get(holder.getLayoutPosition()).getOrder_address());
+                Intent intent = new Intent(mContext, ShowOrder_Details.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("order_data",orderModel);
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 
@@ -52,17 +73,50 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
     }
 
     class ViewHoler extends RecyclerView.ViewHolder{
-        private TextView c_name,c_phone,c_address,dev_quantity,order_date;
+        private TextView c_name,devType,dev_quantity,order_date;
         public ViewHoler(View itemView) {
             super(itemView);
 
-            c_name = (TextView) itemView.findViewById(R.id.order_client_name);
-            c_phone= (TextView) itemView.findViewById(R.id.order_client_phone);
-            c_address = (TextView) itemView.findViewById(R.id.order_client_address);
-            dev_quantity  = (TextView) itemView.findViewById(R.id.order_dev_quantity);
-            order_date = (TextView) itemView.findViewById(R.id.order_date);
+            c_name = (TextView) itemView.findViewById(R.id.mngr_order_clientname);
+            devType= (TextView) itemView.findViewById(R.id.mngr_order_devtype);
+            dev_quantity  = (TextView) itemView.findViewById(R.id.mngr_order_quantity);
+            order_date = (TextView) itemView.findViewById(R.id.mngr_order_date);
         }
 
     }
 
+    private void GetProData(final ViewHoler holder , final OrderModel orderModel)
+    {
+        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(products_url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.e("data",response.toString());
+                        JSONObject object;
+                        for (int index=0;index<response.length();index++)
+                        {
+                            try {
+                                object =response.getJSONObject(index);
+                                if (object.get("product_id_pk").toString().equals(orderModel.getProduct_id().toString()))
+                                {
+                                    holder.devType.setText(object.get("ptoduct_name").toString());
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                }
+                ,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
+
+    }
 }

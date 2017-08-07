@@ -1,9 +1,11 @@
 package com.example.elashry.eleman.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by Lincoln on 18/05/16.
  */
-public class MatgarModel {
+public class MatgarModel implements Serializable{
     private String name;
     private int priceOfProduct;
     private int thumbnail;

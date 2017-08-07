@@ -1,18 +1,15 @@
 package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
-import android.util.Base64;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.elashry.eleman.Model.Product_Model;
+import com.example.elashry.eleman.Activities.ShowMaintenance_Details;
+import com.example.elashry.eleman.Model.MaintenanceModel;
 import com.example.elashry.eleman.R;
 
 import java.util.List;
@@ -23,57 +20,59 @@ import java.util.List;
 
 public class MaintenanceAdapter extends RecyclerView.Adapter <MaintenanceAdapter.ViewHoler>{
 
-    private Context mContext;
+    Context mContext;
     LayoutInflater inflater;
-    private List<Product_Model> pro_List;
+    private List<MaintenanceModel> maintenance_List;
 
-    public MaintenanceAdapter(Context mContext,List<Product_Model> pro_List) {
+    public MaintenanceAdapter(Context mContext,List<MaintenanceModel> maintenance_List) {
         this.mContext = mContext;
-        this.pro_List =pro_List;
+        this.maintenance_List =maintenance_List;
         inflater = LayoutInflater.from(mContext);
     }
 
     @Override
     public MaintenanceAdapter.ViewHoler onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = inflater.inflate(R.layout.product_row,parent,false);
-        MaintenanceAdapter.ViewHoler holer = new MaintenanceAdapter.ViewHoler(view);
-        return holer;
+        View view = inflater.inflate(R.layout.manager_maintenance_row,parent,false);
+        final ViewHoler holder = new MaintenanceAdapter.ViewHoler(view);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                MaintenanceModel  maintenanceModel = new MaintenanceModel(maintenance_List.get(holder.getLayoutPosition()).getCname().toString(),maintenance_List.get(holder.getLayoutPosition()).getCphone().toString(),maintenance_List.get(holder.getLayoutPosition()).getCaddress().toString(),maintenance_List.get(holder.getLayoutPosition()).getDtype().toString(),maintenance_List.get(holder.getLayoutPosition()).getWstate().toString(),maintenance_List.get(holder.getLayoutPosition()).getDbrand().toString(),maintenance_List.get(holder.getLayoutPosition()).getDamagetype().toString(),maintenance_List.get(holder.getLayoutPosition()).getOdate().toString());
+                Intent intent = new Intent(mContext, ShowMaintenance_Details.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("maintenance_data",maintenanceModel);
+                mContext.startActivity(intent);
+            }
+        });
+        return holder;
     }
 
     @Override
     public void onBindViewHolder(MaintenanceAdapter.ViewHoler holder, int position) {
-        // Picasso.with(mContext).load(Uri.parse(pro_List.get(position).getPro_Image_url().toString())).into(holder.product_image);
-
-        Toast.makeText(mContext,pro_List.get(position).getPro_Image_url().toString() , Toast.LENGTH_SHORT).show();
-        holder.product_image.setImageBitmap(getBitmapFromString(pro_List.get(position).getPro_Image_url().toString()));
-        holder.product_categ.setText(pro_List.get(position).getPro_Categ().toString());
-        holder.product_name.setText(pro_List.get(position).getPro_Name().toString());
-        holder.product_price.setText(pro_List.get(position).getPro_Price().toString());
+        holder.client_name.setText(maintenance_List.get(position).getCname().toString());
+        holder.devType.setText(maintenance_List.get(position).getDtype().toString());
+        holder.warranty_state.setText(maintenance_List.get(position).getWstate().toString());
+        holder.date.setText(maintenance_List.get(position).getOdate().toString());
     }
 
     @Override
     public int getItemCount() {
-        return pro_List.size();
+        return maintenance_List.size();
     }
+
+
     class ViewHoler extends RecyclerView.ViewHolder{
-        ImageView product_image;
-        TextView product_categ;
-        TextView product_name;
-        TextView product_price;
+
+        TextView client_name,devType,warranty_state,date;
         public ViewHoler(View itemView) {
             super(itemView);
-            product_image     = (ImageView) itemView.findViewById(R.id.product_image);
-            product_categ     = (TextView) itemView.findViewById(R.id.product_categ);
-            product_name      = (TextView) itemView.findViewById(R.id.product_name);
-            product_price     = (TextView) itemView.findViewById(R.id.product_price);
 
+            client_name = (TextView) itemView.findViewById(R.id.manager_main_client_name);
+            devType = (TextView) itemView.findViewById(R.id.manager_main_devType);
+            warranty_state = (TextView) itemView.findViewById(R.id.manager_main_warranty_state);
+            date = (TextView) itemView.findViewById(R.id.manager_main_date);
         }
 
     }
-    private Bitmap getBitmapFromString(String imageString)
-    {
-        byte [] arr = Base64.decode(imageString,Base64.DEFAULT);
-        Bitmap bitmap = BitmapFactory.decodeByteArray(arr,0,arr.length);
-        return bitmap;
-    }
+
 }

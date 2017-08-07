@@ -1,4 +1,4 @@
-package com.example.elashry.eleman;
+package com.example.elashry.eleman.Activities;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -10,10 +10,10 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.example.elashry.eleman.Activities.Category;
 import com.example.elashry.eleman.Adapter.ViewPagerAdapter;
 import com.example.elashry.eleman.Fragment.Maintenance;
 import com.example.elashry.eleman.Fragment.Order;
+import com.example.elashry.eleman.R;
 
 public class Manager extends AppCompatActivity {
 

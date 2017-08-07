@@ -1,7 +1,6 @@
 package com.example.elashry.eleman.Fragment;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -11,6 +10,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -33,6 +34,8 @@ import java.util.List;
 
 public class Order extends Fragment {
 
+    private LinearLayout pbc;
+    private TextView no_order_txt;
     private RecyclerView mRecyclerView;
     Context mContext;
     private final String order_url ="http://semicolonsoft.com/app/api/find/orders";
@@ -46,58 +49,61 @@ public class Order extends Fragment {
     }
 
     private void GetOrder_Data() {
-        new Asyn_task().execute(order_url);
+        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(order_url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.e("data",response.toString());
+                        List<OrderModel> orderList = new ArrayList<>();
+                        JSONObject object;
+                        for (int index =0;index<response.length();index++)
+                        {
+                            try {
+                                object =response.getJSONObject(index);
+                                orderList.add(new OrderModel(object.get("order_id_pk").toString(),object.get("product_id_fk").toString(),object.get("quantity").toString(),object.get("client_name").toString(),object.get("client_phone").toString(),object.get("order_date").toString(),object.get("order_location").toString()));
 
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                        if (orderList.size()>0)
+                        {
+                            OrderAdapter adapter = new OrderAdapter(mContext,orderList);
+                            mRecyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                            mRecyclerView.setVisibility(View.VISIBLE);
+                            pbc.setVisibility(View.GONE);
+                            no_order_txt.setVisibility(View.GONE);
+                        }
+                        if (orderList.size()==0)
+                        {
+                            mRecyclerView.setVisibility(View.GONE);
+                            pbc.setVisibility(View.GONE);
+                            no_order_txt.setText(View.VISIBLE);
+                        }
+
+                    }
+                }
+                ,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
     }
 
     private void init_View(View view) {
         mContext = view.getContext();
+        pbc = (LinearLayout) view.findViewById(R.id.progressBar_container);
+        pbc.setVisibility(View.VISIBLE);
+        no_order_txt = (TextView) view.findViewById(R.id.no_order_txt);
         mRecyclerView = (RecyclerView) view.findViewById(R.id.order_RecyView);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
     }
-    private class Asyn_task extends AsyncTask<String, Void,Void>
-    {
 
-        @Override
-        protected Void doInBackground(String... strings) {
-            JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(strings[0],
-                    new Response.Listener<JSONArray>() {
-                        @Override
-                        public void onResponse(JSONArray response) {
-                            Log.e("data",response.toString());
-                            List<OrderModel> orderList = new ArrayList<>();
-                            JSONObject object;
-                            for (int index =0;index<response.length();index++)
-                            {
-                                try {
-                                    object =response.getJSONObject(index);
-                                    orderList.add(new OrderModel(object.get("order_id_pk").toString(),object.get("product_id_fk").toString(),object.get("quantity").toString(),object.get("client_name").toString(),object.get("client_phone").toString(),object.get("order_date").toString(),object.get("order_location").toString()));
-
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-
-                            if (orderList.size()>0)
-                            {
-                                OrderAdapter adapter = new OrderAdapter(mContext,orderList);
-                                mRecyclerView.setAdapter(adapter);
-                            }
-
-                        }
-                    }
-                    ,
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
-                    }
-            );
-            Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
-            return null;
-        }
-
-    }
 
 }

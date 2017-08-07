@@ -12,7 +12,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 
-import com.example.elashry.eleman.Manager;
 import com.example.elashry.eleman.R;
 
 public class Login extends AppCompatActivity {

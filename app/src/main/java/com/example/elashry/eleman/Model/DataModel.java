@@ -1,10 +1,12 @@
 package com.example.elashry.eleman.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by elashry on 7/31/2017.
  */
 
-public class DataModel {
+public class DataModel implements Serializable{
 
     private String maintenance_id_pk;
     private String client_name;

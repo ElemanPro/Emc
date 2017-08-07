@@ -1,11 +1,12 @@
 package com.example.elashry.eleman.Model;
 
+import java.io.Serializable;
+
 /**
  * Created by Delta on 06/08/2017.
  */
 
-public class OrderModel
-{
+public class OrderModel implements Serializable{
     String order_id;
     String product_id;
     String quantity;

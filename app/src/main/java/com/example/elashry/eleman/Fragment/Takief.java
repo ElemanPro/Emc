@@ -2,7 +2,6 @@ package com.example.elashry.eleman.Fragment;
 
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -57,7 +56,52 @@ public class Takief extends Fragment {
     }
     private void Get_proData(String products_url) {
 
-        new Asyn_task().execute(products_url);
+        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(products_url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.e("data",response.toString());
+                        JSONObject object;
+                        pro_List = new ArrayList<>();
+
+                        for (int index=0;index<response.length();index++)
+                        {
+                            try {
+                                object =response.getJSONObject(index);
+                                if (object.get("cat_id_fk").toString().equals("6"))
+                                {
+                                    pro_List.add(new Product_Model("تكييفات",object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if (pro_List.size()>0)
+                        {
+                            Washer_Adapter adapter = new Washer_Adapter(mContext,pro_List);
+                            mrRecyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                            mrRecyclerView.setVisibility(View.VISIBLE);
+                            progBar_container.setVisibility(View.GONE);
+                        }
+                        else if (pro_List.size()==0)
+                        {
+                            nopro_txt.setVisibility(View.VISIBLE);
+                            mrRecyclerView.setVisibility(View.GONE);
+                            progBar_container.setVisibility(View.GONE);
+                        }
+
+                    }
+                }
+                ,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
     }
     private void init_View(View view) {
         mContext =view.getContext();
@@ -71,59 +115,6 @@ public class Takief extends Fragment {
         nopro_txt         = (TextView) view.findViewById(R.id.nopro_txt);
 
     }
-    private class Asyn_task extends AsyncTask<String, Void,Void>
-    {
 
-        @Override
-        protected Void doInBackground(String... strings) {
-            JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(strings[0],
-                    new Response.Listener<JSONArray>() {
-                        @Override
-                        public void onResponse(JSONArray response) {
-                            Log.e("data",response.toString());
-                            JSONObject object;
-                            pro_List = new ArrayList<>();
-
-                            for (int index=0;index<response.length();index++)
-                            {
-                                try {
-                                    object =response.getJSONObject(index);
-                                    if (object.get("cat_id_fk").toString().equals("6"))
-                                    {
-                                        pro_List.add(new Product_Model("تلاجات",object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                            if (pro_List.size()>0)
-                            {
-                                Washer_Adapter adapter = new Washer_Adapter(mContext,pro_List);
-                                mrRecyclerView.setAdapter(adapter);
-                                mrRecyclerView.setVisibility(View.VISIBLE);
-                                progBar_container.setVisibility(View.GONE);
-                            }
-                            else if (pro_List.size()==0)
-                            {
-                                nopro_txt.setVisibility(View.VISIBLE);
-                                mrRecyclerView.setVisibility(View.GONE);
-                                progBar_container.setVisibility(View.GONE);
-                            }
-
-                        }
-                    }
-                    ,
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-
-                        }
-                    }
-            );
-            Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
-            return null;
-        }
-
-    }
 
 }

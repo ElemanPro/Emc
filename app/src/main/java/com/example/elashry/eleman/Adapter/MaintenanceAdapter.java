@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.elashry.eleman.Activities.ShowMaintenance_Details;
 import com.example.elashry.eleman.Model.MaintenanceModel;
 import com.example.elashry.eleman.R;
 
@@ -46,6 +45,8 @@ public class MaintenanceAdapter extends RecyclerView.Adapter <MaintenanceAdapter
         });
         return holder;
     }
+
+
 
     @Override
     public void onBindViewHolder(MaintenanceAdapter.ViewHoler holder, int position) {

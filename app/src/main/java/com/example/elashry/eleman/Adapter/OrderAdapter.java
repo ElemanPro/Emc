@@ -40,6 +40,8 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
         inflater = LayoutInflater.from(mContext);
     }
 
+
+
     @Override
     public OrderAdapter.ViewHoler onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.manager_order_row,parent,false);

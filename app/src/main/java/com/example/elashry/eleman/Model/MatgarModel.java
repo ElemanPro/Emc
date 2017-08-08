@@ -18,7 +18,6 @@ public class MatgarModel implements Serializable{
         this.priceOfProduct = priceOfProduct;
         this.thumbnail = thumbnail;
     }
-
     public String getName() {
         return name;
     }

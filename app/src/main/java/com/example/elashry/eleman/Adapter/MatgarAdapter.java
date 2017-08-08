@@ -61,11 +61,10 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
 
         // loading album cover using Glide library
         Glide.with(mContext).load(album.getThumbnail()).into(holder.thumbnail);
-
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showPopupMenu(holder.overflow);
+                showPopupMenu(holder.overflow,holder);
             }
         });
     }
@@ -73,12 +72,12 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
     /**
      * Showing popup menu when tapping on 3 dots
      */
-    private void showPopupMenu(View view) {
+    private void showPopupMenu(View view, MyViewHolder holder) {
         // inflate menu
         PopupMenu popup = new PopupMenu(mContext, view);
         MenuInflater inflater = popup.getMenuInflater();
         inflater.inflate(R.menu.menu_album, popup.getMenu());
-        popup.setOnMenuItemClickListener(new MyMenuItemClickListener());
+        popup.setOnMenuItemClickListener(new MyMenuItemClickListener(holder));
         popup.show();
     }
 
@@ -87,7 +86,9 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
      */
     class MyMenuItemClickListener implements PopupMenu.OnMenuItemClickListener {
 
-        public MyMenuItemClickListener() {
+        MyViewHolder holder;
+        public MyMenuItemClickListener(MyViewHolder holder) {
+            this.holder=holder;
         }
 
         @Override
@@ -95,9 +96,10 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
             switch (menuItem.getItemId()) {
                 case R.id.action_regiter:
                     Toast.makeText(mContext, "حجز", Toast.LENGTH_SHORT).show();
+
                     return true;
                 case R.id.action_detail:
-                    Toast.makeText(mContext, "تفاصيل", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(mContext, albumList.get(holder.getLayoutPosition()).getName(), Toast.LENGTH_SHORT).show();
                     return true;
                 default:
             }

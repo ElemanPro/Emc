@@ -5,24 +5,31 @@
     android:layout_height="wrap_content">
     <LinearLayout
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+        <ImageView
+            android:id="@+id/product_image"
+            android:layout_width="match_parent"
+            android:layout_height="190dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="15dp"
+            />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="horizontal"
         android:background="@color/background_color"
         android:weightSum="2"
-        ><LinearLayout
+        >
+        <LinearLayout
         android:layout_width="0dp"
         android:layout_weight=".6"
         android:background="@color/background_color"
         android:orientation="vertical"
         android:layout_height="120dp">
-        <ImageView
-            android:id="@+id/product_image"
-            android:layout_width="match_parent"
-            android:layout_height="70dp"
-            android:scaleType="centerCrop"
-            android:src="@drawable/conditioner"
 
-            />
         <Button
             android:layout_marginTop="@dimen/pad_5dp"
             android:layout_width="match_parent"
@@ -33,6 +40,7 @@
             android:backgroundTint="@color/white"
             style="@style/Widget.AppCompat.Button.Colored"
             android:text="حجز"
+            android:visibility="gone"
             android:id="@+id/reg"/>
     </LinearLayout>
     <LinearLayout
@@ -240,5 +248,5 @@
                 />
         </LinearLayout>-->
     </LinearLayout>
-
+    </LinearLayout>
 </android.support.v7.widget.CardView>

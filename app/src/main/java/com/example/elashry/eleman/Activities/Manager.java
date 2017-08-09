@@ -49,6 +49,7 @@ public class Manager extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 pager.setCurrentItem(tab.getPosition());
+
             }
 
             @Override
@@ -58,6 +59,7 @@ public class Manager extends AppCompatActivity {
 
             @Override
             public void onTabReselected(TabLayout.Tab tab) {
+
 
             }
         });

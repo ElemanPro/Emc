@@ -1,84 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.CardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        >
-        <ImageView
-            android:id="@+id/product_image"
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:scaleType="centerCrop"
-            android:layout_marginBottom="15dp"
-            />
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="1dp"
+    app:contentPadding="3dp"
 
-    <LinearLayout
+    >
+<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:background="@color/background_color"
-        android:weightSum="2"
-        >
-        <LinearLayout
-        android:layout_width="0dp"
-        android:layout_weight=".6"
-        android:background="@color/background_color"
         android:orientation="vertical"
-        android:layout_height="120dp">
-
-        <Button
-            android:layout_marginTop="@dimen/pad_5dp"
+    android:layout_marginTop="5dp"
+        >
+        />
+        <ImageView
+            android:layout_marginTop="5dp"
+            android:id="@+id/product_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/background_color"
-            android:textColor="@color/background_color"
-            android:textSize="20dp"
-            android:backgroundTint="@color/white"
-            style="@style/Widget.AppCompat.Button.Colored"
-            android:text="حجز"
-            android:visibility="gone"
-            android:id="@+id/reg"/>
-    </LinearLayout>
+            android:layout_height="150dp"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="5dp"
+
+
+            />
+
+
     <LinearLayout
         android:id="@+id/linear"
-        android:layout_width="0dp"
-        android:background="@color/background_color"
-        android:layout_weight="1.4"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:background="@color/background_color"
+        android:orientation="vertical"
+        android:layout_gravity="center_vertical"
+
+        >
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:layout_weight="2"
+            >
 
             <TextView
                 android:id="@+id/product_categ"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#0000"
-                android:gravity="right"
-                android:maxLength="12"
+                android:layout_width="0dp"
+                android:layout_weight="1.2"
+                android:layout_height="match_parent"
+                android:gravity="right|center"
                 android:padding="5dp"
-                android:textColor="#fff"
-                android:textSize="14dp" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="18dp"
+                />
 
-            <TextView
-                android:layout_width="match_parent"
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".8"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#0000"
-                android:gravity="right"
-                android:text="  القسم"
-                android:drawableRight="@drawable/cat"
-                android:maxLength="12"
-                android:padding="5dp"
-                android:textColor="@color/white"
-                android:textSize="14dp" />
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:background="#0091ea"
+                >
+
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".7"
+                    android:background="#0091ea"
+                    android:gravity="center"
+                    android:text="القسم"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    />
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".3"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/dept"/>
+
+            </LinearLayout>
+
         </LinearLayout>
 
         <View
@@ -88,33 +92,50 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
             <TextView
                 android:id="@+id/product_name"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#0000"
-                android:gravity="right"
-                android:maxLength="12"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:gravity="right|center"
                 android:padding="5dp"
-                android:textColor="#fff"
-                android:textSize="14dp" />
+                android:textColor="@color/colorPrimary"
+                android:textSize="18dp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".8"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:background="#0091ea"
+                >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#0000"
-                android:gravity="right"
-                android:text=" اسم الجهاز"
-                android:drawableRight="@drawable/dname"
-                android:maxLength="12"
-                android:padding="5dp"
-                android:textColor="@color/white"
-                android:textSize="14dp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_weight=".7"
+                    android:layout_height="wrap_content"
+                    android:background="#0091ea"
+                    android:gravity="center"
+                    android:text="اسم الجهاز"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    />
+                <ImageView
+                    android:id="@+id/categ_icon"
+                    android:layout_width="0dp"
+                    android:layout_weight=".3"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/takief"/>
+
+            </LinearLayout>
+
+
         </LinearLayout>
 
         <View
@@ -124,37 +145,52 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="2"
+            >
 
             <TextView
                 android:id="@+id/product_price"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1.2"
+                android:gravity="right|center"
+                android:padding="10dp"
+                android:textColor="@color/colorPrimary"
+                android:textSize="16sp"
+                />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_weight=".8"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#0000"
-                android:gravity="right"
-                android:maxLength="12"
-                android:padding="5dp"
-                android:textColor="#fff"
-                android:textSize="14dp" />
+                android:orientation="horizontal"
+                android:weightSum="1"
+                android:background="#0091ea"
+                >
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:background="#0000"
-                android:gravity="right"
-                android:text="السعر"
-                android:maxLength="12"
-                android:padding="5dp"
-                android:drawableRight="@drawable/price"
-                android:textColor="@color/white"
-                android:textSize="16dp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight=".7"
+                    android:background="#0091ea"
+                    android:gravity="center"
+                    android:text="السعر"
+                    android:padding="10dp"
+                    android:textColor="@color/white"
+                    android:textSize="18dp"
+                    android:textStyle="bold"
+                    />
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_weight=".3"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/price"/>
+
+            </LinearLayout>
+
         </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#dad8d8" /></LinearLayout>
+       </LinearLayout>
       <!--  <LinearLayout
             android:layout_width="0dp"
             android:layout_weight="1.4"
@@ -247,6 +283,5 @@
 
                 />
         </LinearLayout>-->
-    </LinearLayout>
     </LinearLayout>
 </android.support.v7.widget.CardView>

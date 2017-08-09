@@ -24,6 +24,8 @@
         android:layout_alignParentBottom="true"
         android:background="@color/colorPrimary"
         app:tabMode="scrollable"
+        app:tabSelectedTextColor="@color/white"
+        app:tabTextColor="#cfd8dc"
         >
 
     </android.support.design.widget.TabLayout>

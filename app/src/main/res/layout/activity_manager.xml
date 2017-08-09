@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/_mngr_mtoolBar"
+            android:theme="@style/toolBar"
             ></android.support.v7.widget.Toolbar>
     </android.support.design.widget.AppBarLayout>
 
@@ -41,9 +42,9 @@
         android:background="@color/colorPrimary"
         app:tabSelectedTextColor="@color/white"
         app:tabMode="fixed"
-        app:tabTextColor="@color/white"
-        app:tabIndicatorHeight="5dp"
-        app:tabIndicatorColor="#d2ace6"
+        app:tabTextColor="#cfd8dc"
+        app:tabIndicatorHeight="3dp"
+        app:tabIndicatorColor="@color/white"
         app:tabTextAppearance="@android:style/TextAppearance.Medium"
 
         >

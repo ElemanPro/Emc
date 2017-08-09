@@ -176,7 +176,7 @@
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="16sp" />
-    <View
+   <!-- <View
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:background="@color/white_greyish" />
@@ -193,13 +193,13 @@
         android:singleLine="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp" />-->
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"
         android:background="@color/white_greyish" />
 
-    <CheckBox
+  <!--  <CheckBox
         android:id="@+id/terms_conditions"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -207,7 +207,7 @@
         android:layout_gravity="right"
         android:text="@string/terms_conditions"
         android:textColor="@color/white"
-        android:textSize="14sp" />
+        android:textSize="14sp" />-->
 
     <Button
         android:id="@+id/signUpBtn"

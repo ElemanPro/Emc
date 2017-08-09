@@ -47,6 +47,16 @@
     <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="backdrop_title">مركز الايمان للصيانه </string>
     <string name="backdrop_subtitle">كل ماتريده بضغطه زر واحده </string>
+    <string name="intro1">عن الشركه</string>
+    <string name="home1">تدعم شركة سيمى كولون مركز الايمان لصيانه الاجهزه وهذه توضح طريقه التواصل بهم</string>
+    <string name="intro2">المتجر</string>
+    <string name="home2">شاشه توضح طريقه حجز اى جهاز ومعرفه التفاصيل الخاصه بالمنتج والبائع</string>
+    <string name="intro3">قطع الغيار</string>
+    <string name="home3">شاشه توضح طريقه عرض قطع الغيار وامكانيه الحجز والشراء</string>
+    <string name="intro4">حجز طلب</string>
+    <string name="home4">امكانيه حجز جهاز او قطعه غيار عن طريق ادخال البيانات</string>
+    <string name="intro5">الصيانه</string>
+    <string name="home5">شاشه الصيانه وهى امكانيه عمل صيانه لاى جهاز عن طريق ادخال البيانات فقط</string>
 
 
 </resources>

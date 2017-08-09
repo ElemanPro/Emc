@@ -25,13 +25,6 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
-    <style name="toolBar" parent="Theme.AppCompat.Light">
-        <item name="android:textColorPrimary">@color/white</item>
-        <item name="android:colorBackground">#ffffff</item>
-        <item name="android:textColor">@color/colorPrimary</item>
-        <item name="android:textColorSecondary">@color/white</item>
-
-    </style>
 
 
 </resources>

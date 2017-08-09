@@ -12,6 +12,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.text.DateFormat;
+import java.util.Calendar;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -27,18 +29,19 @@ import java.util.Map;
 
 public class Maintenance extends AppCompatActivity {
     Button b1;
-    EditText cname,cphone,caddress,dtype, dateorder ,marka ,damage;
-    Calendar myCalendar;
+    EditText cname,cphone,caddress,dtype ,marka ,damage;
+   // Calendar myCalendar;
     Spinner spinner;
     ProgressDialog progressDialog;
     String ss;
+    String dates;
      String [] state=new String[]{"داخل الضمان ","خارج الضمان"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maintenance);
         b1= (Button) findViewById(R.id.signUpBtn);
-        dateorder= (EditText) findViewById(R.id.date);
+        //dateorder= (EditText) findViewById(R.id.date);
         spinner= (Spinner) findViewById(R.id.mySpinner);
         cname= (EditText) findViewById(R.id.fullName);
         cphone= (EditText) findViewById(R.id.mobileNumber);
@@ -46,6 +49,9 @@ public class Maintenance extends AppCompatActivity {
         dtype= (EditText) findViewById(R.id.type);
         marka= (EditText) findViewById(R.id.marka);
         damage= (EditText) findViewById(R.id.damage);
+
+        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
+         dates = df.format(Calendar.getInstance().getTime());
 
 
 
@@ -56,7 +62,7 @@ public class Maintenance extends AppCompatActivity {
 //                startActivity(i);
 //            }
 //        });
-          myCalendar = Calendar.getInstance();
+      /*    myCalendar = Calendar.getInstance();
         final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
 
             @Override
@@ -81,7 +87,7 @@ public class Maintenance extends AppCompatActivity {
                         myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             }
         });
-
+*/
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -103,24 +109,24 @@ public class Maintenance extends AppCompatActivity {
 
 
     }
-    private void updateLabel() {
+   /* private void updateLabel() {
         String myFormat = "dd/MM/yyyy"; //In which you need put here
         SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
         dateorder.setText(sdf.format(myCalendar.getTime()));
     }
-
+*/
     public void registerOrder(View view) {
         if(   cname.getText().toString().isEmpty()&&cphone.getText().toString().isEmpty()&&
                 caddress.getText().toString().isEmpty()&&dtype.getText().toString().isEmpty()&&
-                dateorder.getText().toString().isEmpty()&&marka.getText().toString().isEmpty()&&damage.getText().toString().isEmpty())
+               marka.getText().toString().isEmpty()&&damage.getText().toString().isEmpty())
         {
             Toast.makeText(Maintenance.this,"You Should Enter data",Toast.LENGTH_LONG).show();
         }else
         {
 
 
-            Toast.makeText(Maintenance.this,cname.getText().toString()+"\n"+cphone.getText().toString()+"\n"+caddress.getText().toString()+"\n"+dtype.getText().toString()+"\n"+ss+"\n"+ marka.getText().toString()+"\n"+dateorder.getText().toString()+"\n"+damage.getText().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(Maintenance.this,cname.getText().toString()+"\n"+cphone.getText().toString()+"\n"+caddress.getText().toString()+"\n"+dtype.getText().toString()+"\n"+ss+"\n"+ marka.getText().toString()+"\n"+dates+"\n"+damage.getText().toString(), Toast.LENGTH_SHORT).show();
 
             progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
             progressDialog.show();
@@ -156,7 +162,7 @@ public class Maintenance extends AppCompatActivity {
                     params.put("warranty_state",ss);
                     params.put("device_brand",marka.getText().toString());
                     params.put("damage_type",damage.getText().toString());
-                    params.put("order_date",dateorder.getText().toString());
+                    params.put("order_date", dates);
 
                     return params;
                 }

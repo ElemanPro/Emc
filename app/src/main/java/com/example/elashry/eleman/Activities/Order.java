@@ -21,6 +21,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.R;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.HashMap;
@@ -31,16 +32,15 @@ import static com.example.elashry.eleman.R.array.mySpinner;
 
 public class Order extends AppCompatActivity {
     Button b1;
-    EditText cname,cphone,caddress,amount,Odate;
+    EditText cname,cphone,caddress,amount;
     Calendar myCalendar;
     ProgressDialog progressDialog;
-    String ss;
+    String dates;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         b1= (Button) findViewById(R.id.order);
-        Odate= (EditText) findViewById(R.id.date);
         cname= (EditText) findViewById(R.id.cname);
         cphone= (EditText) findViewById(R.id.cphone);
         caddress= (EditText) findViewById(R.id.address);
@@ -56,31 +56,10 @@ public class Order extends AppCompatActivity {
 //                startActivity(i);
 //            }
 //        });
-        myCalendar = Calendar.getInstance();
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
+        dates = df.format(Calendar.getInstance().getTime());
 
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
-            }
 
-        };
-
-        Odate.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new DatePickerDialog(Order.this, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
 
 
         progressDialog=new ProgressDialog(this);
@@ -88,17 +67,11 @@ public class Order extends AppCompatActivity {
 
 
     }
-    private void updateLabel() {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        Odate.setText(sdf.format(myCalendar.getTime()));
-    }
 
     public void registerOrder(View view) {
         if(   cname.getText().toString().isEmpty()&&cphone.getText().toString().isEmpty()&&
-                caddress.getText().toString().isEmpty()&&amount.getText().toString().isEmpty()&&
-                Odate.getText().toString().isEmpty())
+                caddress.getText().toString().isEmpty()&&amount.getText().toString().isEmpty())
         {
             Toast.makeText(Order.this,"You Should Enter data",Toast.LENGTH_LONG).show();
         }else
@@ -137,7 +110,7 @@ public class Order extends AppCompatActivity {
                     params.put("client_phone", cphone.getText().toString());
                     params.put("order_location", caddress.getText().toString());
                     params.put("quantity", amount.getText().toString());
-                    params.put("order_date", Odate.getText().toString());
+                    params.put("order_date", dates);
 
                     return params;
                 }

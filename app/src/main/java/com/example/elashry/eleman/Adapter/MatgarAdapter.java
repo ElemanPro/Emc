@@ -1,6 +1,7 @@
 package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.elashry.eleman.Activities.Order;
 import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
 
@@ -94,7 +96,10 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
         public boolean onMenuItemClick(MenuItem menuItem) {
             switch (menuItem.getItemId()) {
                 case R.id.action_regiter:
-                    Toast.makeText(mContext, "حجز", Toast.LENGTH_SHORT).show();
+
+                    Intent i =new Intent(mContext, Order.class);
+                    mContext.startActivity(i);
+                 //   Toast.makeText(mContext, "حجز", Toast.LENGTH_SHORT).show();
                     return true;
                 case R.id.action_detail:
                     Toast.makeText(mContext, "تفاصيل", Toast.LENGTH_SHORT).show();

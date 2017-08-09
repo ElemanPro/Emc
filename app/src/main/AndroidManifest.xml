@@ -34,10 +34,14 @@
         <activity
             android:name=".Activities.Manager"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.About" />
+        <activity android:name=".Activities.About" android:theme="@style/AppThemeCustom" />
         <activity android:name=".Activities.ShowOrder_Details" />
         <activity android:name=".Activities.ShowMaintenance_Details" />
         <activity android:name=".Activities.Device_Details"></activity>
+        <activity
+            android:name=".Activities.MyIntro"
+            android:theme="@style/AppTheme.NoActionBar" >
+        </activity>
     </application>
 
 </manifest>

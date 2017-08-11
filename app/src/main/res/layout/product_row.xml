@@ -14,6 +14,18 @@
     android:layout_marginTop="5dp"
         >
         />
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp">
+        <ProgressBar
+            android:id="@+id/prog_bar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="?android:progressBarStyleSmall"
+            android:layout_centerInParent="true"
+            android:indeterminate="true"
+
+            />
         <ImageView
             android:layout_marginTop="5dp"
             android:id="@+id/product_image"
@@ -21,9 +33,12 @@
             android:layout_height="150dp"
             android:scaleType="centerCrop"
             android:layout_marginBottom="5dp"
+            android:visibility="invisible"
 
 
             />
+    </RelativeLayout>
+
 
 
     <LinearLayout

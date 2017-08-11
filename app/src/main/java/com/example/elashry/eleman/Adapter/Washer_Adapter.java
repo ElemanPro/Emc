@@ -3,12 +3,15 @@ package com.example.elashry.eleman.Adapter;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff;
 import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.elashry.eleman.Model.Product_Model;
@@ -41,6 +44,7 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
     public ViewHoler onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.product_row,parent,false);
         ViewHoler holer = new ViewHoler(view);
+        holer.prog_bar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(mContext,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         return holer;
     }
 
@@ -94,6 +98,7 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
         TextView product_categ;
         TextView product_name;
         TextView product_price;
+        ProgressBar prog_bar;
         public ViewHoler(View itemView) {
             super(itemView);
             product_image     = (ImageView) itemView.findViewById(R.id.product_image);
@@ -101,7 +106,7 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
             product_categ     = (TextView) itemView.findViewById(R.id.product_categ);
             product_name      = (TextView) itemView.findViewById(R.id.product_name);
             product_price     = (TextView) itemView.findViewById(R.id.product_price);
-
+            prog_bar          = (ProgressBar) itemView.findViewById(R.id.prog_bar);
 
         }
 
@@ -145,6 +150,8 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
         protected void onPostExecute(Bitmap bitmap) {
             super.onPostExecute(bitmap);
             holer.product_image.setImageBitmap(bitmap);
+            holer.prog_bar.setVisibility(View.GONE);
+            holer.product_image.setVisibility(View.VISIBLE);
         }
     }
 }

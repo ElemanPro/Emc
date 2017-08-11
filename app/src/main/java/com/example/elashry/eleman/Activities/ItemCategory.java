@@ -83,7 +83,7 @@ public class  ItemCategory extends AppCompatActivity {
         mTab.addTab(mTab.newTab().setText("بوتاجازات").setIcon(R.mipmap.cooker));
         mTab.addTab(mTab.newTab().setText("شاشات").setIcon(R.drawable.television));
         mTab.addTab(mTab.newTab().setText("تيليفزيونات").setIcon(R.drawable.televisions));
-        mTab.addTab(mTab.newTab().setText("تكييفات").setIcon(R.drawable.refrigerator));
+        mTab.addTab(mTab.newTab().setText("تكييفات").setIcon(R.mipmap.air_condition));
         mTab.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

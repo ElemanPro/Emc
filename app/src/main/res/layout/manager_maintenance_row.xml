@@ -19,7 +19,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="صيانة"
-            android:textColor="#EC6C3F"
+            android:textColor="#2979ff"
             android:textStyle="bold"
             android:textSize="@dimen/txt_18sp"
             />

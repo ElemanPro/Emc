@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1"
-                android:background="#EC6C3F"
+                android:background="@color/colorPrimary"
                 >
 
 
@@ -67,7 +67,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight=".7"
-                    android:background="#EC6C3F"
+                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:text="القسم"
                     android:padding="10dp"
@@ -111,14 +111,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1"
-                android:background="#EC6C3F"
+                android:background="@color/colorPrimary"
                 >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight=".7"
                     android:layout_height="wrap_content"
-                    android:background="#EC6C3F"
+                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:text="اسم الجهاز"
                     android:padding="10dp"
@@ -165,14 +165,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1"
-                android:background="#EC6C3F"
+                android:background="@color/colorPrimary"
                 >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight=".7"
-                    android:background="#EC6C3F"
+                    android:background="@color/colorPrimary"
                     android:gravity="center"
                     android:text="السعر"
                     android:padding="10dp"

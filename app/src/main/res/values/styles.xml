@@ -36,6 +36,12 @@
         <item name="colorButtonNormal">@color/divider</item>
         <item name="colorControlHighlight">@color/divider</item>
     </style>
+    <style name="toolBar">
+        <item name="android:textColor">@color/textColor</item>
+        <item name="android:textColorPrimary">@color/white</item>
+        <item name="android:textColorSecondary">@color/white</item>
+        <item name="android:colorBackground">@color/white</item>
+    </style>
 
 
 </resources>

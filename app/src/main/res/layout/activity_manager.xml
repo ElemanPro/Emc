@@ -1,53 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:fitsSystemWindows="true"
-    android:fillViewport="true"
+
     >
-    <!--coo-->
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="wrap_content"
         android:id="@+id/mngr_appBar"
 
 
         >
         <android.support.v7.widget.Toolbar
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="?attr/actionBarSize"
             android:id="@+id/_mngr_mtoolBar"
             android:theme="@style/toolBar"
-            ></android.support.v7.widget.Toolbar>
+            app:layout_scrollFlags="scroll|enterAlways"
+            />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/mngr_mTab"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:tabSelectedTextColor="@color/white"
+            app:tabMode="fixed"
+            app:tabTextColor="#bbdefb"
+            app:tabIndicatorHeight="3dp"
+            app:tabIndicatorColor="@color/white"
+            app:tabTextAppearance="@android:style/TextAppearance.Medium"
+
+            />
     </android.support.design.widget.AppBarLayout>
+
 
     <android.support.v4.view.ViewPager
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/mngr_viewPager"
-        android:layout_below="@+id/mngr_appBar"
-        android:layout_above="@+id/mngr_mTab"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+
 
         >
 
     </android.support.v4.view.ViewPager>
-    <android.support.design.widget.TabLayout
-        android:id="@+id/mngr_mTab"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        app:tabSelectedTextColor="@color/white"
-        app:tabMode="fixed"
-        app:tabTextColor="#cfd8dc"
-        app:tabIndicatorHeight="3dp"
-        app:tabIndicatorColor="@color/white"
-        app:tabTextAppearance="@android:style/TextAppearance.Medium"
 
-        >
-
-    </android.support.design.widget.TabLayout>
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

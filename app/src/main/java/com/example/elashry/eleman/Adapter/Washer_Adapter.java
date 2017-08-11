@@ -53,7 +53,7 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
       //  holder.product_image.setImageBitmap(new asyn_task(holder).execute();
         holder.product_categ.setText(pro_List.get(position).getPro_Categ().toString());
         holder.product_name.setText(pro_List.get(position).getPro_Name().toString());
-        holder.product_price.setText(pro_List.get(position).getPro_Price().toString());
+        holder.product_price.setText(pro_List.get(position).getPro_Price().toString()+" LE");
 
         if (pro_List.get(position).getPro_Categ().toString().equals("غسالات"))
         {

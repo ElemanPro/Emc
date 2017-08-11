@@ -2,11 +2,18 @@ package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.PorterDuff;
+import android.os.AsyncTask;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -21,6 +28,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
 import java.util.List;
 
 /**
@@ -46,6 +58,7 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
     public OrderAdapter.ViewHoler onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.manager_order_row,parent,false);
         OrderAdapter.ViewHoler holer = new OrderAdapter.ViewHoler(view);
+        holer.progBar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(mContext,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         return holer;
     }
 
@@ -53,7 +66,6 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
     public void onBindViewHolder(final OrderAdapter.ViewHoler holder, int position) {
         OrderModel orderModel = new OrderModel(order_List.get(position).getOrder_id(),order_List.get(position).getProduct_id(),order_List.get(position).getQuantity(),order_List.get(position).getClient_name(),order_List.get(position).getClient_phone(),order_List.get(position).getOrder_date(),order_List.get(position).getOrder_address());
         holder.c_name.setText(order_List.get(position).getClient_name().toString());
-        holder.dev_quantity.setText(order_List.get(position).getQuantity().toString());
         holder.order_date.setText(order_List.get(position).getOrder_date().toString());
         GetProData(holder,orderModel);
         holder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -75,14 +87,17 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
     }
 
     class ViewHoler extends RecyclerView.ViewHolder{
-        private TextView c_name,devType,dev_quantity,order_date;
+        private TextView c_name,dev_name,order_date;
+        private ImageView dev_image;
+        private ProgressBar progBar;
         public ViewHoler(View itemView) {
             super(itemView);
 
-            c_name = (TextView) itemView.findViewById(R.id.mngr_order_clientname);
-            devType= (TextView) itemView.findViewById(R.id.mngr_order_devtype);
-            dev_quantity  = (TextView) itemView.findViewById(R.id.mngr_order_quantity);
-            order_date = (TextView) itemView.findViewById(R.id.mngr_order_date);
+            c_name       = (TextView) itemView.findViewById(R.id.mngr_order_clientname);
+            dev_image    = (ImageView) itemView.findViewById(R.id.mngr_order_dev_image);
+            dev_name     = (TextView) itemView.findViewById(R.id.mngr_order_dev_name);
+            order_date   = (TextView) itemView.findViewById(R.id.mngr_order_date);
+            progBar      = (ProgressBar) itemView.findViewById(R.id.mnger_order_progressBar);
         }
 
     }
@@ -101,7 +116,12 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
                                 object =response.getJSONObject(index);
                                 if (object.get("product_id_pk").toString().equals(orderModel.getProduct_id().toString()))
                                 {
-                                    holder.devType.setText(object.get("ptoduct_name").toString());
+                                    holder.dev_name.setText(object.get("ptoduct_name").toString());
+                                    asyn_task task = new asyn_task(holder);
+                                    task.execute(object.get("product_image").toString());
+
+
+
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -120,5 +140,49 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
         );
         Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
 
+    }
+    class asyn_task extends AsyncTask<String ,Void,Bitmap> {
+        ViewHoler holer;
+        URL url =null;
+        InputStream input = null;
+        HttpURLConnection urlConnection=null;
+        Bitmap bitmap=null;
+        public asyn_task(ViewHoler holer) {
+            this.holer = holer;
+        }
+
+
+
+        @Override
+        protected void onPreExecute() {
+
+
+        }
+
+        @Override
+        protected Bitmap doInBackground(String... strings) {
+            try {
+                url = new URL(strings[0]);
+                urlConnection = (HttpURLConnection) url.openConnection();
+                urlConnection.connect();
+                input = urlConnection.getInputStream();
+                bitmap = BitmapFactory.decodeStream(input);
+                return bitmap;
+            } catch (MalformedURLException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Bitmap bitmap) {
+            super.onPostExecute(bitmap);
+            holer.dev_image.setImageBitmap(bitmap);
+            holer.dev_image.setVisibility(View.VISIBLE);
+            holer.progBar.setVisibility(View.GONE);
+        }
     }
 }

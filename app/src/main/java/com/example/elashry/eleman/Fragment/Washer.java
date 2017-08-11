@@ -2,8 +2,11 @@ package com.example.elashry.eleman.Fragment;
 
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -39,6 +43,8 @@ public class Washer extends Fragment {
     private List<Product_Model> pro_List;
     private TextView nopro_txt;
     private LinearLayout progBar_container;
+    private ProgressBar prog_bar;
+    private SwipeRefreshLayout mRefreshLayout;
 
     private final String products_url ="http://semicolonsoft.com/app/api/find/products";
     public Washer() {
@@ -52,6 +58,12 @@ public class Washer extends Fragment {
         View view =inflater.inflate(R.layout.washer, container, false);
         init_View(view);
         Get_proData(products_url);
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Get_proData(products_url);
+            }
+        });
         return view;
 
 
@@ -86,12 +98,14 @@ public class Washer extends Fragment {
                             adapter.notifyDataSetChanged();
                             mrRecyclerView.setVisibility(View.VISIBLE);
                             progBar_container.setVisibility(View.GONE);
+                            mRefreshLayout.setRefreshing(false);
                         }
                         else if (pro_List.size()==0)
                         {
                             nopro_txt.setVisibility(View.VISIBLE);
                             mrRecyclerView.setVisibility(View.GONE);
                             progBar_container.setVisibility(View.GONE);
+                            mRefreshLayout.setRefreshing(false);
                         }
 
 
@@ -103,7 +117,7 @@ public class Washer extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        mRefreshLayout.setRefreshing(false);
                     }
                 }
         );
@@ -114,10 +128,14 @@ public class Washer extends Fragment {
 
     private void init_View(View view) {
         mContext          =view.getContext();
+        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swap_refresh);
+        mRefreshLayout.setColorSchemeColors(ContextCompat.getColor(mContext,R.color.colorPrimary));
+
         mrRecyclerView    = (RecyclerView) view.findViewById(R.id.washer_recyView);
         mrRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mrRecyclerView.setVisibility(View.GONE);
-
+        prog_bar          = (ProgressBar) view.findViewById(R.id.w_progBar);
+        prog_bar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(mContext,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
         progBar_container = (LinearLayout) view.findViewById(R.id.progressBar_container);
         progBar_container.setVisibility(View.VISIBLE);
 

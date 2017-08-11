@@ -47,7 +47,7 @@
                 android:layout_width="0dp"
                 android:layout_weight="1.2"
                 android:layout_height="match_parent"
-                android:gravity="right|center"
+                android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18dp"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1"
-                android:background="#0091ea"
+                android:background="#EC6C3F"
                 >
 
 
@@ -67,7 +67,7 @@
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight=".7"
-                    android:background="#0091ea"
+                    android:background="#EC6C3F"
                     android:gravity="center"
                     android:text="القسم"
                     android:padding="10dp"
@@ -101,7 +101,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.2"
-                android:gravity="right|center"
+                android:gravity="center"
                 android:padding="5dp"
                 android:textColor="@color/colorPrimary"
                 android:textSize="18dp" />
@@ -111,14 +111,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1"
-                android:background="#0091ea"
+                android:background="#EC6C3F"
                 >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_weight=".7"
                     android:layout_height="wrap_content"
-                    android:background="#0091ea"
+                    android:background="#EC6C3F"
                     android:gravity="center"
                     android:text="اسم الجهاز"
                     android:padding="10dp"
@@ -154,7 +154,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.2"
-                android:gravity="right|center"
+                android:gravity="center"
                 android:padding="10dp"
                 android:textColor="@color/colorPrimary"
                 android:textSize="16sp"
@@ -165,14 +165,14 @@
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:weightSum="1"
-                android:background="#0091ea"
+                android:background="#EC6C3F"
                 >
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight=".7"
-                    android:background="#0091ea"
+                    android:background="#EC6C3F"
                     android:gravity="center"
                     android:text="السعر"
                     android:padding="10dp"

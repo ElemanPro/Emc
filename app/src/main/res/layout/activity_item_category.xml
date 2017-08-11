@@ -1,33 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Activities.ItemCategory">
+    tools:context=".Activities.ItemCategory"
+    >
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/toolBar"
+        >
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/mToolBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            />
+        <android.support.design.widget.TabLayout
+            android:id="@+id/mTab"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:tabMode="scrollable"
+            app:tabSelectedTextColor="@color/white"
+            app:tabTextColor="#bbdefb"
+            app:tabIndicatorColor="@color/index0"
+
+            />
+    </android.support.design.widget.AppBarLayout>
 
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/mTab"
-        android:layout_alignParentTop="true"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
         />
-    <android.support.design.widget.TabLayout
 
-        android:id="@+id/mTab"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:layout_alignParentBottom="true"
-        android:background="@color/colorPrimary"
-        app:tabMode="scrollable"
-        app:tabSelectedTextColor="@color/white"
-        app:tabTextColor="#cfd8dc"
-        >
 
-    </android.support.design.widget.TabLayout>
-
-</RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>

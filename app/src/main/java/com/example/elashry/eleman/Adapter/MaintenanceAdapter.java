@@ -52,8 +52,7 @@ public class MaintenanceAdapter extends RecyclerView.Adapter <MaintenanceAdapter
     @Override
     public void onBindViewHolder(MaintenanceAdapter.ViewHoler holder, int position) {
         holder.client_name.setText(maintenance_List.get(position).getCname().toString());
-        holder.devType.setText(maintenance_List.get(position).getDtype().toString());
-        holder.warranty_state.setText(maintenance_List.get(position).getWstate().toString());
+        holder.dev_name.setText(maintenance_List.get(position).getDtype().toString()+" "+maintenance_List.get(position).getDbrand().toString());
         holder.date.setText(maintenance_List.get(position).getOdate().toString());
     }
 
@@ -65,14 +64,13 @@ public class MaintenanceAdapter extends RecyclerView.Adapter <MaintenanceAdapter
 
     class ViewHoler extends RecyclerView.ViewHolder{
 
-        TextView client_name,devType,warranty_state,date;
+        TextView client_name,dev_name,date;
         public ViewHoler(View itemView) {
             super(itemView);
 
-            client_name = (TextView) itemView.findViewById(R.id.manager_main_client_name);
-            devType = (TextView) itemView.findViewById(R.id.manager_main_devType);
-            warranty_state = (TextView) itemView.findViewById(R.id.manager_main_warranty_state);
-            date = (TextView) itemView.findViewById(R.id.manager_main_date);
+            client_name = (TextView) itemView.findViewById(R.id.mngr_main_client_name);
+            dev_name = (TextView) itemView.findViewById(R.id.mngr_main_dev_name);
+            date = (TextView) itemView.findViewById(R.id.mngr_main_date);
         }
 
     }

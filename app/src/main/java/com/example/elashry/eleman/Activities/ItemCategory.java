@@ -2,8 +2,10 @@ package com.example.elashry.eleman.Activities;
 
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 
 import com.example.elashry.eleman.Adapter.ViewPagerAdapter;
 import com.example.elashry.eleman.Fragment.Botgaaz;
@@ -19,6 +21,7 @@ public class  ItemCategory extends AppCompatActivity {
 
     private ViewPager viewPager;
     private TabLayout mTab;
+    private Toolbar mToolbar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,6 +70,9 @@ public class  ItemCategory extends AppCompatActivity {
     private void init_View() {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
         mTab      = (TabLayout) findViewById(R.id.mTab);
+        mToolbar  = (Toolbar) findViewById(R.id.mToolBar);
+        setSupportActionBar(mToolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
 
     }
@@ -82,6 +88,31 @@ public class  ItemCategory extends AppCompatActivity {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
                 viewPager.setCurrentItem(tab.getPosition());
+                if (tab.getPosition()==0)
+                {
+                    mTab.setSelectedTabIndicatorColor(ContextCompat.getColor(ItemCategory.this,R.color.index0));
+                }
+                else if (tab.getPosition()==1)
+                {
+                    mTab.setSelectedTabIndicatorColor(ContextCompat.getColor(ItemCategory.this,R.color.index1));
+                }
+                else if (tab.getPosition()==2)
+                {
+                    mTab.setSelectedTabIndicatorColor(ContextCompat.getColor(ItemCategory.this,R.color.index2));
+                }
+                else if (tab.getPosition()==3)
+                {
+                    mTab.setSelectedTabIndicatorColor(ContextCompat.getColor(ItemCategory.this,R.color.index3));
+                }
+                else if (tab.getPosition()==4)
+                {
+                    mTab.setSelectedTabIndicatorColor(ContextCompat.getColor(ItemCategory.this,R.color.index4));
+                }
+                else if (tab.getPosition()==5)
+                {
+                    mTab.setSelectedTabIndicatorColor(ContextCompat.getColor(ItemCategory.this,R.color.index5));
+                }
+
             }
 
             @Override

@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradiant_color"
+    android:background="@color/content_bg"
     tools:context="com.example.elashry.eleman.Activities.Login">
 
     <RelativeLayout
@@ -132,11 +132,12 @@
         android:id="@+id/login_Btn"
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="30dp"
         android:text="@string/login_text"
         android:drawableRight="@mipmap/manager_icon"
-        android:background="@color/white"
+        android:background="@color/colorPrimary"
         android:textStyle="bold"
         android:textColor="@color/background_color"
+
         />
 </LinearLayout>

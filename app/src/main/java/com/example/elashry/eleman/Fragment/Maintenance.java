@@ -1,9 +1,12 @@
 package com.example.elashry.eleman.Fragment;
 
 import android.content.Context;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -11,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.Response;
@@ -37,9 +41,11 @@ public class Maintenance extends Fragment {
     private LinearLayout pbc;
     private TextView no_main_txt;
     private RecyclerView mrRecyclerView;
+    private SwipeRefreshLayout mRefreshLayout;
     private Context mContext;
     private List<MaintenanceModel> maintenance_List;
     private final String maintenance_url ="http://semicolonsoft.com/app/api/find/maintenance";
+    private ProgressBar prog_bar;
 
 
     @Nullable
@@ -48,6 +54,12 @@ public class Maintenance extends Fragment {
         View view = inflater.inflate(R.layout.maintenance,container,false);
         init_View(view);
         Get_Maintenance_Data(maintenance_url);
+        mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                Get_Maintenance_Data(maintenance_url);
+            }
+        });
         return view;
     }
     private void Get_Maintenance_Data(String maintenance_url) {
@@ -78,13 +90,14 @@ public class Maintenance extends Fragment {
                             mrRecyclerView.setVisibility(View.VISIBLE);
                             pbc.setVisibility(View.GONE);
                             no_main_txt.setVisibility(View.GONE);
-
+                            mRefreshLayout.setRefreshing(false);
                         }
                         else if (maintenance_List.size()==0)
                         {
                             mrRecyclerView.setVisibility(View.GONE);
                             pbc.setVisibility(View.GONE);
                             no_main_txt.setVisibility(View.VISIBLE);
+                            mRefreshLayout.setRefreshing(false);
                         }
 
                     }
@@ -93,7 +106,7 @@ public class Maintenance extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        mRefreshLayout.setRefreshing(false);
                     }
                 }
         );
@@ -102,12 +115,15 @@ public class Maintenance extends Fragment {
     }
     private void init_View(View view) {
         mContext =view.getContext();
-        pbc = (LinearLayout) view.findViewById(R.id.progressBar_container);
+        pbc            = (LinearLayout) view.findViewById(R.id.progressBar_container);
         pbc.setVisibility(View.VISIBLE);
-        no_main_txt = (TextView) view.findViewById(R.id.no_main_txt);
+        prog_bar       = (ProgressBar) view.findViewById(R.id.m_progBar);
+        prog_bar.getIndeterminateDrawable().setColorFilter(ContextCompat.getColor(mContext,R.color.colorPrimary), PorterDuff.Mode.SRC_IN);
+        no_main_txt    = (TextView) view.findViewById(R.id.no_main_txt);
+        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swap_refresh);
+        mRefreshLayout.setColorSchemeColors(ContextCompat.getColor(mContext,R.color.colorPrimary));
         mrRecyclerView = (RecyclerView) view.findViewById(R.id.maintenance_RecyView);
         mrRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-
 
 
 

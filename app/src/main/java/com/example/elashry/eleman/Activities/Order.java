@@ -98,6 +98,7 @@ public class Order extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(),
                             error.getMessage(), Toast.LENGTH_LONG).show();
+                    finish();
 
                 }
             }) {

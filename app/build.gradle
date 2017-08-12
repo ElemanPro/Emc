@@ -38,5 +38,6 @@ dependencies {
     compile 'com.github.jrvansuita:MaterialAbout:+'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'com.github.paolorotolo:appintro:4.1.0'
+    compile 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
     testCompile 'junit:junit:4.12'
 }

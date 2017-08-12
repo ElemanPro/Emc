@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
         <ImageView
-            android:background="@color/background_color"
+            android:background="@color/colorPrimary"
             android:layout_weight="1"
             android:layout_width="match_parent"
             android:layout_height="0dp" />
@@ -37,27 +37,27 @@
             android:textSize="20dp"
             android:gravity="center"
             android:layout_width="match_parent"
-            android:textColor="@color/background_color"
+            android:textColor="@color/colorPrimary"
             android:drawableRight="@drawable/whatsapp"
             android:layout_height="wrap_content" />
         <TextView
             android:layout_marginTop="5dp"
             android:text="01062737363 "
             android:textSize="15dp"
-            android:textColor="@color/background_color"
+            android:textColor="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <View
             android:layout_width="fill_parent"
             android:layout_height="1px"
             android:layout_marginTop="10dp"
-            android:background="@color/background_color" />
+            android:background="@color/colorPrimary" />
 
         <TextView
             android:layout_marginTop="5dp"
             android:gravity="center"
             android:text="الخط الساخن"
-            android:textColor="@color/background_color"
+            android:textColor="@color/colorPrimary"
             android:textSize="20dp"
             android:drawableRight="@drawable/cont"
             android:layout_width="match_parent"
@@ -67,41 +67,41 @@
             android:layout_marginTop="5dp"
             android:text="01066584265 "
             android:textSize="15dp"
-            android:textColor="@color/background_color"
+            android:textColor="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
             android:layout_marginTop="5dp"
             android:text="01065016992  "
             android:textSize="15dp"
-            android:textColor="@color/background_color"
+            android:textColor="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <TextView
             android:layout_marginTop="5dp"
             android:text="0482372132  "
             android:textSize="15dp"
-            android:textColor="@color/background_color"
+            android:textColor="@color/colorPrimary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <View
             android:layout_width="fill_parent"
             android:layout_height="1px"
             android:layout_marginTop="10dp"
-            android:background="@color/background_color" />
+            android:background="@color/colorPrimary" />
         <TextView
             android:text="العنوان  "
             android:textSize="20dp"
             android:gravity="center"
             android:layout_width="match_parent"
-            android:textColor="@color/background_color"
+            android:textColor="@color/colorPrimary"
             android:drawableRight="@drawable/locate"
             android:layout_height="wrap_content" />
         <TextView
             android:layout_marginTop="5dp"
             android:text=" البتانون – بجوار مول عبودة العشماوي   "
             android:textSize="15dp"
-            android:textColor="@color/background_color"
+            android:textColor="@color/colorPrimary"
             android:layout_width="match_parent"
             android:gravity="left"
             android:layout_height="wrap_content" />
@@ -109,7 +109,7 @@
             android:layout_marginTop="@dimen/pad_10dp"
             android:layout_width="fill_parent"
             android:layout_height="1px"
-            android:background="@color/background_color" />
+            android:background="@color/colorPrimary" />
 
     </LinearLayout>
 

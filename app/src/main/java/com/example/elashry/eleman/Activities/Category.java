@@ -27,7 +27,6 @@ import java.util.HashMap;
 public class Category extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     private SliderLayout mDemoSlider;
-    public boolean isFirstStart;
 
     private Toolbar mCat_ToolBar;
     ImageView img ,img2 ,img3,img4,img5,img6;
@@ -35,31 +34,6 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
-
-
-        Thread t = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                //  Intro App Initialize SharedPreferences
-                SharedPreferences getSharedPreferences = PreferenceManager
-                        .getDefaultSharedPreferences(getBaseContext());
-
-                //  Create a new boolean and preference and set it to true
-                isFirstStart = getSharedPreferences.getBoolean("firstStart", true);
-
-                //  Check either activity or app is open very first time or not and do action
-                if (isFirstStart) {
-
-                    //  Launch application introduction screen
-                    Intent i = new Intent(Category.this, MyIntro.class);
-                    startActivity(i);
-                    SharedPreferences.Editor e = getSharedPreferences.edit();
-                    e.putBoolean("firstStart", false);
-                    e.apply();
-                }
-            }
-        });
-        t.start();
         init_View();
         img = (ImageView) findViewById(R.id.img1);
         img2 = (ImageView) findViewById(R.id.img2);

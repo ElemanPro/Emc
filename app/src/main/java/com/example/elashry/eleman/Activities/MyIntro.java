@@ -39,7 +39,7 @@ public class MyIntro extends AppIntro {
     @Override
     public void onDonePressed(Fragment currentFragment) {
 
-        Intent i = new Intent(getApplicationContext(), Category.class);
+        Intent i = new Intent(getApplicationContext(), Splach.class);
         startActivity(i);
     }
 

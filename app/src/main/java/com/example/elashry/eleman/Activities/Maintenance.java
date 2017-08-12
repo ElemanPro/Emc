@@ -139,6 +139,7 @@ public class Maintenance extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(),
                             response, Toast.LENGTH_LONG).show();
+                    finish();
                 }
             }, new Response.ErrorListener() {
 

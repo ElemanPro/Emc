@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#121258</color>
-    <color name="colorPrimaryDark">#76C6DE</color>
-    <color name="colorAccent">#91d1bf</color>
+    <color name="colorPrimary">#4e1c81</color>
+    <color name="colorPrimaryDark">#F8BA69</color>
+    <color name="colorAccent">#F8BA69</color>
 
-    <color name="background_color">#68acea</color>
-    <color name="back">#252566</color>
+    <color name="background_color">#F8BA69</color>
+    <color name="back">#4e1c81</color>
 
     <color name="white_greyish">#EEEEEE</color>
     <color name="button_selectorcolor">#9E9E9E</color>
@@ -45,15 +45,15 @@
 
     <color name="primary">#000000</color>
     <color name="primary_dark">#000000</color>
-    <color name="primary_light">#121258</color>
+    <color name="primary_light">#4e1c81</color>
     <color name="accent">#000000</color>
-    <color name="primary_text">#121258</color>
-    <color name="secondary_text">#68acea</color>
-    <color name="icons">#121258</color>
-    <color name="divider">#121258</color>
-    <color name="background">#91d1bf</color>
-    <color name="backgroundDark">#121258</color>
-    <color name="txt">#91d1bf</color>
+    <color name="primary_text">#4e1c81</color>
+    <color name="secondary_text">#F8BA69</color>
+    <color name="icons">#4e1c81</color>
+    <color name="divider">#4e1c81</color>
+    <color name="background">#F8BA69</color>
+    <color name="backgroundDark">#4e1c81</color>
+    <color name="txt">#F8BA69</color>
     <color name="menu_textColor">@color/colorPrimary</color>
     <color name="textColor">#333333</color>
     <color name="bg">#EC6C3F</color>

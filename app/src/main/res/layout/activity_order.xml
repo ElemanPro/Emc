@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@color/background_color"
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
@@ -141,8 +140,8 @@
             android:background="@drawable/loginbutton_selector"
             android:padding="3dp"
             android:text="طلب"
-            android:textColor="@color/background_color"
-            android:textSize="17sp"
+            android:textColor="@color/colorPrimary"
+            android:textSize="27sp"
             android:textStyle="bold" />
 
 

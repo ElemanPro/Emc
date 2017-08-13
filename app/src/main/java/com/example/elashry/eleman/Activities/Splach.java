@@ -9,6 +9,12 @@ import com.example.elashry.eleman.R;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
 
+//import com.daimajia.androidanimations.library.Techniques;
+/*
+import com.viksaa.sssplash.lib.activity.AwesomeSplash;
+import com.viksaa.sssplash.lib.model.ConfigSplash;
+*/
+
 
 public class Splach extends AwesomeSplash {
     public boolean isFirstStart;

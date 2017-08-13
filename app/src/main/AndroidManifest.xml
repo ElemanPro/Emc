@@ -35,7 +35,9 @@
             android:name=".Activities.Matgar"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.Order" />
-        <activity android:name=".Activities.Contact"  android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".Activities.Contact"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.Manager"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -47,8 +49,11 @@
         <activity android:name=".Activities.Device_Details" />
         <activity
             android:name=".Activities.MyIntro"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
-        <activity android:name=".Activities.Category" android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Activities.Category"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.Search_Product_Details"></activity>
     </application>
 
 </manifest>

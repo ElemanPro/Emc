@@ -106,6 +106,7 @@ public class Washer extends Fragment {
                             mrRecyclerView.setVisibility(View.GONE);
                             progBar_container.setVisibility(View.GONE);
                             mRefreshLayout.setRefreshing(false);
+
                         }
 
 

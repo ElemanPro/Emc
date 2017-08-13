@@ -41,7 +41,7 @@ public class Search_Product_Details extends AppCompatActivity {
         {
             Product_Model model = (Product_Model) intent.getSerializableExtra("pro_data");
             pro_name.setText(model.getPro_Name().toString());
-            pro_price.setText(model.getPro_Price());
+            pro_price.setText(model.getPro_Price()+" "+"LE");
             if (model.getPro_Categ().toString().equals("1"))
             {
                categ_icon.setImageResource(R.mipmap.washer);

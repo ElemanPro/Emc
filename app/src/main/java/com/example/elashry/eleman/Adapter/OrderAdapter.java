@@ -23,6 +23,7 @@ import com.example.elashry.eleman.Activities.ShowOrder_Details;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.OrderModel;
 import com.example.elashry.eleman.R;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -117,8 +118,12 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
                                 if (object.get("product_id_pk").toString().equals(orderModel.getProduct_id().toString()))
                                 {
                                     holder.dev_name.setText(object.get("ptoduct_name").toString());
-                                    asyn_task task = new asyn_task(holder);
-                                    task.execute(object.get("product_image").toString());
+                                    Picasso.with(mContext).load(object.get("product_image").toString()).noFade().into(holder.dev_image);
+                                    holder.dev_image.setVisibility(View.VISIBLE);
+                                    holder.progBar.setVisibility(View.GONE);
+                                   /* asyn_task task = new asyn_task(holder);
+                                    task.execute(object.get("product_image").toString());*/
+
 
 
 

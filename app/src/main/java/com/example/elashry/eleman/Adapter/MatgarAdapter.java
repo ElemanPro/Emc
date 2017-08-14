@@ -22,6 +22,7 @@ import com.example.elashry.eleman.Activities.Matgar_product_details;
 import com.example.elashry.eleman.Activities.Order;
 import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -60,7 +61,10 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
         holder.pro_name.setText(matgarModelList.get(position).getProduct_name().toString());
         holder.pro_price.setText(matgarModelList.get(position).getProduct_price().toString()+" "+"جنيه");
         holder.date.setText("منذ"+" "+matgarModelList.get(position).getDate().toString());
-        new asyn_task(holder).execute(matgarModelList.get(position).getProduct_image().toString());
+        Picasso.with(mContext).load(matgarModelList.get(position).getProduct_image().toString()). fit().into(holder.pro_image);
+        holder.pro_image.setVisibility(View.VISIBLE);
+        holder.mBar.setVisibility(View.GONE);
+       // new asyn_task(holder).execute(matgarModelList.get(position).getProduct_image().toString());
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,6 +156,7 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
                 urlConnection.connect();
                 inputStream = urlConnection.getInputStream();
                 Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
+
                 return bitmap;
 
             } catch (MalformedURLException e) {

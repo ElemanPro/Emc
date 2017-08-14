@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -51,10 +52,12 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
     @Override
     public void onBindViewHolder(ViewHoler holder, int position) {
 
-       // Picasso.with(mContext).load(Uri.parse(pro_List.get(position).getPro_Image_url().toString())).into(holder.product_image);
-        asyn_task task = new asyn_task(holder);
+       Picasso.with(mContext).load(pro_List.get(position).getPro_Image_url().toString()).noFade().into(holder.product_image);
+        holder.prog_bar.setVisibility(View.GONE);
+        holder.product_image.setVisibility(View.VISIBLE);
+       /* asyn_task task = new asyn_task(holder);
         task.execute(pro_List.get(position).getPro_Image_url().toString());
-      //  holder.product_image.setImageBitmap(new asyn_task(holder).execute();
+     */ //  holder.product_image.setImageBitmap(new asyn_task(holder).execute();
         holder.product_categ.setText(pro_List.get(position).getPro_Categ().toString());
         holder.product_name.setText(pro_List.get(position).getPro_Name().toString());
         holder.product_price.setText(pro_List.get(position).getPro_Price().toString()+" LE");

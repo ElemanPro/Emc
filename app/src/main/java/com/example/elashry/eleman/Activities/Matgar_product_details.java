@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -54,7 +55,10 @@ public class Matgar_product_details extends AppCompatActivity {
             dev_name.setText(matgarModel.getProduct_name().toString());
             dev_price.setText(matgarModel.getProduct_price().toString());
             date.setText(matgarModel.getDate().toString());
-            new asyn_task().execute(matgarModel.getProduct_image().toString());
+            Picasso.with(Matgar_product_details.this).load(matgarModel.getProduct_image().toString()).noFade().into(dev_image);
+            mBar.setVisibility(View.GONE);
+            dev_image.setVisibility(View.VISIBLE);
+            //new asyn_task().execute(matgarModel.getProduct_image().toString());
 
 
         }

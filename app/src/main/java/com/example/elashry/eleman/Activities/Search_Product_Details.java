@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
+import com.squareup.picasso.Picasso;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -29,7 +30,6 @@ public class Search_Product_Details extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search__product__details);
-
         init_View();
         GetProduct_data_from_intent();
     }
@@ -73,7 +73,10 @@ public class Search_Product_Details extends AppCompatActivity {
                 categ_icon.setImageResource(R.mipmap.takief);
                 pro_categ.setText("تكييفات");
             }
-            new asyn_task().execute(model.getPro_Image_url());
+            Picasso.with(Search_Product_Details.this).load(model.getPro_Image_url().toString()).noFade().into(pro_image);
+            mProgressBar.setVisibility(View.GONE);
+            pro_image.setVisibility(View.VISIBLE);
+            //new asyn_task().execute(model.getPro_Image_url());
 
         }
 

@@ -6,39 +6,70 @@ import java.io.Serializable;
  * Created by Lincoln on 18/05/16.
  */
 public class MatgarModel implements Serializable{
-    private String name;
-    private int priceOfProduct;
-    private int thumbnail;
+    private String client_name ;
+    private String client_details;
+    private String product_name;
+    private String product_price;
+    private String product_image;
+    private String date;
 
     public MatgarModel() {
     }
 
-    public MatgarModel(String name, int priceOfProduct, int thumbnail) {
-        this.name = name;
-        this.priceOfProduct = priceOfProduct;
-        this.thumbnail = thumbnail;
-    }
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+    public MatgarModel(String client_name, String client_details, String product_name, String product_price, String product_image, String date) {
+        this.client_name = client_name;
+        this.client_details = client_details;
+        this.product_name = product_name;
+        this.product_price = product_price;
+        this.product_image = product_image;
+        this.date = date;
     }
 
-    public int getpriceOfProduct() {
-        return priceOfProduct;
+    public String getClient_name() {
+        return client_name;
     }
 
-    public void setpriceOfProduct(int priceOfProduct) {
-        this.priceOfProduct = priceOfProduct;
+    public void setClient_name(String client_name) {
+        this.client_name = client_name;
     }
 
-    public int getThumbnail() {
-        return thumbnail;
+    public String getClient_details() {
+        return client_details;
     }
 
-    public void setThumbnail(int thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setClient_details(String client_details) {
+        this.client_details = client_details;
+    }
+
+    public String getProduct_name() {
+        return product_name;
+    }
+
+    public void setProduct_name(String product_name) {
+        this.product_name = product_name;
+    }
+
+    public String getProduct_price() {
+        return product_price;
+    }
+
+    public void setProduct_price(String product_price) {
+        this.product_price = product_price;
+    }
+
+    public String getProduct_image() {
+        return product_image;
+    }
+
+    public void setProduct_image(String product_image) {
+        this.product_image = product_image;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

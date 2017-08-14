@@ -25,7 +25,6 @@ public class Search_Product_Details extends AppCompatActivity {
     private TextView pro_name,pro_price,pro_categ;
     private ImageView pro_image,categ_icon;
     private ProgressBar mProgressBar;
-    private final String products_url ="http://semicolonsoft.com/app/api/find/products";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

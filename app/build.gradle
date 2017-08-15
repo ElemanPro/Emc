@@ -17,6 +17,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    repositories {
+        maven { url 'https://oss.jfrog.org/artifactory/oss-snapshot-local' }
+    }
 
 }
 
@@ -41,5 +44,6 @@ dependencies {
     compile 'com.github.paolorotolo:appintro:4.1.0'
     compile 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
+    compile 'com.gjiazhe:PanoramaImageView:1.0'
     testCompile 'junit:junit:4.12'
 }

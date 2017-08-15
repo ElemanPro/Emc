@@ -54,7 +54,10 @@
             android:name=".Activities.Category"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Activities.Search_Product_Details" />
-        <activity android:name=".Activities.Matgar_product_details"></activity>
+        <activity android:name=".Activities.Matgar_product_details" />
+        <activity android:name=".Activities.Zooming_Image"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

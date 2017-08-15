@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.elashry.eleman.Model.Image_details_Model;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
 import com.squareup.picasso.Picasso;
@@ -26,6 +27,7 @@ public class Search_Product_Details extends AppCompatActivity {
     private TextView pro_name,pro_price,pro_categ;
     private ImageView pro_image,categ_icon;
     private ProgressBar mProgressBar;
+    private Product_Model model;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +40,7 @@ public class Search_Product_Details extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getExtras()!=null)
         {
-            Product_Model model = (Product_Model) intent.getSerializableExtra("pro_data");
+            model = (Product_Model) intent.getSerializableExtra("pro_data");
             pro_name.setText(model.getPro_Name().toString());
             pro_price.setText(model.getPro_Price()+" "+"LE");
             if (model.getPro_Categ().toString().equals("1"))
@@ -77,7 +79,15 @@ public class Search_Product_Details extends AppCompatActivity {
             mProgressBar.setVisibility(View.GONE);
             pro_image.setVisibility(View.VISIBLE);
             //new asyn_task().execute(model.getPro_Image_url());
-
+            pro_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Search_Product_Details.this, Zooming_Image.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    Image_details_Model image_details_model = new Image_details_Model(model.getPro_Name().toString()+" "+model.getPro_Price().toString(),model.getPro_Image_url().toString());
+                    intent.putExtra("image_details",image_details_model);
+                    startActivity(intent);
+                }
+            });
         }
 
     }
@@ -89,6 +99,8 @@ public class Search_Product_Details extends AppCompatActivity {
         pro_image    = (ImageView) findViewById(R.id.search_product_image);
         categ_icon   = (ImageView) findViewById(R.id.search_categ_icon);
         mProgressBar = (ProgressBar) findViewById(R.id.search_prog_bar);
+
+
     }
 
     class asyn_task extends AsyncTask<String ,Void,Bitmap> {

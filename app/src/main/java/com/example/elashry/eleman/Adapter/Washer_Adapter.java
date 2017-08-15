@@ -1,6 +1,7 @@
 package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
@@ -14,6 +15,8 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.elashry.eleman.Activities.Zooming_Image;
+import com.example.elashry.eleman.Model.Image_details_Model;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
 import com.squareup.picasso.Picasso;
@@ -50,7 +53,7 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
     }
 
     @Override
-    public void onBindViewHolder(ViewHoler holder, int position) {
+    public void onBindViewHolder(ViewHoler holder, final int position) {
 
        Picasso.with(mContext).load(pro_List.get(position).getPro_Image_url().toString()).noFade().into(holder.product_image);
         holder.prog_bar.setVisibility(View.GONE);
@@ -61,6 +64,7 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
         holder.product_categ.setText(pro_List.get(position).getPro_Categ().toString());
         holder.product_name.setText(pro_List.get(position).getPro_Name().toString());
         holder.product_price.setText(pro_List.get(position).getPro_Price().toString()+" LE");
+
 
         if (pro_List.get(position).getPro_Categ().toString().equals("غسالات"))
         {
@@ -89,6 +93,16 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
             holder.categ_icon.setImageResource(R.mipmap.takief);
 
         }
+        holder.product_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, Zooming_Image.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Image_details_Model model = new Image_details_Model(pro_List.get(position).getPro_Name()+" "+pro_List.get(position).getPro_Price().toString(),pro_List.get(position).getPro_Image_url().toString());
+                intent.putExtra("image_details",model);
+                intent.putExtra("flag","1");
+                mContext.startActivity(intent);
+            }
+        });
 
     }
 

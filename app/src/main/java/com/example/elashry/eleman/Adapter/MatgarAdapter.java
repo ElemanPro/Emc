@@ -20,6 +20,8 @@ import android.widget.TextView;
 
 import com.example.elashry.eleman.Activities.Matgar_product_details;
 import com.example.elashry.eleman.Activities.Order;
+import com.example.elashry.eleman.Activities.Zooming_Image;
+import com.example.elashry.eleman.Model.Image_details_Model;
 import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
 import com.squareup.picasso.Picasso;
@@ -57,13 +59,23 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
     }
 
     @Override
-    public void onBindViewHolder(final MyViewHolder holder, int position) {
+    public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.pro_name.setText(matgarModelList.get(position).getProduct_name().toString());
         holder.pro_price.setText(matgarModelList.get(position).getProduct_price().toString()+" "+"جنيه");
         holder.date.setText("منذ"+" "+matgarModelList.get(position).getDate().toString());
         Picasso.with(mContext).load(matgarModelList.get(position).getProduct_image().toString()). fit().into(holder.pro_image);
         holder.pro_image.setVisibility(View.VISIBLE);
         holder.mBar.setVisibility(View.GONE);
+        holder.pro_image.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, Zooming_Image.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                Image_details_Model model = new Image_details_Model(matgarModelList.get(position).getProduct_name()+" "+matgarModelList.get(position).getProduct_price().toString(),matgarModelList.get(position).getProduct_image().toString());
+                intent.putExtra("image_details",model);
+                intent.putExtra("flag","1");
+                mContext.startActivity(intent);
+            }
+        });
        // new asyn_task(holder).execute(matgarModelList.get(position).getProduct_image().toString());
         holder.overflow.setOnClickListener(new View.OnClickListener() {
             @Override

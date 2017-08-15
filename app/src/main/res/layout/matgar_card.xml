@@ -52,8 +52,9 @@
             >
             <ImageView
                 android:id="@+id/overflow"
-                android:layout_width="@dimen/ic_album_overflow_width"
-                android:layout_height="@dimen/ic_album_overflow_height"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/pad_30dp"
+                android:padding="4dp"
                 android:layout_marginTop="@dimen/ic_album_overflow_margin_top"
                 android:scaleType="centerCrop"
                 android:src="@mipmap/ic_dots" />

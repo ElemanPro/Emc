@@ -1,25 +1,18 @@
 package com.example.elashry.eleman.Activities;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.os.AsyncTask;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.elashry.eleman.Model.Image_details_Model;
 import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
 import com.squareup.picasso.Picasso;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 
 public class Matgar_product_details extends AppCompatActivity {
 
@@ -49,7 +42,7 @@ public class Matgar_product_details extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getExtras() !=null)
         {
-            MatgarModel matgarModel = (MatgarModel) intent.getSerializableExtra("dev_data");
+            final MatgarModel matgarModel = (MatgarModel) intent.getSerializableExtra("dev_data");
             client_name.setText(matgarModel.getClient_name().toString());
             client_details.setText(matgarModel.getClient_details().toString());
             dev_name.setText(matgarModel.getProduct_name().toString());
@@ -58,44 +51,46 @@ public class Matgar_product_details extends AppCompatActivity {
             Picasso.with(Matgar_product_details.this).load(matgarModel.getProduct_image().toString()).noFade().into(dev_image);
             mBar.setVisibility(View.GONE);
             dev_image.setVisibility(View.VISIBLE);
-            //new asyn_task().execute(matgarModel.getProduct_image().toString());
+            dev_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    Intent intent = new Intent(Matgar_product_details.this, Zooming_Image.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    Image_details_Model image_details_model = new Image_details_Model(matgarModel.getProduct_name().toString()+" "+matgarModel.getProduct_price().toString(),matgarModel.getProduct_image().toString());
+                    intent.putExtra("image_details",image_details_model);
+                    intent.putExtra("flag","1");
+                    startActivity(intent);
+                }
+            });
+           // new asyn_task(matgarModel).execute(matgarModel.getProduct_image().toString());
 
 
         }
     }
-    class asyn_task extends AsyncTask<String ,Void,Bitmap> {
+    class asyn_task extends AsyncTask<String ,Void,Void> {
 
-        URL url =null;
-        InputStream input = null;
-        HttpURLConnection urlConnection=null;
-        Bitmap bitmap=null;
-        public asyn_task() {
+        MatgarModel matgarModel;
+        public asyn_task(MatgarModel matgarModel) {
+        this.matgarModel = matgarModel;
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            mBar.setVisibility(View.VISIBLE);
+            dev_image.setVisibility(View.INVISIBLE);
 
         }
 
-
         @Override
-        protected Bitmap doInBackground(String... strings) {
-            try {
-                url = new URL(strings[0]);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.connect();
-                input = urlConnection.getInputStream();
-                bitmap = BitmapFactory.decodeStream(input);
-                return bitmap;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+        protected Void doInBackground(String... strings) {
+            Picasso.with(Matgar_product_details.this).load(matgarModel.getProduct_image().toString()).noFade().into(dev_image);
 
             return null;
         }
 
         @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            super.onPostExecute(bitmap);
-            dev_image.setImageBitmap(bitmap);
+        protected void onPostExecute(Void aVoid) {
+            super.onPostExecute(aVoid);
             mBar.setVisibility(View.GONE);
             dev_image.setVisibility(View.VISIBLE);
         }

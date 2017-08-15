@@ -16,6 +16,7 @@ import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.OrderModel;
 import com.example.elashry.eleman.R;
+import com.squareup.picasso.Picasso;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +35,7 @@ public class ShowOrder_Details extends AppCompatActivity {
         setContentView(R.layout.activity_show_order__details);
         init_View();
         GetDataFromIntent();
+
     }
 
     private void GetDataFromIntent() {
@@ -41,8 +43,18 @@ public class ShowOrder_Details extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getExtras()!=null)
         {
-            OrderModel orderModel = (OrderModel) intent.getSerializableExtra("order_data");
+            final OrderModel orderModel = (OrderModel) intent.getSerializableExtra("order_data");
             Getproduct_data(products_url,orderModel);
+            dev_image.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    Intent intent = new Intent(ShowOrder_Details.this, Zooming_Image.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    intent.putExtra("pro_data",orderModel);
+                    intent.putExtra("flag","2");
+                    startActivity(intent);
+                }
+            });
 
         }
     }
@@ -67,6 +79,7 @@ public class ShowOrder_Details extends AppCompatActivity {
                                     order_date.setText(orderModel.getOrder_date().toString());
                                     dev_name.setText(object.get("ptoduct_name").toString());
                                     dev_price.setText(object.get("product_price").toString());
+                                    Picasso.with(ShowOrder_Details.this).load(object.get("product_image").toString()).noFade().into(dev_image);
                                     if (object.get("cat_id_fk").toString().equals("1"))
                                     {
                                         dev_categ.setText("غسالات");
@@ -151,6 +164,7 @@ public class ShowOrder_Details extends AppCompatActivity {
         progBar_container.setVisibility(View.VISIBLE);
         nopro_txt            = (TextView)findViewById(R.id.nopro_txt);
         nopro_txt.setVisibility(View.GONE);
+
     }
 
     @Override

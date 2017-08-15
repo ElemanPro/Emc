@@ -33,7 +33,7 @@ import static com.example.elashry.eleman.R.array.mySpinner;
 public class Order extends AppCompatActivity {
     Button b1;
     EditText cname,cphone,caddress,amount;
-    Calendar myCalendar;
+   // Calendar myCalendar;
     ProgressDialog progressDialog;
     String dates;
     @Override

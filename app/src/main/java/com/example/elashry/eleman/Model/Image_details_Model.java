@@ -2,9 +2,7 @@ package com.example.elashry.eleman.Model;
 
 import java.io.Serializable;
 
-/**
- * Created by Delta on 15/08/2017.
- */
+
 
 public class Image_details_Model implements Serializable {
     private String image_details;

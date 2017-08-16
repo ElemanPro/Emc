@@ -63,34 +63,40 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
      */ //  holder.product_image.setImageBitmap(new asyn_task(holder).execute();
         holder.product_categ.setText(pro_List.get(position).getPro_Categ().toString());
         holder.product_name.setText(pro_List.get(position).getPro_Name().toString());
-        holder.product_price.setText(pro_List.get(position).getPro_Price().toString()+" LE");
+        holder.product_price.setText(pro_List.get(position).getPro_Price().toString()+" جنيه");
 
 
-        if (pro_List.get(position).getPro_Categ().toString().equals("غسالات"))
+        if (pro_List.get(position).getPro_Categ().toString().equals("1"))
         {
          holder.categ_icon.setImageResource(R.mipmap.washer);
+            holder.product_categ.setText("غسالات");
         }
-        else if (pro_List.get(position).getPro_Categ().toString().equals("تلاجات"))
+        else if (pro_List.get(position).getPro_Categ().toString().equals("2"))
         {
             holder.categ_icon.setImageResource(R.mipmap.fridg);
+            holder.product_categ.setText("تلاجات");
 
         }
-        else if (pro_List.get(position).getPro_Categ().toString().equals("بوتاجازات"))
+        else if (pro_List.get(position).getPro_Categ().toString().equals("3"))
         {
             holder.categ_icon.setImageResource(R.mipmap.oven);
+            holder.product_categ.setText("بوتاجازات");
 
         }
-        else if (pro_List.get(position).getPro_Categ().toString().equals("تيليفزيونات"))
+        else if (pro_List.get(position).getPro_Categ().toString().equals("4"))
         {
             holder.categ_icon.setImageResource(R.mipmap.tv);
+            holder.product_categ.setText("تيليفزيونات");
         }
-        else if (pro_List.get(position).getPro_Categ().toString().equals("شاشات"))
+        else if (pro_List.get(position).getPro_Categ().toString().equals("5"))
         {
             holder.categ_icon.setImageResource(R.mipmap.screen);
+            holder.product_categ.setText("شاشات");
         }
-        else if (pro_List.get(position).getPro_Categ().toString().equals("تكييفات"))
+        else if (pro_List.get(position).getPro_Categ().toString().equals("6"))
         {
             holder.categ_icon.setImageResource(R.mipmap.takief);
+            holder.product_categ.setText("تكييفات");
 
         }
         holder.product_image.setOnClickListener(new View.OnClickListener() {

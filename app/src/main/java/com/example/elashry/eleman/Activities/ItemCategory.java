@@ -24,7 +24,6 @@ import com.example.elashry.eleman.Fragment.Televtion;
 import com.example.elashry.eleman.Fragment.Washer;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -42,7 +41,7 @@ public class  ItemCategory extends AppCompatActivity {
     private Toolbar mToolbar;
     private List<String> suggestion;
     private List<Product_Model> pro_List;
-    private MaterialSearchView mSearchView;
+    //private MaterialSearchView mSearchView;
     private final String products_url ="http://semicolonsoft.com/app/api/find/products";
 
     @Override
@@ -61,20 +60,6 @@ public class  ItemCategory extends AppCompatActivity {
         viewPager   = (ViewPager) findViewById(R.id.viewpager);
         mTab        = (TabLayout) findViewById(R.id.mTab);
         mToolbar    = (Toolbar) findViewById(R.id.mToolBar);
-        mSearchView = (MaterialSearchView) findViewById(R.id.item_categ_search_view);
-        mSearchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                GetProductby_name(query);
-                return false;
-            }
-
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                get_suggesions(products_url);
-                return false;
-            }
-        });
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -136,91 +121,7 @@ public class  ItemCategory extends AppCompatActivity {
         });
     }
 
-    private void get_suggesions(final String products_url) {
-        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(products_url,
-                new Response.Listener<JSONArray>() {
-                    @Override
-                    public void onResponse(JSONArray response) {
-                        Log.e("data",response.toString());
-                        JSONObject object;
-                        suggestion = new ArrayList<>();
 
-                        for (int index=0;index<response.length();index++)
-                        {
-                            try {
-                                object =response.getJSONObject(index);
-                                if (object.get("cat_id_fk").toString().equals("1"))
-                                {
-                                    suggestion.add(object.get("ptoduct_name").toString());
-
-
-
-                                }
-                                else if (object.get("cat_id_fk").toString().equals("2"))
-                                {
-                                    suggestion.add(object.get("ptoduct_name").toString());
-
-
-
-                                }
-                                else if (object.get("cat_id_fk").toString().equals("3"))
-                                {
-                                    suggestion.add(object.get("ptoduct_name").toString());
-
-
-
-                                }
-                                else if (object.get("cat_id_fk").toString().equals("4"))
-                                {
-                                    suggestion.add(object.get("ptoduct_name").toString());
-
-
-
-                                }
-                                else if (object.get("cat_id_fk").toString().equals("5"))
-                                {
-                                    suggestion.add(object.get("ptoduct_name").toString());
-
-
-
-                                }
-                               else if (object.get("cat_id_fk").toString().equals("6"))
-                                {
-                                    suggestion.add(object.get("ptoduct_name").toString());
-
-
-                                }
-
-
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                        }
-                        if (suggestion.size()>0)
-                        {
-                            String [] sugggestions = suggestion.toArray(new String[suggestion.size()]);
-                            mSearchView.setSuggestions(sugggestions);
-                            suggestion.clear();
-                        }
-                        else if (suggestion.size()==0)
-                        {
-                        }
-
-
-
-
-                    }
-                }
-                ,
-                new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-
-                    }
-                }
-        );
-        Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
-    }
     private void setUp_viewPager() {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
 
@@ -260,8 +161,6 @@ public class  ItemCategory extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_search,menu);
-        MenuItem item = menu.findItem(R.id.item_categ_search);
-        mSearchView.setMenuItem(item);
         return true;
     }
 
@@ -319,14 +218,16 @@ public class  ItemCategory extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        if (mSearchView.isSearchOpen())
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId())
         {
-            mSearchView.closeSearch();
+            case R.id.item_categ_search:
+                Intent intent = new Intent(ItemCategory.this,Search_ItemCategory_Activity.class);
+                startActivity(intent);
+                break;
+            default:return super.onOptionsItemSelected(item);
         }
-        else{
-        super.onBackPressed();
-    }
+        return true;
     }
 
 

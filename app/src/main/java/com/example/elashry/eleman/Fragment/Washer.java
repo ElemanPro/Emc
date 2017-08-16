@@ -85,7 +85,7 @@ public class Washer extends Fragment {
                                 object =response.getJSONObject(index);
                                 if (object.get("cat_id_fk").toString().equals("1"))
                                 {
-                                    pro_List.add(new Product_Model("غسالات",object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
+                                    pro_List.add(new Product_Model(object.get("cat_id_fk").toString(),object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

@@ -27,7 +27,7 @@ import java.util.HashMap;
 public class Category extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     private SliderLayout mDemoSlider;
-    private final String matgar_url ="http://semicolonsoft.com/app/api/find/advertisement";
+    private final String ads_url ="http://semicolonsoft.com/app/api/find/advertisement";
     private Toolbar mCat_ToolBar;
     ImageView img ,img2 ,img3,img4,img5,img6;
     @Override

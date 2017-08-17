@@ -40,7 +40,7 @@ public class Shashat extends Fragment {
     private RecyclerView mrRecyclerView;
     private Context mContext;
     private List<Product_Model> pro_List;
-    private final String products_url ="http://semicolonsoft.com/app/api/find/products";
+    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
     private TextView nopro_txt;
     private LinearLayout progBar_container;
     private ProgressBar prog_bar;
@@ -83,7 +83,7 @@ public class Shashat extends Fragment {
                                 object =response.getJSONObject(index);
                                 if (object.get("cat_id_fk").toString().equals("5"))
                                 {
-                                    pro_List.add(new Product_Model(object.get("cat_id_fk").toString(),object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
+                                    pro_List.add(new Product_Model(object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

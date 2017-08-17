@@ -44,7 +44,7 @@ public class Maintenance extends Fragment {
     private SwipeRefreshLayout mRefreshLayout;
     private Context mContext;
     private List<MaintenanceModel> maintenance_List;
-    private final String maintenance_url ="http://semicolonsoft.com/app/api/find/maintenance";
+    private final String maintenance_url ="https://semicolonsoft.com/clients/emc/api/find/app_maintenance";
     private ProgressBar prog_bar;
 
 

@@ -46,9 +46,9 @@ public class Matgar_product_details extends AppCompatActivity {
             client_name.setText(matgarModel.getClient_name().toString());
             client_details.setText(matgarModel.getClient_details().toString());
             dev_name.setText(matgarModel.getProduct_name().toString());
-            dev_price.setText(matgarModel.getProduct_price().toString());
+            dev_price.setText(matgarModel.getProduct_price().toString()+" "+"جنيه");
             date.setText(matgarModel.getDate().toString());
-            Picasso.with(Matgar_product_details.this).load(matgarModel.getProduct_image().toString()).noFade().into(dev_image);
+            Picasso.with(Matgar_product_details.this).load("https://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+matgarModel.getProduct_image().toString()).noFade().into(dev_image);
             mBar.setVisibility(View.GONE);
             dev_image.setVisibility(View.VISIBLE);
             dev_image.setOnClickListener(new View.OnClickListener() {

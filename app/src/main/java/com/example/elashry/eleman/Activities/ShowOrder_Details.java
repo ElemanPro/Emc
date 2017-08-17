@@ -24,9 +24,9 @@ import org.json.JSONObject;
 
 public class ShowOrder_Details extends AppCompatActivity {
 
-    private TextView client_name,client_phone,dev_categ,dev_name,dev_price,dev_quantity,order_address,order_date;
+    private TextView client_name,client_phone,dev_categ,dev_name,dev_quantity,order_address,order_date;
     private ImageView dev_image;
-    private final String products_url ="http://semicolonsoft.com/app/api/find/products";
+    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
     private TextView nopro_txt;
     private LinearLayout progBar_container,order_data_container;
     @Override
@@ -77,9 +77,8 @@ public class ShowOrder_Details extends AppCompatActivity {
                                     order_address.setText(orderModel.getOrder_address().toString());
                                     dev_quantity.setText(orderModel.getQuantity().toString());
                                     order_date.setText(orderModel.getOrder_date().toString());
-                                    dev_name.setText(object.get("ptoduct_name").toString());
-                                    dev_price.setText(object.get("product_price").toString());
-                                    Picasso.with(ShowOrder_Details.this).load(object.get("product_image").toString()).noFade().into(dev_image);
+                                    dev_name.setText(object.get("product_title").toString());
+                                    Picasso.with(ShowOrder_Details.this).load("https://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+object.get("product_photo").toString()).noFade().into(dev_image);
                                     if (object.get("cat_id_fk").toString().equals("1"))
                                     {
                                         dev_categ.setText("غسالات");
@@ -152,7 +151,6 @@ public class ShowOrder_Details extends AppCompatActivity {
 
         dev_categ      = (TextView) findViewById(R.id.order_details_devcateg);
         dev_name       = (TextView) findViewById(R.id.order_details_devname);
-        dev_price      = (TextView) findViewById(R.id.order_details_devprice);
         dev_image      = (ImageView) findViewById(R.id.order_details_devimage);
         dev_quantity   = (TextView) findViewById(R.id.order_details_devquantity);
         order_date     = (TextView) findViewById(R.id.order_details_orderdate);

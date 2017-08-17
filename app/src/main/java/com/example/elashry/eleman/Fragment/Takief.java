@@ -16,6 +16,7 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -40,7 +41,7 @@ public class Takief extends Fragment {
     private RecyclerView mrRecyclerView;
     private Context mContext;
     private List<Product_Model> pro_List;
-    private final String products_url ="http://semicolonsoft.com/app/api/find/products";
+    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
     private TextView nopro_txt;
     private LinearLayout progBar_container;
     private ProgressBar prog_bar;
@@ -78,11 +79,14 @@ public class Takief extends Fragment {
 
                         for (int index=0;index<response.length();index++)
                         {
+
                             try {
                                 object =response.getJSONObject(index);
+                                Toast.makeText(mContext,object.get("product_title").toString()+"\n"+object.get("cat_id_fk").toString(), Toast.LENGTH_SHORT).show();
+
                                 if (object.get("cat_id_fk").toString().equals("6"))
                                 {
-                                    pro_List.add(new Product_Model(object.get("cat_id_fk").toString(),object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
+                                    pro_List.add(new Product_Model(object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -95,6 +99,7 @@ public class Takief extends Fragment {
                             adapter.notifyDataSetChanged();
                             mrRecyclerView.setVisibility(View.VISIBLE);
                             progBar_container.setVisibility(View.GONE);
+                            nopro_txt.setVisibility(View.GONE);
                             mRefreshLayout.setRefreshing(false);
                         }
                         else if (pro_List.size()==0)
@@ -112,6 +117,8 @@ public class Takief extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         mRefreshLayout.setRefreshing(false);
+                        Toast.makeText(mContext,error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("errrrr",error.getMessage()+"");
                     }
                 }
         );

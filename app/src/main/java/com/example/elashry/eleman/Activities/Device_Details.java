@@ -26,9 +26,8 @@ public class Device_Details extends AppCompatActivity {
         if (intent.getExtras() !=null)
         {
             Product_Model model = (Product_Model) intent.getSerializableExtra("product_data");
-            dev_Name.setText(model.getPro_Name().toString());
-            dev_Price.setText(model.getPro_Price().toString());
-            dev_Categ.setText(model.getPro_Categ().toString());
+            dev_Name.setText(model.getProduct_title().toString());
+            dev_Categ.setText(model.getProduct_Category_fk().toString());
 
         }
     }

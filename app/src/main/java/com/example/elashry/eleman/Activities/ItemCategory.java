@@ -42,7 +42,7 @@ public class  ItemCategory extends AppCompatActivity {
     private List<String> suggestion;
     private List<Product_Model> pro_List;
     //private MaterialSearchView mSearchView;
-    private final String products_url ="http://semicolonsoft.com/app/api/find/products";
+    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -178,9 +178,9 @@ public class  ItemCategory extends AppCompatActivity {
                         {
                             try {
                                 object =response.getJSONObject(index);
-                                if (object.get("ptoduct_name").toString().equals(pro_name))
+                                if (object.get("product_title").toString().equals(pro_name))
                                 {
-                                    pro_List.add(new Product_Model(object.get("cat_id_fk").toString(),object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
+                                    pro_List.add(new Product_Model(object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
 
                                 }
 

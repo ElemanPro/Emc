@@ -42,6 +42,7 @@
                     android:layout_height="190dp"
                     android:adjustViewBounds="true"
                     android:visibility="gone"
+                    android:scaleType="fitXY"
                     />
             </FrameLayout>
 
@@ -50,7 +51,6 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp"
-                app:cardBackgroundColor="@color/background_color"
 
                 >
 
@@ -76,7 +76,7 @@
                             android:background="@color/colorPrimaryDark"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="@dimen/main_text_size"
                             android:textStyle="italic"
                             android:inputType="textMultiLine"
@@ -115,7 +115,7 @@
                             android:background="@color/colorPrimaryDark"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="@dimen/main_text_size"
                             android:textStyle="italic"
                             android:inputType="textMultiLine"
@@ -155,7 +155,7 @@
                             android:background="@color/colorPrimaryDark"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="@dimen/main_text_size"
                             android:textStyle="italic"
                             android:inputType="textMultiLine"
@@ -194,7 +194,7 @@
                             android:background="@color/colorPrimaryDark"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="@dimen/main_text_size"
                             android:textStyle="italic"
                             android:inputType="textMultiLine"
@@ -237,7 +237,7 @@
                             android:background="@color/colorPrimaryDark"
                             android:gravity="center"
                             android:padding="10dp"
-                            android:textColor="@color/colorPrimary"
+                            android:textColor="@color/white"
                             android:textSize="@dimen/main_text_size"
                             android:textStyle="italic"
                             android:inputType="textMultiLine"

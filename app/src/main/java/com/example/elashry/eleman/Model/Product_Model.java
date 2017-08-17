@@ -7,51 +7,39 @@ import java.io.Serializable;
  */
 
 public class Product_Model implements Serializable {
-    String pro_Categ;
-    String pro_Name;
-    String pro_Price;
-    String pro_Image_url;
-
+    String product_Category_fk;
+    String product_title;
+    String product_Image_url;
     public Product_Model() {
     }
 
-    public Product_Model(String pro_Categ, String pro_Name, String pro_Price, String pro_Image_url) {
-
-        this.pro_Categ = pro_Categ;
-        this.pro_Name = pro_Name;
-        this.pro_Price = pro_Price;
-        this.pro_Image_url = pro_Image_url;
+    public Product_Model(String product_Category_fk, String product_title, String product_Image_url) {
+        this.product_Category_fk = product_Category_fk;
+        this.product_title = product_title;
+        this.product_Image_url = product_Image_url;
     }
 
-    public String getPro_Categ() {
-        return pro_Categ;
+    public String getProduct_Category_fk() {
+        return product_Category_fk;
     }
 
-    public void setPro_Categ(String pro_Categ) {
-        this.pro_Categ = pro_Categ;
+    public void setProduct_Category_fk(String product_Category_fk) {
+        this.product_Category_fk = product_Category_fk;
     }
 
-    public String getPro_Name() {
-        return pro_Name;
+    public String getProduct_title() {
+        return product_title;
     }
 
-    public void setPro_Name(String pro_Name) {
-        this.pro_Name = pro_Name;
+    public void setProduct_title(String product_title) {
+        this.product_title = product_title;
     }
 
-    public String getPro_Price() {
-        return pro_Price;
+    public String getProduct_Image_url() {
+        return product_Image_url;
     }
 
-    public void setPro_Price(String pro_Price) {
-        this.pro_Price = pro_Price;
-    }
-
-    public String getPro_Image_url() {
-        return pro_Image_url;
-    }
-
-    public void setPro_Image_url(String pro_Image_url) {
-        this.pro_Image_url = pro_Image_url;
+    public void setProduct_Image_url(String pro_Image_url) {
+        this.product_Image_url = pro_Image_url;
     }
 }

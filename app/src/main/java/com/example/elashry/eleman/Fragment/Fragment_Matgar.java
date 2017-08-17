@@ -40,7 +40,7 @@ import java.util.List;
 public class Fragment_Matgar extends Fragment {
     private RecyclerView recyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
-    private final String matgar_url ="http://semicolonsoft.com/app/api/find/matgar";
+    private final String matgar_url ="https://semicolonsoft.com/clients/emc/api/find/app_matgar";
     private List<MatgarModel> matgarModelList;
     private CollapsingToolbarLayout collapsingToolbar;
 
@@ -89,7 +89,7 @@ public class Fragment_Matgar extends Fragment {
                         {
                             try {
                                 object =response.getJSONObject(index);
-                                MatgarModel matgarModel = new MatgarModel(object.get("client_name").toString(),object.get("client_details").toString(),object.get("product_name").toString(),object.get("product_price").toString(),object.get("product_image").toString(),object.get("date").toString());
+                                MatgarModel matgarModel = new MatgarModel(object.get("client_name").toString(),object.get("client_details").toString(),object.get("product_name").toString(),object.get("product_price").toString(),object.get("product_image").toString(),object.get("date_add").toString());
                                 matgarModelList.add(matgarModel);
 
                             } catch (JSONException e) {

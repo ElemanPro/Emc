@@ -25,7 +25,7 @@ public class Zooming_Image extends AppCompatActivity {
     private TextView image_details;
     private PanoramaImageView image;
     private GyroscopeObserver gyroscopeObserver;
-    private final String products_url ="http://semicolonsoft.com/app/api/find/products";
+    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,7 +56,7 @@ public class Zooming_Image extends AppCompatActivity {
             {
                 Image_details_Model model = (Image_details_Model) intent.getSerializableExtra("image_details");
                 image_details.setText(model.getImage_details().toString());
-                Picasso.with(Zooming_Image.this).load(model.getImage_url()).noFade().into(image);
+                Picasso.with(Zooming_Image.this).load("https://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+model.getImage_url()).noFade().into(image);
             }
             else if (intent.getExtras().getString("flag").toString().equals("2"))
             {
@@ -81,8 +81,8 @@ public class Zooming_Image extends AppCompatActivity {
                                 object =response.getJSONObject(index);
                                 if (object.get("product_id_pk").toString().equals(orderModel.getProduct_id().toString()))
                                 {
-                                    Picasso.with(Zooming_Image.this).load(object.get("product_image").toString()).noFade().into(image);
-                                    image_details.setText(object.get("ptoduct_name").toString()+" "+object.get("product_price").toString());
+                                    Picasso.with(Zooming_Image.this).load("https://semicolonsoft.com/clients/emc/public/uploads/images/"+object.get("product_photo").toString()).noFade().into(image);
+                                    image_details.setText(object.get("product_title").toString());
 
 
                                 }

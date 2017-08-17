@@ -55,45 +55,42 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
     @Override
     public void onBindViewHolder(ViewHoler holder, final int position) {
 
-       Picasso.with(mContext).load(pro_List.get(position).getPro_Image_url().toString()).noFade().into(holder.product_image);
+        Picasso.with(mContext).load("https://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+pro_List.get(position).getProduct_Image_url().toString()).noFade().into(holder.product_image);
         holder.prog_bar.setVisibility(View.GONE);
         holder.product_image.setVisibility(View.VISIBLE);
-       /* asyn_task task = new asyn_task(holder);
-        task.execute(pro_List.get(position).getPro_Image_url().toString());
-     */ //  holder.product_image.setImageBitmap(new asyn_task(holder).execute();
-        holder.product_categ.setText(pro_List.get(position).getPro_Categ().toString());
-        holder.product_name.setText(pro_List.get(position).getPro_Name().toString());
-        holder.product_price.setText(pro_List.get(position).getPro_Price().toString()+" جنيه");
+        holder.product_categ.setText(pro_List.get(position).getProduct_Category_fk().toString());
+        holder.product_name.setText(pro_List.get(position).getProduct_title().toString());
 
 
-        if (pro_List.get(position).getPro_Categ().toString().equals("1"))
+
+        if (pro_List.get(position).getProduct_Category_fk().toString().equals("1"))
         {
          holder.categ_icon.setImageResource(R.mipmap.washer);
             holder.product_categ.setText("غسالات");
         }
-        else if (pro_List.get(position).getPro_Categ().toString().equals("2"))
+        else if (pro_List.get(position).getProduct_Category_fk().toString().equals("2"))
         {
             holder.categ_icon.setImageResource(R.mipmap.fridg);
             holder.product_categ.setText("تلاجات");
 
         }
-        else if (pro_List.get(position).getPro_Categ().toString().equals("3"))
+        else if (pro_List.get(position).getProduct_Category_fk().toString().equals("3"))
         {
             holder.categ_icon.setImageResource(R.mipmap.oven);
             holder.product_categ.setText("بوتاجازات");
 
         }
-        else if (pro_List.get(position).getPro_Categ().toString().equals("4"))
+        else if (pro_List.get(position).getProduct_Category_fk().toString().equals("4"))
         {
             holder.categ_icon.setImageResource(R.mipmap.tv);
             holder.product_categ.setText("تيليفزيونات");
         }
-        else if (pro_List.get(position).getPro_Categ().toString().equals("5"))
+        else if (pro_List.get(position).getProduct_Category_fk().toString().equals("5"))
         {
             holder.categ_icon.setImageResource(R.mipmap.screen);
             holder.product_categ.setText("شاشات");
         }
-        else if (pro_List.get(position).getPro_Categ().toString().equals("6"))
+        else if (pro_List.get(position).getProduct_Category_fk().toString().equals("6"))
         {
             holder.categ_icon.setImageResource(R.mipmap.takief);
             holder.product_categ.setText("تكييفات");
@@ -103,7 +100,7 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(mContext, Zooming_Image.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                Image_details_Model model = new Image_details_Model(pro_List.get(position).getPro_Name()+" "+pro_List.get(position).getPro_Price().toString(),pro_List.get(position).getPro_Image_url().toString());
+                Image_details_Model model = new Image_details_Model(pro_List.get(position).getProduct_title(),pro_List.get(position).getProduct_Image_url().toString());
                 intent.putExtra("image_details",model);
                 intent.putExtra("flag","1");
                 mContext.startActivity(intent);
@@ -118,9 +115,7 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
     }
     class ViewHoler extends RecyclerView.ViewHolder{
         ImageView product_image,categ_icon;
-        TextView product_categ;
-        TextView product_name;
-        TextView product_price;
+        TextView product_categ,product_name;
         ProgressBar prog_bar;
         public ViewHoler(View itemView) {
             super(itemView);
@@ -128,7 +123,6 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
             categ_icon        = (ImageView) itemView.findViewById(R.id.categ_icon);
             product_categ     = (TextView) itemView.findViewById(R.id.product_categ);
             product_name      = (TextView) itemView.findViewById(R.id.product_name);
-            product_price     = (TextView) itemView.findViewById(R.id.product_price);
             prog_bar          = (ProgressBar) itemView.findViewById(R.id.prog_bar);
 
         }

@@ -41,41 +41,40 @@ public class Search_Product_Details extends AppCompatActivity {
         if (intent.getExtras()!=null)
         {
             model = (Product_Model) intent.getSerializableExtra("pro_data");
-            pro_name.setText(model.getPro_Name().toString());
-            pro_price.setText(model.getPro_Price()+" "+"LE");
-            if (model.getPro_Categ().toString().equals("1"))
+            pro_name.setText(model.getProduct_title().toString());
+            if (model.getProduct_Category_fk().toString().equals("1"))
             {
                categ_icon.setImageResource(R.mipmap.washer);
                 pro_categ.setText("غسالات");
             }
-            else if (model.getPro_Categ().toString().equals("2"))
+            else if (model.getProduct_Category_fk().toString().equals("2"))
             {
                 categ_icon.setImageResource(R.mipmap.fridg);
                 pro_categ.setText("تلاجات");
 
             }
-            else if (model.getPro_Categ().toString().equals("3"))
+            else if (model.getProduct_Category_fk().toString().equals("3"))
             {
                 categ_icon.setImageResource(R.mipmap.oven);
                 pro_categ.setText("بوتجازات");
 
             }
-            else if (model.getPro_Categ().toString().equals("4"))
+            else if (model.getProduct_Category_fk().toString().equals("4"))
             {
                 categ_icon.setImageResource(R.mipmap.tv);
                 pro_categ.setText("تليفزيونات");
             }
-            else if (model.getPro_Categ().toString().equals("5"))
+            else if (model.getProduct_Category_fk().toString().equals("5"))
             {
                 categ_icon.setImageResource(R.mipmap.screen);
                 pro_categ.setText("شاشات");
             }
-            else if (model.getPro_Categ().toString().equals("6"))
+            else if (model.getProduct_Category_fk().toString().equals("6"))
             {
                 categ_icon.setImageResource(R.mipmap.takief);
                 pro_categ.setText("تكييفات");
             }
-            Picasso.with(Search_Product_Details.this).load(model.getPro_Image_url().toString()).noFade().into(pro_image);
+            Picasso.with(Search_Product_Details.this).load("https://semicolonsoft.com/clients/emc/public/uploads/images/"+model.getProduct_Image_url().toString()).noFade().into(pro_image);
             mProgressBar.setVisibility(View.GONE);
             pro_image.setVisibility(View.VISIBLE);
             //new asyn_task().execute(model.getPro_Image_url());
@@ -83,7 +82,7 @@ public class Search_Product_Details extends AppCompatActivity {
                 @Override
                 public void onClick(View view) {
                     Intent intent = new Intent(Search_Product_Details.this, Zooming_Image.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    Image_details_Model image_details_model = new Image_details_Model(model.getPro_Name().toString()+" "+model.getPro_Price().toString(),model.getPro_Image_url().toString());
+                    Image_details_Model image_details_model = new Image_details_Model(model.getProduct_title().toString(),model.getProduct_Image_url().toString());
                     intent.putExtra("image_details",image_details_model);
                     startActivity(intent);
                 }

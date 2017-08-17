@@ -46,7 +46,7 @@ public class Washer extends Fragment {
     private ProgressBar prog_bar;
     private SwipeRefreshLayout mRefreshLayout;
 
-    private final String products_url ="http://semicolonsoft.com/app/api/find/products";
+    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
     public Washer() {
         // Required empty public constructor
     }
@@ -85,7 +85,7 @@ public class Washer extends Fragment {
                                 object =response.getJSONObject(index);
                                 if (object.get("cat_id_fk").toString().equals("1"))
                                 {
-                                    pro_List.add(new Product_Model(object.get("cat_id_fk").toString(),object.get("ptoduct_name").toString(),object.get("product_price").toString(),object.get("product_image").toString()));
+                                    pro_List.add(new Product_Model(object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

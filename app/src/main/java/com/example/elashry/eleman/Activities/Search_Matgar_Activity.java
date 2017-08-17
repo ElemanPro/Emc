@@ -28,7 +28,7 @@ public class Search_Matgar_Activity extends AppCompatActivity {
     private MaterialSearchView mSearchView;
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
-    private final String matgar_url ="http://semicolonsoft.com/app/api/find/matgar";
+    private final String matgar_url ="https://semicolonsoft.com/clients/emc/api/find/app_matgar";
     private List<MatgarModel> matgarModelList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -171,6 +171,8 @@ public class Search_Matgar_Activity extends AppCompatActivity {
         );
         Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
     }
+
+
 
 
 }

@@ -1,7 +1,6 @@
 package com.example.elashry.eleman;
 
 
-
 import android.app.Application;
 import android.text.TextUtils;
 
@@ -50,4 +49,5 @@ public class Controller extends Application {
             mRequestQueue.cancelAll(tag);
         }
     }
+
 }

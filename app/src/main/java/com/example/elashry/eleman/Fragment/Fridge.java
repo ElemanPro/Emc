@@ -16,11 +16,13 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.elashry.eleman.Adapter.Washer_Adapter;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
@@ -41,7 +43,7 @@ public class Fridge extends Fragment {
     private RecyclerView mrRecyclerView;
     private Context mContext;
     private List<Product_Model> pro_List;
-    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
+    //private final String products_url ="http://semicolonsoft.com/clients/emc/api/find/products";
     private TextView nopro_txt;
     private LinearLayout progBar_container;
     private ProgressBar prog_bar;
@@ -52,11 +54,12 @@ public class Fridge extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fridge,container,false);
         init_View(view);
-        Get_proData(products_url);
+        Get_proData(App_URL.product_url);
+        Toast.makeText(mContext, "تلاجات", Toast.LENGTH_SHORT).show();
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Get_proData(products_url);
+                Get_proData(App_URL.product_url);
             }
         });
         return view;
@@ -115,7 +118,7 @@ public class Fridge extends Fragment {
     }
     private void init_View(View view) {
         mContext =view.getContext();
-        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swap_refresh);
+        mRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipe_refresh);
         mRefreshLayout.setColorSchemeColors(ContextCompat.getColor(mContext,R.color.colorPrimary));
 
         mrRecyclerView = (RecyclerView) view.findViewById(R.id.fridge_recyView);

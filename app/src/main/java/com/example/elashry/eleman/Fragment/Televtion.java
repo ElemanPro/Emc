@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.elashry.eleman.Adapter.Washer_Adapter;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
@@ -40,7 +41,7 @@ public class Televtion extends Fragment {
     private RecyclerView mrRecyclerView;
     private Context mContext;
     private List<Product_Model> pro_List;
-    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
+    //private final String products_url ="http://semicolonsoft.com/clients/emc/api/find/products";
     private TextView nopro_txt;
     private LinearLayout progBar_container;
     private ProgressBar prog_bar;
@@ -58,11 +59,11 @@ public class Televtion extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.televtion,container,false);
         init_View(view);
-        Get_proData(products_url);
+        Get_proData(App_URL.product_url);
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Get_proData(products_url);
+                Get_proData(App_URL.product_url);
             }
         });
         return view;

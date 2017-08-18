@@ -9,6 +9,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Model.Image_details_Model;
 import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
@@ -48,7 +49,7 @@ public class Matgar_product_details extends AppCompatActivity {
             dev_name.setText(matgarModel.getProduct_name().toString());
             dev_price.setText(matgarModel.getProduct_price().toString()+" "+"جنيه");
             date.setText(matgarModel.getDate().toString());
-            Picasso.with(Matgar_product_details.this).load("https://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+matgarModel.getProduct_image().toString()).noFade().into(dev_image);
+            Picasso.with(Matgar_product_details.this).load(App_URL.image_url+matgarModel.getProduct_image().toString()).noFade().into(dev_image);
             mBar.setVisibility(View.GONE);
             dev_image.setVisibility(View.VISIBLE);
             dev_image.setOnClickListener(new View.OnClickListener() {

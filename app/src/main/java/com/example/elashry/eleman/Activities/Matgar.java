@@ -103,7 +103,7 @@ public class Matgar extends AppCompatActivity {
         switch (item.getItemId())
         {
             case R.id.item_categ_search:
-                Intent intent = new Intent(Matgar.this,Search_Matgar_Activity.class);
+                Intent intent = new Intent(Matgar.this,Search_Matgar.class);
                 startActivity(intent);
                 break;
             default:return super.onOptionsItemSelected(item);

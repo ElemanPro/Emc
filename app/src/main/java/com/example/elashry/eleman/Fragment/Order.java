@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.elashry.eleman.Adapter.OrderAdapter;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.OrderModel;
 import com.example.elashry.eleman.R;
@@ -42,7 +43,7 @@ public class Order extends Fragment {
     private TextView no_order_txt;
     private RecyclerView mRecyclerView;
     Context mContext;
-    private final String order_url ="https://semicolonsoft.com/clients/emc/api/find/app_orders";
+    //private final String order_url ="http://semicolonsoft.com/clients/emc/api/find/app_orders";
     private ProgressBar prog_bar;
     private SwipeRefreshLayout mRefreshLayout;
     @Nullable
@@ -61,7 +62,7 @@ public class Order extends Fragment {
     }
 
     private void GetOrder_Data() {
-        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(order_url,
+        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(App_URL.app_orders,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

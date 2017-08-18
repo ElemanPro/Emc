@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="com.example.elashry.eleman.Activities.Search_Matgar_Activity">
+    tools:context="com.example.elashry.eleman.Activities.Search_Matgar">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -27,14 +27,14 @@
                 android:layout_height="wrap_content"
                 app:searchBackground="@android:color/transparent"
                 android:textColor="@color/white"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
 
-        />
+
+                />
         </FrameLayout>
     </android.support.design.widget.AppBarLayout>
-<android.support.v7.widget.RecyclerView
-    android:id="@+id/search_recyView"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    ></android.support.v7.widget.RecyclerView>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/search_recyView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        ></android.support.v7.widget.RecyclerView>
 </LinearLayout>

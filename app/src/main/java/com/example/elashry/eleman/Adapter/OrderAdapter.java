@@ -20,6 +20,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.elashry.eleman.Activities.ShowOrder_Details;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.OrderModel;
 import com.example.elashry.eleman.R;
@@ -44,7 +45,7 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
 
     Context mContext;
     LayoutInflater inflater;
-    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
+    //private final String products_url ="http://semicolonsoft.com/clients/emc/api/find/products";
     private List<OrderModel> order_List;
 
     public OrderAdapter(Context mContext, List<OrderModel> pro_List) {
@@ -106,7 +107,7 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
 
     private void GetProData(final ViewHoler holder , final OrderModel orderModel)
     {
-        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(products_url,
+        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(App_URL.product_url,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -119,7 +120,7 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
                                 if (object.get("product_id_pk").toString().equals(orderModel.getProduct_id().toString()))
                                 {
                                     holder.dev_name.setText(object.get("product_title").toString());
-                                    Picasso.with(mContext).load("https://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+object.get("product_photo").toString()).noFade().into(holder.dev_image);
+                                    Picasso.with(mContext).load(App_URL.image_url+object.get("product_photo").toString()).noFade().into(holder.dev_image);
                                     holder.dev_image.setVisibility(View.VISIBLE);
                                     holder.progBar.setVisibility(View.GONE);
                                    /* asyn_task task = new asyn_task(holder);

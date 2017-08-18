@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.elashry.eleman.Adapter.Washer_Adapter;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
@@ -46,7 +47,7 @@ public class Washer extends Fragment {
     private ProgressBar prog_bar;
     private SwipeRefreshLayout mRefreshLayout;
 
-    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
+    //private final String products_url ="http://semicolonsoft.com/clients/emc/api/find/products";
     public Washer() {
         // Required empty public constructor
     }
@@ -57,11 +58,11 @@ public class Washer extends Fragment {
 
         View view =inflater.inflate(R.layout.washer, container, false);
         init_View(view);
-        Get_proData(products_url);
+        Get_proData(App_URL.product_url);
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Get_proData(products_url);
+                Get_proData(App_URL.product_url);
             }
         });
         return view;
@@ -78,7 +79,6 @@ public class Washer extends Fragment {
                         Log.e("data",response.toString());
                         JSONObject object;
                         pro_List = new ArrayList<>();
-
                         for (int index=0;index<response.length();index++)
                         {
                             try {
@@ -118,9 +118,11 @@ public class Washer extends Fragment {
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
                         mRefreshLayout.setRefreshing(false);
                     }
                 }
+
         );
         Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
 
@@ -142,6 +144,7 @@ public class Washer extends Fragment {
 
         nopro_txt         = (TextView) view.findViewById(R.id.nopro_txt);
     }
+
 
 
 }

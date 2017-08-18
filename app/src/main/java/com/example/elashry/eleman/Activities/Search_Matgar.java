@@ -6,11 +6,13 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.elashry.eleman.Adapter.MatgarAdapter;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
@@ -23,24 +25,21 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Search_Matgar_Activity extends AppCompatActivity {
+public class Search_Matgar extends AppCompatActivity {
 
     private MaterialSearchView mSearchView;
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
-    private final String matgar_url ="https://semicolonsoft.com/clients/emc/api/find/app_matgar";
     private List<MatgarModel> matgarModelList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_search);
+        setContentView(R.layout.activity_search__matgar);
         init_View();
-        Get_matagar_pro_Data(matgar_url);
+        Get_matagar_pro_Data();
         mSearchView.showSearch();
         mSearchView.showSearch(true);
     }
-
-
     private void init_View() {
 
         mSearchView = (MaterialSearchView)findViewById(R.id.searchView);
@@ -48,7 +47,7 @@ public class Search_Matgar_Activity extends AppCompatActivity {
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
         mRecyclerView = (RecyclerView) findViewById(R.id.search_recyView);
-        mRecyclerView.setLayoutManager(new GridLayoutManager(Search_Matgar_Activity.this,2));
+        mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
         mSearchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
             public void onSearchViewShown() {
@@ -68,15 +67,15 @@ public class Search_Matgar_Activity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Get_matagar_searchdata(matgar_url,newText);
+                Get_matagar_searchdata(App_URL.app_matgar,newText);
                 return false;
             }
         });
 
 
     }
-    private void Get_matagar_pro_Data(String matgar_url) {
-        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(matgar_url,
+    private void Get_matagar_pro_Data() {
+        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(App_URL.app_matgar,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {
@@ -88,7 +87,7 @@ public class Search_Matgar_Activity extends AppCompatActivity {
                         {
                             try {
                                 object =response.getJSONObject(index);
-                                MatgarModel matgarModel = new MatgarModel(object.get("client_name").toString(),object.get("client_details").toString(),object.get("product_name").toString(),object.get("product_price").toString(),object.get("product_image").toString(),object.get("date").toString());
+                                MatgarModel matgarModel = new MatgarModel(object.get("client_name").toString(),object.get("client_details").toString(),object.get("product_name").toString(),object.get("product_price").toString(),object.get("product_image").toString(),object.get("date_add").toString());
                                 matgarModelList.add(matgarModel);
 
                             } catch (JSONException e) {
@@ -97,8 +96,9 @@ public class Search_Matgar_Activity extends AppCompatActivity {
                         }
                         if (matgarModelList.size()>0)
                         {
-                            MatgarAdapter adapter = new MatgarAdapter(Search_Matgar_Activity.this,matgarModelList);
+                            MatgarAdapter adapter = new MatgarAdapter(Search_Matgar.this,matgarModelList);
                             mRecyclerView.setAdapter(adapter);
+                            mRecyclerView.setVisibility(View.VISIBLE);
                             adapter.notifyDataSetChanged();
 
 
@@ -106,7 +106,6 @@ public class Search_Matgar_Activity extends AppCompatActivity {
                         }
                         else if (matgarModelList.size()==0)
                         {
-
                         }
 
                     }
@@ -144,7 +143,7 @@ public class Search_Matgar_Activity extends AppCompatActivity {
                         }
                         if (matgarModelList.size()>0)
                         {
-                            MatgarAdapter adapter = new MatgarAdapter(Search_Matgar_Activity.this,matgarModelList);
+                            MatgarAdapter adapter = new MatgarAdapter(Search_Matgar.this,matgarModelList);
                             mRecyclerView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 
@@ -154,7 +153,7 @@ public class Search_Matgar_Activity extends AppCompatActivity {
                         else if (matgarModelList.size()==0)
 
                         {
-                            MatgarAdapter adapter = new MatgarAdapter(Search_Matgar_Activity.this,matgarModelList);
+                            MatgarAdapter adapter = new MatgarAdapter(Search_Matgar.this,matgarModelList);
                             mRecyclerView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                         }
@@ -171,8 +170,4 @@ public class Search_Matgar_Activity extends AppCompatActivity {
         );
         Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
     }
-
-
-
-
 }

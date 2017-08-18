@@ -16,6 +16,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.elashry.eleman.Activities.Zooming_Image;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Model.Image_details_Model;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
@@ -55,7 +56,7 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
     @Override
     public void onBindViewHolder(ViewHoler holder, final int position) {
 
-        Picasso.with(mContext).load("https://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+pro_List.get(position).getProduct_Image_url().toString()).noFade().into(holder.product_image);
+        Picasso.with(mContext).load(App_URL.image_url+pro_List.get(position).getProduct_Image_url().toString()).noFade().into(holder.product_image);
         holder.prog_bar.setVisibility(View.GONE);
         holder.product_image.setVisibility(View.VISIBLE);
         holder.product_categ.setText(pro_List.get(position).getProduct_Category_fk().toString());

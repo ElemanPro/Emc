@@ -21,6 +21,7 @@ import android.widget.TextView;
 import com.example.elashry.eleman.Activities.Matgar_product_details;
 import com.example.elashry.eleman.Activities.Order;
 import com.example.elashry.eleman.Activities.Zooming_Image;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Model.Image_details_Model;
 import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
@@ -63,7 +64,7 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
         holder.pro_name.setText(matgarModelList.get(position).getProduct_name().toString());
         holder.pro_price.setText(matgarModelList.get(position).getProduct_price().toString()+" "+"جنيه");
         holder.date.setText("منذ"+" "+matgarModelList.get(position).getDate().toString());
-        Picasso.with(mContext).load("https://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+matgarModelList.get(position).getProduct_image().toString()). fit().into(holder.pro_image);
+        Picasso.with(mContext).load(App_URL.image_url+matgarModelList.get(position).getProduct_image().toString()). fit().into(holder.pro_image);
         holder.pro_image.setVisibility(View.VISIBLE);
         holder.mBar.setVisibility(View.GONE);
         holder.pro_image.setOnClickListener(new View.OnClickListener() {

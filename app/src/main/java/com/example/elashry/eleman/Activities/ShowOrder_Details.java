@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.OrderModel;
 import com.example.elashry.eleman.R;
@@ -26,7 +27,7 @@ public class ShowOrder_Details extends AppCompatActivity {
 
     private TextView client_name,client_phone,dev_categ,dev_name,dev_quantity,order_address,order_date;
     private ImageView dev_image;
-    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
+    //private final String products_url ="http://semicolonsoft.com/clients/emc/api/find/products";
     private TextView nopro_txt;
     private LinearLayout progBar_container,order_data_container;
     @Override
@@ -44,7 +45,7 @@ public class ShowOrder_Details extends AppCompatActivity {
         if (intent.getExtras()!=null)
         {
             final OrderModel orderModel = (OrderModel) intent.getSerializableExtra("order_data");
-            Getproduct_data(products_url,orderModel);
+            Getproduct_data(App_URL.product_url,orderModel);
             dev_image.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -78,7 +79,7 @@ public class ShowOrder_Details extends AppCompatActivity {
                                     dev_quantity.setText(orderModel.getQuantity().toString());
                                     order_date.setText(orderModel.getOrder_date().toString());
                                     dev_name.setText(object.get("product_title").toString());
-                                    Picasso.with(ShowOrder_Details.this).load("https://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+object.get("product_photo").toString()).noFade().into(dev_image);
+                                    Picasso.with(ShowOrder_Details.this).load("http://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+object.get("product_photo").toString()).noFade().into(dev_image);
                                     if (object.get("cat_id_fk").toString().equals("1"))
                                     {
                                         dev_categ.setText("غسالات");

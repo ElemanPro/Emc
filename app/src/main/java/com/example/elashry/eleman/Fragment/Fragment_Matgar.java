@@ -22,6 +22,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.elashry.eleman.Adapter.MatgarAdapter;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
@@ -40,7 +41,7 @@ import java.util.List;
 public class Fragment_Matgar extends Fragment {
     private RecyclerView recyclerView;
     private SwipeRefreshLayout mSwipeRefreshLayout;
-    private final String matgar_url ="https://semicolonsoft.com/clients/emc/api/find/app_matgar";
+    //private final String matgar_url ="http://semicolonsoft.com/clients/emc/api/find/app_matgar";
     private List<MatgarModel> matgarModelList;
     private CollapsingToolbarLayout collapsingToolbar;
 
@@ -77,7 +78,7 @@ public class Fragment_Matgar extends Fragment {
 
     }
     private void Get_matagar_pro_Data() {
-        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(matgar_url,
+        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(App_URL.app_matgar,
                 new Response.Listener<JSONArray>() {
                     @Override
                     public void onResponse(JSONArray response) {

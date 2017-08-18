@@ -21,6 +21,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.elashry.eleman.Adapter.MaintenanceAdapter;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.MaintenanceModel;
 import com.example.elashry.eleman.R;
@@ -44,7 +45,7 @@ public class Maintenance extends Fragment {
     private SwipeRefreshLayout mRefreshLayout;
     private Context mContext;
     private List<MaintenanceModel> maintenance_List;
-    private final String maintenance_url ="https://semicolonsoft.com/clients/emc/api/find/app_maintenance";
+    //private final String maintenance_url ="http://semicolonsoft.com/clients/emc/api/find/app_maintenance";
     private ProgressBar prog_bar;
 
 
@@ -53,11 +54,11 @@ public class Maintenance extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.maintenance,container,false);
         init_View(view);
-        Get_Maintenance_Data(maintenance_url);
+        Get_Maintenance_Data(App_URL.app_maintenance);
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                Get_Maintenance_Data(maintenance_url);
+                Get_Maintenance_Data(App_URL.app_maintenance);
             }
         });
         return view;

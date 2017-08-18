@@ -42,7 +42,7 @@ public class  ItemCategory extends AppCompatActivity {
     private List<String> suggestion;
     private List<Product_Model> pro_List;
     //private MaterialSearchView mSearchView;
-    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
+    private final String products_url ="http://semicolonsoft.com/clients/emc/api/find/products";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

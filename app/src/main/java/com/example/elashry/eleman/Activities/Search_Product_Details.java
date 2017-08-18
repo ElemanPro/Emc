@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Model.Image_details_Model;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
@@ -74,7 +75,7 @@ public class Search_Product_Details extends AppCompatActivity {
                 categ_icon.setImageResource(R.mipmap.takief);
                 pro_categ.setText("تكييفات");
             }
-            Picasso.with(Search_Product_Details.this).load("https://semicolonsoft.com/clients/emc/public/uploads/images/"+model.getProduct_Image_url().toString()).noFade().into(pro_image);
+            Picasso.with(Search_Product_Details.this).load(App_URL.image_url+model.getProduct_Image_url().toString()).noFade().into(pro_image);
             mProgressBar.setVisibility(View.GONE);
             pro_image.setVisibility(View.VISIBLE);
             //new asyn_task().execute(model.getPro_Image_url());

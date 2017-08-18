@@ -11,6 +11,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
 import com.example.elashry.eleman.Adapter.Washer_Adapter;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
@@ -28,7 +29,7 @@ public class Search_ItemCategory_Activity extends AppCompatActivity {
     private Toolbar mToolbar;
     private RecyclerView mRecyclerView;
     private List<Product_Model> pro_List;
-    private final String products_url ="https://semicolonsoft.com/clients/emc/api/find/products";
+    //private final String products_url ="http://semicolonsoft.com/clients/emc/api/find/products";
 
 
     @Override
@@ -36,7 +37,7 @@ public class Search_ItemCategory_Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_search__item_category);
         init_View();
-        Get_proData(products_url);
+        Get_proData(App_URL.product_url);
 
     }
 
@@ -58,7 +59,7 @@ public class Search_ItemCategory_Activity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Get_searchData(products_url,newText);
+                Get_searchData(App_URL.product_url,newText);
                 return false;
             }
         });

@@ -14,20 +14,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonArrayRequest;
 import com.daimajia.slider.library.Animations.DescriptionAnimation;
 import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.elashry.eleman.Adapter.MatgarAdapter;
+import com.example.elashry.eleman.Controller;
+import com.example.elashry.eleman.Model.AdvertsmentModel;
+import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
 
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 
 public class Category extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     private SliderLayout mDemoSlider;
     private final String ads_url ="http://semicolonsoft.com/app/api/find/advertisement";
+    private List<AdvertsmentModel> adsModelList;
     private Toolbar mCat_ToolBar;
     ImageView img ,img2 ,img3,img4,img5,img6;
     @Override
@@ -169,6 +183,48 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
 
     @Override
     public void onPageScrollStateChanged(int state) {
+    }
+
+    private void Get_matagar_pro_Data() {
+        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(ads_url,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+                        Log.e("data",response.toString());
+                        JSONObject object;
+                        adsModelList = new ArrayList<>();
+
+                        for (int index=0;index<response.length();index++)
+                        {
+                            try {
+                                object =response.getJSONObject(index);
+                                AdvertsmentModel adsModel = new AdvertsmentModel(object.get("ads_name").toString(),object.get("ads_detailes").toString(),object.get("ads_images").toString(),object.get("ads_date_add").toString());
+                                adsModelList.add(adsModel);
+
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if (adsModelList.size()>0)
+                        {
+
+
+                        }
+                        else if (adsModelList.size()==0)
+                        {
+                        }
+
+                    }
+                }
+                ,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
     }
 
 

@@ -49,7 +49,7 @@ public class Fragment_Matgar extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflat(R.layout.fragment_matgar,container,false);
+        View view = inflater.inflate(R.layout.fragment_matgar,container,false);
         init_View(view);
         Get_matagar_pro_Data();
         return view;

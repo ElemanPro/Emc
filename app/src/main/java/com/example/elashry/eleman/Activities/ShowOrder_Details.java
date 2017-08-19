@@ -79,7 +79,7 @@ public class ShowOrder_Details extends AppCompatActivity {
                                     dev_quantity.setText(orderModel.getQuantity().toString());
                                     order_date.setText(orderModel.getOrder_date().toString());
                                     dev_name.setText(object.get("product_title").toString());
-                                    Picasso.with(ShowOrder_Details.this).load("http://semicolonsoft.com/clients/emc/public/uploads/thumbs/"+object.get("product_photo").toString()).noFade().into(dev_image);
+                                    Picasso.with(ShowOrder_Details.this).load(App_URL.image_url+object.get("product_photo").toString()).noFade().into(dev_image);
                                     if (object.get("cat_id_fk").toString().equals("1"))
                                     {
                                         dev_categ.setText("غسالات");

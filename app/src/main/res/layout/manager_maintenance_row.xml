@@ -59,10 +59,10 @@
                     android:textSize="16sp"
                     android:textColor="@color/black"
                     android:padding="@dimen/pad_5dp"
+                    android:textStyle="bold"
                     android:scrollHorizontally="true"
                     android:ellipsize="end"
                     android:maxLines="1"
-
 
                     />
                 <TextView
@@ -71,7 +71,7 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center|right"
                     android:textColor="@color/black"
-                    android:textSize="@dimen/txt_16sp"
+                    android:textSize="@dimen/txt_14sp"
                     android:padding="@dimen/pad_5dp"
                     android:scrollHorizontally="true"
                     android:ellipsize="end"

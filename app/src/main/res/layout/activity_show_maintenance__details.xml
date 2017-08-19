@@ -83,7 +83,6 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp"
-                app:cardBackgroundColor="@color/background_color"
 
                 >
 
@@ -253,7 +252,6 @@
                 android:layout_height="wrap_content"
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp"
-                app:cardBackgroundColor="@color/background_color"
 
                 >
 

@@ -11,6 +11,9 @@ public class App_URL {
     public static final String app_matgar     ="http://semicolonsoft.com/clients/emc/api/find/app_matgar";
     public static final String app_orders     ="http://semicolonsoft.com/clients/emc/api/find/app_orders";
     public static final String tokens         ="http://semicolonsoft.com/clients/emc/api/find/tokens";
-    public static final String image_url      ="http://semicolonsoft.com/clients/emc/public/uploads/thumbs/";
-    //https://semicolonsoft.com/clients/emc/public/uploads/images/
+    public static final String image_url      ="http://semicolonsoft.com/clients/emc/public/uploads/images/";
+    //larg image good
+    //http://semicolonsoft.com/clients/emc/public/uploads/images/
+    //small image bad
+    //http://semicolonsoft.com/clients/emc/public/uploads/thumbs/
 }

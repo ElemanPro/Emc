@@ -6,7 +6,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.View;
+import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -37,16 +37,15 @@ public class Search_Matgar extends AppCompatActivity {
         setContentView(R.layout.activity_search__matgar);
         init_View();
         Get_matagar_pro_Data();
-        mSearchView.showSearch();
         mSearchView.showSearch(true);
     }
     private void init_View() {
 
-        mSearchView = (MaterialSearchView)findViewById(R.id.searchView);
-        mToolbar    = (Toolbar) findViewById(R.id.search_toolBar);
+        mSearchView = (MaterialSearchView)findViewById(R.id.search_matgar_searchView);
+        mToolbar    = (Toolbar) findViewById(R.id.search_matgar_search_toolBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayShowTitleEnabled(false);
-        mRecyclerView = (RecyclerView) findViewById(R.id.search_recyView);
+        mRecyclerView = (RecyclerView) findViewById(R.id.search_matgar_search_recyView);
         mRecyclerView.setLayoutManager(new GridLayoutManager(this,2));
         mSearchView.setOnSearchViewListener(new MaterialSearchView.SearchViewListener() {
             @Override
@@ -98,7 +97,6 @@ public class Search_Matgar extends AppCompatActivity {
                         {
                             MatgarAdapter adapter = new MatgarAdapter(Search_Matgar.this,matgarModelList);
                             mRecyclerView.setAdapter(adapter);
-                            mRecyclerView.setVisibility(View.VISIBLE);
                             adapter.notifyDataSetChanged();
 
 
@@ -106,6 +104,11 @@ public class Search_Matgar extends AppCompatActivity {
                         }
                         else if (matgarModelList.size()==0)
                         {
+                            Toast.makeText(Search_Matgar.this, "لايوجد نتائج لعرضها", Toast.LENGTH_SHORT).show();
+                            MatgarAdapter adapter = new MatgarAdapter(Search_Matgar.this,matgarModelList);
+                            mRecyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+
                         }
 
                     }
@@ -134,7 +137,7 @@ public class Search_Matgar extends AppCompatActivity {
                             try {
                                 object =response.getJSONObject(index);
                                 if (object.get("product_name").toString().startsWith(text_search.toString())) {
-                                    MatgarModel matgarModel = new MatgarModel(object.get("client_name").toString(), object.get("client_details").toString(), object.get("product_name").toString(), object.get("product_price").toString(), object.get("product_image").toString(), object.get("date").toString());
+                                    MatgarModel matgarModel = new MatgarModel(object.get("client_name").toString(), object.get("client_details").toString(), object.get("product_name").toString(), object.get("product_price").toString(), object.get("product_image").toString(), object.get("date_add").toString());
                                     matgarModelList.add(matgarModel);
                                 }
                             } catch (JSONException e) {

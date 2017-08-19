@@ -14,14 +14,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
             <android.support.v7.widget.Toolbar
-                android:id="@+id/search_toolBar"
+                android:id="@+id/search_matgar_search_toolBar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
                 app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
                 />
             <com.miguelcatalan.materialsearchview.MaterialSearchView
 
-                android:id="@+id/searchView"
+                android:id="@+id/search_matgar_searchView"
                 style="@style/MaterialSearchViewStyle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -29,11 +29,12 @@
                 android:textColor="@color/white"
 
 
+
                 />
         </FrameLayout>
     </android.support.design.widget.AppBarLayout>
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/search_recyView"
+        android:id="@+id/search_matgar_search_recyView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         ></android.support.v7.widget.RecyclerView>

@@ -16,34 +16,15 @@
     android:padding="@dimen/pad_5dp"
 
     >
-       <LinearLayout
-           android:layout_width="match_parent"
+       <TextView
+           android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           android:weightSum="2"
-           >
-           <TextView
-               android:layout_width="0dp"
-               android:layout_weight=".5"
-               android:layout_height="wrap_content"
-               android:text="حجز جهاز"
-               android:textColor="@color/colorPrimary"
-               android:textSize="@dimen/txt_14sp"
-               android:gravity="center|left"
-               />
-           <TextView
-               android:id="@+id/mngr_order_date"
-               android:layout_width="0dp"
-               android:layout_weight="1.5"
-               android:layout_height="wrap_content"
-               android:paddingTop="@dimen/pad_5dp"
-               android:paddingBottom="@dimen/pad_5dp"
-               android:gravity="center|right"
-               android:textColor="@color/colorPrimary"
-               android:textStyle="bold"
-               android:textSize="@dimen/txt_12sp"
-               />
-       </LinearLayout>
+           android:text="حجز جهاز"
+           android:textColor="@color/colorPrimary"
+           android:textSize="@dimen/txt_14sp"
+           android:gravity="center|left"
+           android:layout_gravity="right|center"
+           />
 
        <LinearLayout
            android:layout_width="match_parent"
@@ -51,6 +32,31 @@
            android:orientation="horizontal"
            android:weightSum="2"
            >
+           <FrameLayout
+               android:layout_width="0dp"
+               android:layout_weight=".5"
+               android:layout_height="match_parent">
+               <ImageView
+                   android:id="@+id/mngr_order_dev_image"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:scaleType="fitXY"
+                   android:visibility="visible"
+                   />
+               <ProgressBar
+                   android:id="@+id/mnger_order_progressBar"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content"
+                   style="?android:progressBarStyleSmall"
+                   android:layout_gravity="center"
+                   android:visibility="visible"
+                   android:indeterminate="true"
+                   android:indeterminateTintMode="src_in"
+                   android:indeterminateTint="@color/colorPrimary"
+
+                   />
+           </FrameLayout>
+
            <LinearLayout
                android:layout_width="0dp"
                android:layout_weight="1.5"
@@ -63,6 +69,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"
                    android:layout_gravity="right|center"
+                   android:gravity="left|center"
                    android:textSize="16sp"
                    android:textStyle="bold"
                    android:textColor="@color/black"
@@ -78,6 +85,7 @@
                    android:layout_width="match_parent"
                    android:layout_height="match_parent"
                    android:layout_gravity="center|right"
+                   android:gravity="left|center"
                    android:textColor="@color/black"
                    android:textSize="@dimen/txt_14sp"
                    android:padding="@dimen/pad_5dp"
@@ -87,30 +95,21 @@
                    />
 
            </LinearLayout>
-           <ImageView
-               android:id="@+id/mngr_order_dev_image"
-               android:layout_width="0dp"
-               android:layout_weight=".5"
-               android:layout_height="match_parent"
-               android:scaleType="fitXY"
-               android:visibility="gone"
-               />
-           <ProgressBar
-               android:id="@+id/mnger_order_progressBar"
-               android:layout_width="0dp"
-               android:layout_weight=".5"
-               android:layout_height="wrap_content"
-               style="?android:progressBarStyleSmall"
-               android:layout_gravity="center"
-               android:visibility="visible"
-               android:indeterminate="true"
-               android:indeterminateTintMode="src_in"
-               android:indeterminateTint="@color/colorPrimary"
 
-               />
+
        </LinearLayout>
 
-
+       <TextView
+           android:id="@+id/mngr_order_date"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingTop="@dimen/pad_5dp"
+           android:paddingBottom="@dimen/pad_5dp"
+           android:gravity="center|left"
+           android:textColor="@color/colorPrimary"
+           android:textStyle="bold"
+           android:textSize="@dimen/txt_12sp"
+           />
 
 </LinearLayout>
     <!--

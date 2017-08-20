@@ -4,6 +4,8 @@
     android:installLocation="preferExternal">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
 
     <application
         android:name=".Controller"
@@ -62,8 +64,12 @@
         <activity
             android:name=".Activities.Search_ItemCategory_Activity"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Activities.Search_Matgar"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".Activities.Search_Matgar"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".Activities.Check_Internet_connection"
+            android:theme="@style/AppTheme.NoActionBar"
+            ></activity>
     </application>
 
 </manifest>

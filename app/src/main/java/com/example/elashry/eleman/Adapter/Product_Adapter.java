@@ -7,14 +7,17 @@ import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
 import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.example.elashry.eleman.Activities.Order;
 import com.example.elashry.eleman.Activities.Zooming_Image;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Model.Image_details_Model;
@@ -33,13 +36,13 @@ import java.util.List;
  * Created by Delta on 01/08/2017.
  */
 
-public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHoler>{
+public class Product_Adapter extends RecyclerView.Adapter <Product_Adapter.ViewHoler>{
 
     private Context mContext;
     LayoutInflater inflater;
     private List<Product_Model> pro_List;
 
-    public Washer_Adapter(Context mContext,List<Product_Model> pro_List) {
+    public Product_Adapter(Context mContext, List<Product_Model> pro_List) {
         this.mContext = mContext;
         this.pro_List =pro_List;
        inflater = LayoutInflater.from(mContext);
@@ -54,7 +57,7 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
     }
 
     @Override
-    public void onBindViewHolder(ViewHoler holder, final int position) {
+    public void onBindViewHolder(final ViewHoler holder, final int position) {
 
         Picasso.with(mContext).load(App_URL.image_url+pro_List.get(position).getProduct_Image_url().toString()).noFade().into(holder.product_image);
         holder.prog_bar.setVisibility(View.GONE);
@@ -107,6 +110,29 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
                 mContext.startActivity(intent);
             }
         });
+        holder.product_popmenu_icon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PopupMenu popupMenu = new PopupMenu(mContext,view);
+                popupMenu.getMenuInflater().inflate(R.menu.pro_reg_menu,popupMenu.getMenu());
+                popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
+                    @Override
+                    public boolean onMenuItemClick(MenuItem item) {
+                        if (item.getItemId()==R.id.pro_reg_menu)
+                        {
+                            Product_Model model = pro_List.get(position);
+                            Intent intent = new Intent(mContext, Order.class);
+                            intent.putExtra("pro_data",model);
+                            mContext.startActivity(intent);
+                            return true;
+
+                        }
+                        return false;
+                    }
+                });
+                popupMenu.show();
+            }
+        });
 
     }
 
@@ -115,17 +141,17 @@ public class Washer_Adapter extends RecyclerView.Adapter <Washer_Adapter.ViewHol
         return pro_List.size();
     }
     class ViewHoler extends RecyclerView.ViewHolder{
-        ImageView product_image,categ_icon;
+        ImageView product_image,categ_icon,product_popmenu_icon;
         TextView product_categ,product_name;
         ProgressBar prog_bar;
         public ViewHoler(View itemView) {
             super(itemView);
-            product_image     = (ImageView) itemView.findViewById(R.id.product_image);
-            categ_icon        = (ImageView) itemView.findViewById(R.id.categ_icon);
-            product_categ     = (TextView) itemView.findViewById(R.id.product_categ);
-            product_name      = (TextView) itemView.findViewById(R.id.product_name);
-            prog_bar          = (ProgressBar) itemView.findViewById(R.id.prog_bar);
-
+            product_image        = (ImageView) itemView.findViewById(R.id.product_image);
+            categ_icon           = (ImageView) itemView.findViewById(R.id.categ_icon);
+            product_categ        = (TextView) itemView.findViewById(R.id.product_categ);
+            product_name         = (TextView) itemView.findViewById(R.id.product_name);
+            prog_bar             = (ProgressBar) itemView.findViewById(R.id.prog_bar);
+            product_popmenu_icon = (ImageView) itemView.findViewById(R.id.product_popmenu_icon);
         }
 
     }

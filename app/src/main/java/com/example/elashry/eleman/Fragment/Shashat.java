@@ -2,7 +2,9 @@ package com.example.elashry.eleman.Fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -20,7 +22,8 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.elashry.eleman.Adapter.Washer_Adapter;
+import com.example.elashry.eleman.Activities.Check_Internet_connection;
+import com.example.elashry.eleman.Adapter.Product_Adapter;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.Product_Model;
@@ -41,7 +44,6 @@ public class Shashat extends Fragment {
     private RecyclerView mrRecyclerView;
     private Context mContext;
     private List<Product_Model> pro_List;
-    //private final String products_url ="http://semicolonsoft.com/clients/emc/api/find/products";
     private TextView nopro_txt;
     private LinearLayout progBar_container;
     private ProgressBar prog_bar;
@@ -59,6 +61,7 @@ public class Shashat extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.shashat,container,false);
         init_View(view);
+
         Get_proData(App_URL.product_url);
         mRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
@@ -92,7 +95,7 @@ public class Shashat extends Fragment {
                         }
                         if (pro_List.size()>0)
                         {
-                            Washer_Adapter adapter = new Washer_Adapter(mContext,pro_List);
+                            Product_Adapter adapter = new Product_Adapter(mContext,pro_List);
                             mrRecyclerView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                             mrRecyclerView.setVisibility(View.VISIBLE);
@@ -114,6 +117,17 @@ public class Shashat extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         mRefreshLayout.setRefreshing(false);
+                        if (error.getMessage().toString().contains("java.net.UnknownHostException: Unable to resolve host \"semicolonsoft.com\": No address associated with hostname"))
+                        {
+                            mrRecyclerView.setVisibility(View.GONE);
+                            progBar_container.setVisibility(View.GONE);
+                        }
+                        else
+                        {
+                            mrRecyclerView.setVisibility(View.VISIBLE);
+                            progBar_container.setVisibility(View.GONE);
+
+                        }
 
                     }
                 }
@@ -137,7 +151,28 @@ public class Shashat extends Fragment {
 
         nopro_txt         = (TextView) view.findViewById(R.id.nopro_txt);
 
+
+
+    }
+    private void Network_aviliable()
+    {
+        ConnectivityManager cm = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean data = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+
+        if (!wifi && !data)
+        {
+            startActivity(new Intent(mContext, Check_Internet_connection.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+        }
+
+        else {
+        }
     }
 
-
+    @Override
+    public void onStart() {
+        super.onStart();
+        Network_aviliable();
+    }
 }

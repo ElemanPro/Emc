@@ -2,7 +2,9 @@ package com.example.elashry.eleman.Fragment;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -16,12 +18,12 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.elashry.eleman.Adapter.Washer_Adapter;
+import com.example.elashry.eleman.Activities.Check_Internet_connection;
+import com.example.elashry.eleman.Adapter.Product_Adapter;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.Product_Model;
@@ -47,6 +49,7 @@ public class Takief extends Fragment {
     private LinearLayout progBar_container;
     private ProgressBar prog_bar;
     private SwipeRefreshLayout mRefreshLayout;
+
 
     public Takief() {
         // Required empty public constructor
@@ -94,7 +97,7 @@ public class Takief extends Fragment {
                         }
                         if (pro_List.size()>0)
                         {
-                            Washer_Adapter adapter = new Washer_Adapter(mContext,pro_List);
+                            Product_Adapter adapter = new Product_Adapter(mContext,pro_List);
                             mrRecyclerView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
                             mrRecyclerView.setVisibility(View.VISIBLE);
@@ -117,7 +120,18 @@ public class Takief extends Fragment {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         mRefreshLayout.setRefreshing(false);
-                        Toast.makeText(mContext,error.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("fff",error.getMessage());
+                        if (error.getMessage().toString().contains("java.net.UnknownHostException: Unable to resolve host \"semicolonsoft.com\": No address associated with hostname"))
+                        {
+                            mrRecyclerView.setVisibility(View.GONE);
+                            progBar_container.setVisibility(View.GONE);
+                        }
+                        else
+                        {
+                            mrRecyclerView.setVisibility(View.VISIBLE);
+                            progBar_container.setVisibility(View.GONE);
+
+                        }
                         Log.e("errrrr",error.getMessage()+"");
                     }
                 }
@@ -138,10 +152,30 @@ public class Takief extends Fragment {
 
         progBar_container = (LinearLayout) view.findViewById(R.id.progressBar_container);
         progBar_container.setVisibility(View.VISIBLE);
-
         nopro_txt         = (TextView) view.findViewById(R.id.nopro_txt);
+
+
 
     }
 
+    private void Network_aviliable()
+    {
+        ConnectivityManager cm = (ConnectivityManager)getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean data = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+
+        if (!wifi && !data)
+        {
+            startActivity(new Intent(mContext, Check_Internet_connection.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+        }
+        else {
+        }
+    }
+    @Override
+    public void onStart() {
+        super.onStart();
+        Network_aviliable();
+    }
 
 }

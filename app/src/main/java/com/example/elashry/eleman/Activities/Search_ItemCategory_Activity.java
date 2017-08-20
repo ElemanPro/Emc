@@ -10,7 +10,7 @@ import android.util.Log;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
-import com.example.elashry.eleman.Adapter.Washer_Adapter;
+import com.example.elashry.eleman.Adapter.Product_Adapter;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.Product_Model;
@@ -98,7 +98,7 @@ public class Search_ItemCategory_Activity extends AppCompatActivity {
                         }
                         if (pro_List.size()>0)
                         {
-                            Washer_Adapter adapter = new Washer_Adapter(Search_ItemCategory_Activity.this,pro_List);
+                            Product_Adapter adapter = new Product_Adapter(Search_ItemCategory_Activity.this,pro_List);
                             mRecyclerView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 
@@ -148,7 +148,7 @@ public class Search_ItemCategory_Activity extends AppCompatActivity {
                         }
                         if (pro_List.size()>0)
                         {
-                            Washer_Adapter adapter = new Washer_Adapter(Search_ItemCategory_Activity.this,pro_List);
+                            Product_Adapter adapter = new Product_Adapter(Search_ItemCategory_Activity.this,pro_List);
                             mRecyclerView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 
@@ -157,7 +157,7 @@ public class Search_ItemCategory_Activity extends AppCompatActivity {
                         else if (pro_List.size()==0)
                         {
 
-                            Washer_Adapter adapter = new Washer_Adapter(Search_ItemCategory_Activity.this,pro_List);
+                            Product_Adapter adapter = new Product_Adapter(Search_ItemCategory_Activity.this,pro_List);
                             mRecyclerView.setAdapter(adapter);
                             adapter.notifyDataSetChanged();
 

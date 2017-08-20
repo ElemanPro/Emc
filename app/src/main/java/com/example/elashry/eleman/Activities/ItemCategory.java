@@ -1,6 +1,8 @@
 package com.example.elashry.eleman.Activities;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.content.ContextCompat;
@@ -49,6 +51,7 @@ public class  ItemCategory extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_item_category);
         init_View();
+        Network_aviliable();
         create_Tab();
         setUp_viewPager();
        // get_suggesions(products_url);
@@ -79,6 +82,7 @@ public class  ItemCategory extends AppCompatActivity {
                 viewPager.setCurrentItem(tab.getPosition());
                 if (tab.getPosition()==0)
                 {
+
                     mTab.setSelectedTabIndicatorColor(ContextCompat.getColor(ItemCategory.this,R.color.index0));
                 }
                 else if (tab.getPosition()==1)
@@ -230,6 +234,25 @@ public class  ItemCategory extends AppCompatActivity {
         return true;
     }
 
+    private void Network_aviliable()
+    {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean data = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
 
+        if (!wifi && !data)
+        {
+            Intent intent = new Intent(ItemCategory.this,Check_Internet_connection.class);
+            startActivity(intent);
+        }
+        else {
 
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        finish();
+    }
 }

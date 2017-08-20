@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<color name="colorPrimary">#405FC1</color>
-<color name="colorPrimaryDark">#ffaa1c</color>
+<color name="colorPrimary">#31334A</color>
+<color name="colorPrimaryDark">#844D9E</color>
 <color name="colorAccent">#31334A</color>
 <color name="shadowColorRadial">#555555</color>
 
-    <color name="background_color">#FF8F93C9</color>
+    <color name="background_color">#844D9E</color>
     <color name="back">#31334A</color>
 
 
@@ -43,12 +43,12 @@
 <color name="primary_light">#31334A</color>
 <color name="accent">#000000</color>
 <color name="primary_text">#31334A</color>
-<color name="secondary_text">#FF8F93C9</color>
+<color name="secondary_text">#844D9E</color>
 <color name="icons">#31334A</color>
 <color name="divider">#31334A</color>
-<color name="background">#FF8F93C9</color>
+<color name="background">#844D9E</color>
 <color name="backgroundDark">#31334A</color>
-<color name="txt">#FF8F93C9</color>
+<color name="txt">#844D9E</color>
 <color name="menu_textColor">@color/colorPrimary</color>
 <color name="textColor">#333333</color>
 <color name="bg">#EC6C3F</color>
@@ -161,7 +161,7 @@
 <!-- BLUE -->
 <color name="blue_50">#e7e9fd</color>
 <color name="blue_100">#d0d9ff</color>
-<color name="blue_200">#FF8F93C9</color>
+<color name="blue_200">#367ABD</color>
 <color name="blue_300">#91a7ff</color>
 <color name="blue_400">#738ffe</color>
 <color name="blue_500">#5677fc</color>

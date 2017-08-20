@@ -131,7 +131,7 @@ public class Maintenance extends AppCompatActivity {
             progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
             progressDialog.show();
             StringRequest strReq = new StringRequest(Request.Method.POST,
-                    "http://semicolonsoft.com/app/api/addmentanaceorder", new Response.Listener<String>() {
+                    "http://semicolonsoft.com/clients/emc/api/addmentanaceorder", new Response.Listener<String>() {
 
                 @Override
                 public void onResponse(String response) {
@@ -147,7 +147,7 @@ public class Maintenance extends AppCompatActivity {
                 public void onErrorResponse(VolleyError error) {
                     progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(),
-                            error.getMessage(), Toast.LENGTH_LONG).show();
+                            "555", Toast.LENGTH_LONG).show();
 
                 }
             }) {

@@ -67,7 +67,7 @@ public class Order extends AppCompatActivity {
             progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
             progressDialog.show();
             StringRequest strReq = new StringRequest(Request.Method.POST,
-                    "http://semicolonsoft.com/app/api/addorders", new Response.Listener<String>() {
+                    "http://semicolonsoft.com/clients/emc/api/addorders", new Response.Listener<String>() {
 
                 @Override
                 public void onResponse(String response) {

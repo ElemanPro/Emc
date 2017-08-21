@@ -1,9 +1,7 @@
 package com.example.elashry.eleman.Activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
@@ -11,7 +9,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Response;
@@ -22,11 +19,12 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.example.elashry.eleman.Adapter.MatgarAdapter;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.AdvertsmentModel;
-import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
+import com.squareup.picasso.Picasso;
+import com.squareup.picasso.RequestCreator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -40,8 +38,9 @@ import java.util.List;
 public class Category extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
 
     private SliderLayout mDemoSlider;
-    private final String ads_url ="http://semicolonsoft.com/app/api/find/advertisement";
+    private final String ads_url =App_URL.advertisement;
     private List<AdvertsmentModel> adsModelList;
+    private ArrayList<String> names,imges,links;
     private Toolbar mCat_ToolBar;
     ImageView img ,img2 ,img3,img4,img5,img6;
     @Override
@@ -107,23 +106,30 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
     }
 
     private void init_View() {
+        Get_Ads_Data();
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
-        HashMap<String, Integer> file_maps = new HashMap<String, Integer>();
-        file_maps.put("عبوده العشماوى", R.drawable.cover);
-        file_maps.put(" صيدلية الامل", R.drawable.repair);
-        file_maps.put("شركة سيمي  كولون ", R.drawable.semi);
-        file_maps.put(" مركز الايمان", R.drawable.pic);
-        file_maps.put(" غلاب لخدمات المحمول", R.drawable.cover);
-        file_maps.put("  معتز لخدات الدش", R.drawable.tv);
-        file_maps.put(" الشناوى للانترنت", R.drawable.cover);
+        HashMap<String, String> file_maps = new HashMap<>();
 
+          for (int i=0;i<3;i++){
+           file_maps.put(adsModelList.get(i).getAds_name().toString(),  Picasso.with(this).load(App_URL.image_url+adsModelList.get(i).getAds_image()).toString());
+
+        }
+//        Toast.makeText(this, names.get(0), Toast.LENGTH_SHORT).show();
+//        file_maps.put("عبوده العشماوى", R.drawable.cover);
+//        file_maps.put(" صيدلية الامل", R.drawable.repair);
+//        file_maps.put("شركة سيمي  كولون ", R.drawable.semi);
+//        file_maps.put(" مركز الايمان", R.drawable.pic);
+//        file_maps.put(" غلاب لخدمات المحمول", R.drawable.cover);
+//        file_maps.put("  معتز لخدات الدش", R.drawable.tv);
+//        file_maps.put(" الشناوى للانترنت", R.drawable.cover);
+//
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
             textSliderView.description(name)
-                    .image(file_maps.get(name))
+                    .image(String.valueOf(file_maps.get(name)))
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(this);
 
@@ -185,7 +191,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
     public void onPageScrollStateChanged(int state) {
     }
 
-    private void Get_matagar_pro_Data() {
+    private void Get_Ads_Data() {
         JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(ads_url,
                 new Response.Listener<JSONArray>() {
                     @Override
@@ -198,9 +204,13 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
                         {
                             try {
                                 object =response.getJSONObject(index);
+
                                 AdvertsmentModel adsModel = new AdvertsmentModel(object.get("ads_name").toString(),object.get("ads_detailes").toString(),object.get("ads_images").toString(),object.get("ads_date_add").toString());
                                 adsModelList.add(adsModel);
-
+//                                names.add(object.get("ads_name").toString());
+//                                imges.add(object.get("ads_images").toString());
+//                                links.add(object.get("ads_detailes").toString());
+                                Toast.makeText(Category.this, adsModelList.get(0)+"", Toast.LENGTH_SHORT).show();
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }

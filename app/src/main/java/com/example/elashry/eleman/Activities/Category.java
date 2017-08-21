@@ -109,20 +109,20 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
         Get_Ads_Data();
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
-        HashMap<String, String> file_maps = new HashMap<>();
+        HashMap<String, Integer> file_maps = new HashMap<>();
 
           for (int i=0;i<3;i++){
-           file_maps.put(adsModelList.get(i).getAds_name().toString(),  Picasso.with(this).load(App_URL.image_url+adsModelList.get(i).getAds_image()).toString());
+//           file_maps.put(adsModelList.get(i).getAds_name().toString(),  Picasso.with(this).load(App_URL.image_url+adsModelList.get(i).getAds_image()).toString());
 
         }
-//        Toast.makeText(this, names.get(0), Toast.LENGTH_SHORT).show();
-//        file_maps.put("عبوده العشماوى", R.drawable.cover);
-//        file_maps.put(" صيدلية الامل", R.drawable.repair);
-//        file_maps.put("شركة سيمي  كولون ", R.drawable.semi);
-//        file_maps.put(" مركز الايمان", R.drawable.pic);
-//        file_maps.put(" غلاب لخدمات المحمول", R.drawable.cover);
-//        file_maps.put("  معتز لخدات الدش", R.drawable.tv);
-//        file_maps.put(" الشناوى للانترنت", R.drawable.cover);
+     //   Toast.makeText(this, adsModelList.get(0).getAds_name().toString(), Toast.LENGTH_SHORT).show();
+        file_maps.put("عبوده العشماوى", R.drawable.cover);
+        file_maps.put(" صيدلية الامل", R.drawable.repair);
+        file_maps.put("شركة سيمي  كولون ", R.drawable.semi);
+        file_maps.put(" مركز الايمان", R.drawable.pic);
+        file_maps.put(" غلاب لخدمات المحمول", R.drawable.cover);
+        file_maps.put("  معتز لخدات الدش", R.drawable.tv);
+        file_maps.put(" الشناوى للانترنت", R.drawable.cover);
 //
 
         for (String name : file_maps.keySet()) {
@@ -175,6 +175,8 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
     @Override
     public void onSliderClick(BaseSliderView slider) {
         Toast.makeText(this, slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
+        Intent i=new Intent(Category.this,WebViiew.class);
+        startActivity(i);
     }
 
 

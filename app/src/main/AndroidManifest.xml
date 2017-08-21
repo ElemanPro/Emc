@@ -70,6 +70,9 @@
         <activity android:name=".Activities.Check_Internet_connection"
             android:theme="@style/AppTheme.NoActionBar"
             ></activity>
+        <activity
+            android:name=".Activities.WebViiew"
+            android:theme="@style/AppTheme.NoActionBar" />
     </application>
 
 </manifest>

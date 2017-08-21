@@ -205,6 +205,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
                         for (int index=0;index<response.length();index++)
                         {
                             try {
+
                                 object =response.getJSONObject(index);
 
                                 AdvertsmentModel adsModel = new AdvertsmentModel(object.get("ads_name").toString(),object.get("ads_detailes").toString(),object.get("ads_images").toString(),object.get("ads_date_add").toString());

@@ -133,11 +133,11 @@ public class Order extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
-                params.put("client_name", c_name);
-                params.put("client_phone", c_phone);
-                params.put("order_location", o_address);
-                params.put("quantity", o_amount);
-                params.put("order_date", date);
+                params.put("client_name",c_name);
+                params.put("client_phone",c_phone);
+                params.put("order_location",o_address);
+                params.put("quantity",o_amount);
+                params.put("order_date",date);
 
                 return params;
             }

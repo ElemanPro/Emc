@@ -64,9 +64,9 @@
                 app:cardCornerRadius="5dp"
                 app:cardElevation="5dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="15dp"
+                android:layout_marginTop="10dp"
                 app:contentPadding="5dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 >
                 <TextView
                     android:layout_width="match_parent"
@@ -235,7 +235,7 @@
                 android:layout_gravity="center"
                 android:layout_marginTop="15dp"
                 app:contentPadding="5dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="10dp"
                 >
                 <TextView
                     android:layout_width="match_parent"

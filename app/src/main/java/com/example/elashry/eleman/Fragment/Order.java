@@ -43,7 +43,6 @@ public class Order extends Fragment {
     private TextView no_order_txt;
     private RecyclerView mRecyclerView;
     Context mContext;
-    //private final String order_url ="http://semicolonsoft.com/clients/emc/api/find/app_orders";
     private ProgressBar prog_bar;
     private SwipeRefreshLayout mRefreshLayout;
     @Nullable

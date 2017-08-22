@@ -26,9 +26,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Order extends AppCompatActivity {
-    EditText cname,cphone,order_address,order_amount;
-    ProgressDialog progressDialog;
-    AlertDialog.Builder mdialog;
+    private EditText cname,cphone,order_address,order_amount;
+    private ProgressDialog progressDialog;
+    private AlertDialog.Builder mdialog;
+    private Product_Model model;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,7 +58,7 @@ public class Order extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getExtras()!=null)
         {
-            Product_Model model = (Product_Model) intent.getSerializableExtra("pro_data");
+            model = (Product_Model) intent.getSerializableExtra("pro_data");
         }
     }
 
@@ -101,14 +102,14 @@ public class Order extends AppCompatActivity {
             String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa").format(new Date().getTime());
             progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
             progressDialog.show();
-            add_order(client_name,client_phone,order_location,order_quantity,date);
+            add_order(client_name,client_phone,order_location,order_quantity,date,model);
 
         }
     }
-    private void add_order(final String c_name, final String c_phone, final String o_address, final String o_amount,final String date)
+    private void add_order(final String c_name, final String c_phone, final String o_address, final String o_amount, final String date, final Product_Model pro_model)
     {
         StringRequest strReq = new StringRequest(Request.Method.POST,
-                App_URL.app_orders, new Response.Listener<String>() {
+                App_URL.add_order, new Response.Listener<String>() {
 
             @Override
             public void onResponse(String response) {
@@ -133,6 +134,7 @@ public class Order extends AppCompatActivity {
             protected Map<String, String> getParams() {
                 // Posting params to register url
                 Map<String, String> params = new HashMap<String, String>();
+                params.put("product_id_fk",pro_model.getProduct_id_fk().toString());
                 params.put("client_name",c_name);
                 params.put("client_phone",c_phone);
                 params.put("order_location",o_address);

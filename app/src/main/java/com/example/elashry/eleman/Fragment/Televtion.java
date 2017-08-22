@@ -88,7 +88,7 @@ public class Televtion extends Fragment {
                                 object =response.getJSONObject(index);
                                 if (object.get("cat_id_fk").toString().equals("4"))
                                 {
-                                    pro_List.add(new Product_Model(object.get("product_id_fk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
+                                    pro_List.add(new Product_Model(object.get("product_id_pk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

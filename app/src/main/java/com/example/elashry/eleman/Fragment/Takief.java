@@ -89,7 +89,7 @@ public class Takief extends Fragment {
 
                                 if (object.get("cat_id_fk").toString().equals("6"))
                                 {
-                                    pro_List.add(new Product_Model(object.get("product_id_fk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
+                                    pro_List.add(new Product_Model(object.get("product_id_pk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

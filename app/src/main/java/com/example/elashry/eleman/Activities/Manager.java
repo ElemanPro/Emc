@@ -12,6 +12,7 @@ import android.view.MenuItem;
 
 import com.example.elashry.eleman.Adapter.ViewPagerAdapter;
 import com.example.elashry.eleman.Fragment.Maintenance;
+import com.example.elashry.eleman.Fragment.Matgar_Orders;
 import com.example.elashry.eleman.Fragment.Order;
 import com.example.elashry.eleman.R;
 
@@ -37,11 +38,12 @@ public class Manager extends AppCompatActivity {
         pager= (ViewPager) findViewById(R.id.mngr_viewPager);
 
         mTab.addTab(mTab.newTab().setText("صيانه"));
-        mTab.addTab(mTab.newTab().setText("حجز"));
-
+        mTab.addTab(mTab.newTab().setText("حجز(قطع غيار)"));
+        mTab.addTab(mTab.newTab().setText("حجز(متجر)"));
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager());
         adapter.addFragment(new Maintenance());
         adapter.addFragment(new Order());
+        adapter.addFragment(new Matgar_Orders());
 
         pager.setAdapter(adapter);
         pager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(mTab));

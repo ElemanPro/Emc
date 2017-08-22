@@ -28,11 +28,10 @@
             android:background="@color/colorPrimary"
             app:tabSelectedTextColor="@color/white"
             app:tabMode="fixed"
-            app:tabTextColor="#bbdefb"
+            app:tabTextColor="#bdbdbd"
             app:tabIndicatorHeight="3dp"
             app:tabIndicatorColor="@color/white"
-            app:tabTextAppearance="@android:style/TextAppearance.Medium"
-
+            app:layout_scrollFlags="scroll|enterAlways"
             />
     </android.support.design.widget.AppBarLayout>
 

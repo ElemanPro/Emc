@@ -70,4 +70,5 @@
         <!-- Hint for edit text -->
         <item name="android:hint">@string/search_hint</item>
     </style>
+
 </resources>

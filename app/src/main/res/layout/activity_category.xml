@@ -227,7 +227,7 @@
                             android:paddingTop="@dimen/pad_10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="حجز واعلان"
+                            android:text=" الوصول"
                             android:textStyle="bold"
                             />
                     </LinearLayout>

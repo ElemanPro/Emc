@@ -44,5 +44,6 @@ dependencies {
     compile 'com.github.ViksaaSkool:AwesomeSplash:v1.0.0'
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
     compile 'com.gjiazhe:PanoramaImageView:1.0'
+    compile 'com.google.android.gms:play-services-maps:10.0.1'
     testCompile 'junit:junit:4.12'
 }

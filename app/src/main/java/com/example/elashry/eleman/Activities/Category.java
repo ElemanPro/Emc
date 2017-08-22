@@ -36,11 +36,11 @@ import java.util.List;
 
 
 public class Category extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
-
+    HashMap<String, Integer> file_maps;
     private SliderLayout mDemoSlider;
     private final String ads_url =App_URL.advertisement;
     private List<AdvertsmentModel> adsModelList;
-    private ArrayList<String> names,imges,links;
+    public static ArrayList<String> names,imges,links;
     private Toolbar mCat_ToolBar;
     ImageView img ,img2 ,img3,img4,img5,img6;
     @Override
@@ -76,7 +76,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i =new Intent(Category.this,Order.class);
+                Intent i =new Intent(Category.this,MapsActivity.class);
                 startActivity(i);
             }
         });
@@ -109,27 +109,23 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
         Get_Ads_Data();
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
 
-        HashMap<String, Integer> file_maps = new HashMap<>();
+        file_maps = new HashMap<>();
 
-          for (int i=0;i<3;i++){
-//           file_maps.put(adsModelList.get(i).getAds_name().toString(),  Picasso.with(this).load(App_URL.image_url+adsModelList.get(i).getAds_image()).toString());
-
-        }
-     //   Toast.makeText(this, adsModelList.get(0).getAds_name().toString(), Toast.LENGTH_SHORT).show();
+      //  Toast.makeText(this, names.get(0).toString(), Toast.LENGTH_SHORT).show();
         file_maps.put("عبوده العشماوى", R.drawable.cover);
-        file_maps.put(" صيدلية الامل", R.drawable.repair);
-        file_maps.put("شركة سيمي  كولون ", R.drawable.semi);
-        file_maps.put(" مركز الايمان", R.drawable.pic);
-        file_maps.put(" غلاب لخدمات المحمول", R.drawable.cover);
-        file_maps.put("  معتز لخدات الدش", R.drawable.tv);
-        file_maps.put(" الشناوى للانترنت", R.drawable.cover);
+//        file_maps.put(" صيدلية الامل", R.drawable.repair);
+//        file_maps.put("شركة سيمي  كولون ", R.drawable.semi);
+//        file_maps.put(" مركز الايمان", R.drawable.pic);
+//        file_maps.put(" غلاب لخدمات المحمول", R.drawable.cover);
+//        file_maps.put("  معتز لخدات الدش", R.drawable.tv);
+//        file_maps.put(" الشناوى للانترنت", R.drawable.cover);
 //
 
         for (String name : file_maps.keySet()) {
             TextSliderView textSliderView = new TextSliderView(this);
             // initialize a SliderLayout
             textSliderView.description(name)
-                    .image(String.valueOf(file_maps.get(name)))
+                    .image(name)
                     .setScaleType(BaseSliderView.ScaleType.Fit)
                     .setOnSliderClickListener(this);
 
@@ -201,7 +197,9 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
                         Log.e("data",response.toString());
                         JSONObject object;
                         adsModelList = new ArrayList<>();
-
+                        names = new ArrayList<>();
+                        imges = new ArrayList<>();
+                        links = new ArrayList<>();
                         for (int index=0;index<response.length();index++)
                         {
                             try {
@@ -210,10 +208,10 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
 
                                 AdvertsmentModel adsModel = new AdvertsmentModel(object.get("ads_name").toString(),object.get("ads_detailes").toString(),object.get("ads_images").toString(),object.get("ads_date_add").toString());
                                 adsModelList.add(adsModel);
-//                                names.add(object.get("ads_name").toString());
-//                                imges.add(object.get("ads_images").toString());
-//                                links.add(object.get("ads_detailes").toString());
-                                Toast.makeText(Category.this, adsModelList.get(0)+"", Toast.LENGTH_SHORT).show();
+                               names.add(object.get("ads_name").toString());
+                               imges.add(object.get("ads_images").toString());
+                               links.add(object.get("ads_detailes").toString());
+
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
@@ -222,6 +220,15 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
                         {
 
 
+                            Toast.makeText(Category.this, names.get(1)+"", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Category.this, imges.get(1)+"", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Category.this, links.get(1)+"", Toast.LENGTH_SHORT).show();
+                          //   file_maps = new HashMap<>();
+
+                            for (int i=0;i<names.size();i++){
+                        //  file_maps.put(names.get(i).toString(), App_URL.image_url+imges.get(i).toString());
+
+                            }
                         }
                         else if (adsModelList.size()==0)
                         {

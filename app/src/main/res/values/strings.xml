@@ -11,9 +11,9 @@
     <string name="closebutton">Close Button for Activity</string>
     <string name="newUser">Not a Member yet? Sign Up here.</string>
     <string name="fullName">الاسم العميل</string>
-    <string name="mobileNumber">رقم التلفون</string>
-    <string name="location"> العنوان</string>
-    <string name="type">نوع الجهاز</string>
+    <string name="mobileNumber">رقم المحمول</string>
+    <string name="location">عنوان الطلب</string>
+    <string name="type">اسم الجهاز</string>
     <string name="terms_conditions">متاكد من البيانات السابقه واريد الارسال</string>
     <string name="signUp">عمل طلب صيانه</string>
     <string name="already_user">Already have Account? Login here.</string>

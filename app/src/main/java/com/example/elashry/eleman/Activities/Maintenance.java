@@ -1,47 +1,48 @@
 package com.example.elashry.eleman.Activities;
 
-import android.app.DatePickerDialog;
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
-import java.text.DateFormat;
-import java.util.Calendar;
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.R;
 
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
-import java.util.Locale;
 import java.util.Map;
 
 public class Maintenance extends AppCompatActivity {
-    Button b1;
+    Button maintenance_order_Btn;
     EditText cname,cphone,caddress,dtype ,marka ,damage;
-   // Calendar myCalendar;
     Spinner spinner;
     ProgressDialog progressDialog;
-    String ss;
-    String dates;
-     String [] state=new String[]{"داخل الضمان ","خارج الضمان"};
+    AlertDialog.Builder mdialog;
+
+     String [] spinner_array=new String[]{"حاله الجهاز من الضمان","داخل الضمان","خارج الضمان"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maintenance);
-        b1= (Button) findViewById(R.id.signUpBtn);
-        //dateorder= (EditText) findViewById(R.id.date);
+        maintenance_order_Btn= (Button) findViewById(R.id.maintenance_order_Btn);
         spinner= (Spinner) findViewById(R.id.mySpinner);
         cname= (EditText) findViewById(R.id.fullName);
         cphone= (EditText) findViewById(R.id.mobileNumber);
@@ -50,88 +51,103 @@ public class Maintenance extends AppCompatActivity {
         marka= (EditText) findViewById(R.id.marka);
         damage= (EditText) findViewById(R.id.damage);
 
-        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
-         dates = df.format(Calendar.getInstance().getTime());
-
-
-
-//        b1.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i =new Intent(Maintenance.this,Category.class);
-//                startActivity(i);
-//            }
-//        });
-      /*    myCalendar = Calendar.getInstance();
-        final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
-
-            @Override
-            public void onDateSet(DatePicker view, int year, int monthOfYear,
-                                  int dayOfMonth) {
-                // TODO Auto-generated method stub
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH, monthOfYear);
-                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
-                updateLabel();
-            }
-
-        };
-
-        dateorder.setOnClickListener(new View.OnClickListener() {
-
-            @Override
-            public void onClick(View v) {
-                // TODO Auto-generated method stub
-                new DatePickerDialog(Maintenance.this, date, myCalendar
-                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
-*/
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1,spinner_array);
+        spinner.setAdapter(adapter);
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
-                // your code here
-                ss=state[position];
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                TextView textView = (TextView) adapterView.getChildAt(0);
+                textView.setTextColor(Color.WHITE);
             }
 
             @Override
-            public void onNothingSelected(AdapterView<?> parentView) {
-                // your code here
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
             }
-
         });
+        mdialog       = new AlertDialog.Builder(this);
+        mdialog.setCancelable(false);
+        mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-
+            }
+        });
         progressDialog=new ProgressDialog(this);
         progressDialog.setCancelable(false);
 
 
     }
-   /* private void updateLabel() {
-        String myFormat = "dd/MM/yyyy"; //In which you need put here
-        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
 
-        dateorder.setText(sdf.format(myCalendar.getTime()));
-    }
-*/
     public void registerOrder(View view) {
-        if(   cname.getText().toString().isEmpty()&&cphone.getText().toString().isEmpty()&&
-                caddress.getText().toString().isEmpty()&&dtype.getText().toString().isEmpty()&&
-               marka.getText().toString().isEmpty()&&damage.getText().toString().isEmpty())
+        String client_name          = cname.getText().toString();
+        String client_phone         = cphone.getText().toString();
+        String client_address       = caddress.getText().toString();
+        String device_name          = dtype.getText().toString();
+        String device_marka         = marka.getText().toString();
+        String device_warranty_state= spinner.getSelectedItem().toString();
+        String device_damage_type   = damage.getText().toString();
+
+
+        if(TextUtils.isEmpty(client_name))
         {
-            Toast.makeText(Maintenance.this,"You Should Enter data",Toast.LENGTH_LONG).show();
-        }else
+            mdialog.setMessage("تاكد من ادخال اسم العميل");
+            mdialog.show();
+        }
+        else if (TextUtils.isEmpty(client_phone))
+        {
+            mdialog.setMessage("تاكد من ادخال رقم المحمول");
+            mdialog.show();
+        }
+        else if (!client_phone.matches("^(010|011|012)[0-9]{8}$"))
+        {
+            mdialog.setMessage("تاكد من ادخال رقم المحمول بشكل صحيح");
+            mdialog.show();
+        }
+        else if (TextUtils.isEmpty(client_address))
+        {
+            mdialog.setMessage("تاكد من ادخال العنوان");
+            mdialog.show();
+        }
+        else if (TextUtils.isEmpty(device_name))
+        {
+            mdialog.setMessage("تاكد من ادخال اسم الجهاز");
+            mdialog.show();
+        }
+        else if (TextUtils.isEmpty(device_marka))
+        {
+            mdialog.setMessage("تاكد من ادخال ماركه الجهاز");
+            mdialog.show();
+        }
+        else if (device_warranty_state.toString().equals("حاله الجهاز من الضمان"))
+        {
+            mdialog.setMessage("تاكد من ادخال حاله الجهاز من الضمان");
+            mdialog.show();
+        }
+        else if (TextUtils.isEmpty(device_damage_type))
+        {
+            mdialog.setMessage("تاكد من ادخال نوع العطل");
+            mdialog.show();
+        }
+        else
         {
 
 
-            Toast.makeText(Maintenance.this,cname.getText().toString()+"\n"+cphone.getText().toString()+"\n"+caddress.getText().toString()+"\n"+dtype.getText().toString()+"\n"+ss+"\n"+ marka.getText().toString()+"\n"+dates+"\n"+damage.getText().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(Maintenance.this,cname.getText().toString()+"\n"+cphone.getText().toString()+"\n"+caddress.getText().toString()+"\n"+dtype.getText().toString()+"\n"+ marka.getText().toString()+"\n"+"\n"+damage.getText().toString(), Toast.LENGTH_SHORT).show();
 
             progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
             progressDialog.show();
-            StringRequest strReq = new StringRequest(Request.Method.POST,
-                    "http://semicolonsoft.com/clients/emc/api/addmentanaceorder", new Response.Listener<String>() {
+
+            String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa").format(new Date().getTime());
+            Add_Maintenance_order(client_name,client_phone,client_address,device_name,device_marka,device_warranty_state,device_damage_type,date);
+        }
+    }
+    private void Add_Maintenance_order(final String c_name, final String c_phone, final String c_address, final String dev_name, final String dev_marka, final String dev_warranty_state, final String dev_damage_type, final String date)
+    {
+
+ StringRequest strReq = new StringRequest(Request.Method.POST,
+                    App_URL.add_maintenance_order, new Response.Listener<String>() {
 
                 @Override
                 public void onResponse(String response) {
@@ -139,7 +155,8 @@ public class Maintenance extends AppCompatActivity {
                     progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(),
                             response, Toast.LENGTH_LONG).show();
-                    finish();
+                    Log.e("response",response.toString());
+                    //finish();
                 }
             }, new Response.ErrorListener() {
 
@@ -147,24 +164,23 @@ public class Maintenance extends AppCompatActivity {
                 public void onErrorResponse(VolleyError error) {
                     progressDialog.dismiss();
                     Toast.makeText(getApplicationContext(),
-                            "555", Toast.LENGTH_LONG).show();
+                            error.getMessage(), Toast.LENGTH_LONG).show();
 
                 }
-            })
-            {
+            }) {
 
                 @Override
                 protected Map<String, String> getParams() {
                     // Posting params to register url
                     Map<String, String> params = new HashMap<String, String>();
-                    params.put("client_name",cname.getText().toString());
-                    params.put("client_phone",cphone.getText().toString());
-                    params.put("client_location",caddress.getText().toString());
-                    params.put("device_type",dtype.getText().toString());
-                    params.put("warranty_state",ss);
-                    params.put("device_brand",marka.getText().toString());
-                    params.put("damage_type",damage.getText().toString());
-                    params.put("order_date", dates);
+                    params.put("client_name",c_name);
+                    params.put("client_phone",c_phone);
+                    params.put("client_location",c_address);
+                    params.put("device_type",dev_name);
+                    params.put("warranty_state",dev_warranty_state);
+                    params.put("device_brand",dev_marka);
+                    params.put("damage_type",dev_damage_type);
+                    params.put("order_date", date);
 
                     return params;
                 }
@@ -172,7 +188,5 @@ public class Maintenance extends AppCompatActivity {
             };
             // Adding request to request queue
             Controller.getInstance().addToRequestQueue(strReq,"re");
-
-        }
     }
 }

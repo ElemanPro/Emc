@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.Toast;
 
 import com.example.elashry.eleman.R;
 
@@ -40,6 +41,7 @@ public class Check_Internet_connection extends AppCompatActivity {
 
         if (!wifi && !data)
         {
+            Toast.makeText(this, "تحقق من الاتصال بالانترنت", Toast.LENGTH_SHORT).show();
         }
         else {
             startActivity(new Intent(Check_Internet_connection.this,ItemCategory.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));

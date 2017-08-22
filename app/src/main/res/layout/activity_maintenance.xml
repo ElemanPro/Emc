@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fitsSystemWindows="true"
     android:fillViewport="true"
-    xmlns:android="http://schemas.android.com/apk/res/android" >
+    xmlns:android="http://schemas.android.com/apk/res/android">
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -23,20 +24,22 @@
 
     <EditText
         android:id="@+id/fullName"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@android:color/transparent"
         android:drawableRight="@drawable/user"
         android:drawablePadding="8dp"
-        android:gravity="center_vertical"
+        android:gravity="center|right"
         android:hint="@string/fullName"
         android:inputType="textCapWords"
         android:padding="10dp"
-        android:singleLine="true"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        />
 
     <View
         android:layout_width="fill_parent"
@@ -46,20 +49,23 @@
 
     <EditText
         android:id="@+id/mobileNumber"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:drawableRight="@drawable/phone"
         android:drawablePadding="8dp"
-        android:gravity="center_vertical"
+        android:gravity="center|right"
         android:hint="@string/mobileNumber"
         android:inputType="phone"
         android:padding="10dp"
-        android:singleLine="true"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp" />
+        android:textSize="16sp"
+        android:maxLength="11"
+        />
 
     <View
         android:layout_width="fill_parent"
@@ -68,17 +74,18 @@
 
     <EditText
         android:id="@+id/location"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:drawableRight="@drawable/location"
         android:drawablePadding="8dp"
-        android:gravity="center_vertical"
+        android:gravity="center|right"
         android:hint="@string/location"
         android:inputType="textCapWords"
         android:padding="10dp"
-        android:singleLine="true"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="16sp" />
@@ -92,17 +99,18 @@
 
     <EditText
         android:id="@+id/type"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:drawableRight="@drawable/confirm_password"
         android:drawablePadding="8dp"
-        android:gravity="center_vertical"
+        android:gravity="center|right"
         android:hint="@string/type"
         android:inputType="textAutoComplete"
         android:padding="10dp"
-        android:singleLine="true"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="16sp" />
@@ -113,50 +121,31 @@
         android:background="@color/white_greyish" />
     <EditText
         android:id="@+id/marka"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:drawableRight="@drawable/confirm_password"
         android:drawablePadding="8dp"
-        android:gravity="center_vertical"
+        android:gravity="center|right"
         android:hint="ماركة الجهاز"
         android:inputType="textAutoComplete"
         android:padding="10dp"
-        android:singleLine="true"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="16sp" />
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/white_greyish" />
-    <LinearLayout
+    <Spinner
+        android:id="@+id/mySpinner"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:orientation="horizontal">
-        <Spinner
-            android:id="@+id/mySpinner"
-            android:entries="@array/mySpinner"
-            android:layout_width="0dp"
-            android:layout_weight="2.4"
-            android:layout_height="wrap_content"/>
-        <TextView
-            android:id="@+id/dman"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:layout_marginTop="5dp"
-            android:background="@android:color/transparent"
-            android:drawablePadding="8dp"
-            android:gravity="center_vertical"
-            android:hint="موقف الجهاز من الضمان"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16sp" />
-
-    </LinearLayout>
+        android:layout_height="50dp"
+        app:backgroundTint="@color/white"
+        />
 
     <View
         android:layout_width="fill_parent"
@@ -165,55 +154,29 @@
 
     <EditText
         android:id="@+id/damage"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:background="@android:color/transparent"
         android:drawablePadding="8dp"
-        android:gravity="center_vertical"
+        android:gravity="center|right"
         android:hint="نوع العطل"
         android:inputType="textAutoComplete"
         android:padding="10dp"
-        android:singleLine="true"
+        android:maxLines="1"
+        android:scrollHorizontally="true"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
         android:textSize="16sp" />
-   <!-- <View
-        android:layout_width="fill_parent"
-        android:layout_height="1px"
-        android:background="@color/white_greyish" />
-    <EditText
-        android:id="@+id/date"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:background="@android:color/transparent"
-        android:drawablePadding="8dp"
-        android:gravity="center_vertical"
-        android:hint=" تاريخ الطلب"
-        android:padding="10dp"
-        android:singleLine="true"
-        android:textColor="@color/white"
-        android:textColorHint="@color/white"
-        android:textSize="16sp" />-->
     <View
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="1px"
         android:background="@color/white_greyish" />
 
-  <!--  <CheckBox
-        android:id="@+id/terms_conditions"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="7dp"
-        android:layout_gravity="right"
-        android:text="@string/terms_conditions"
-        android:textColor="@color/white"
-        android:textSize="14sp" />-->
 
     <Button
-        android:id="@+id/signUpBtn"
-        android:layout_width="fill_parent"
+        android:id="@+id/maintenance_order_Btn"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="15dp"
         android:onClick="registerOrder"
@@ -222,8 +185,12 @@
         android:text="طلب"
         android:textColor="@color/colorPrimary"
         android:textSize="27sp"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+
+        />
 
 
 
-</LinearLayout></ScrollView>
+</LinearLayout>
+
+</ScrollView>

@@ -29,11 +29,12 @@
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/user"
             android:drawablePadding="8dp"
-            android:gravity="center_vertical"
+            android:gravity="center|right"
             android:hint="@string/fullName"
             android:inputType="textCapWords"
             android:padding="10dp"
-            android:singleLine="true"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="16sp" />
@@ -52,14 +53,18 @@
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/phone"
             android:drawablePadding="8dp"
-            android:gravity="center_vertical"
+            android:gravity="center|right"
             android:hint="@string/mobileNumber"
             android:inputType="phone"
             android:padding="10dp"
-            android:singleLine="true"
+            android:maxLines="1"
+            android:maxLength="11"
+            android:scrollHorizontally="true"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
-            android:textSize="16sp" />
+            android:textSize="16sp"
+
+            />
 
         <View
             android:layout_width="fill_parent"
@@ -67,18 +72,19 @@
             android:background="@color/white_greyish" />
 
         <EditText
-            android:id="@+id/address"
+            android:id="@+id/order_address"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/location"
             android:drawablePadding="8dp"
-            android:gravity="center_vertical"
+            android:gravity="center|right"
             android:hint="@string/location"
             android:inputType="textCapWords"
             android:padding="10dp"
-            android:singleLine="true"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="16sp" />
@@ -98,11 +104,12 @@
             android:background="@android:color/transparent"
             android:drawableRight="@drawable/confirm_password"
             android:drawablePadding="8dp"
-            android:gravity="center_vertical"
+            android:gravity="center|right"
             android:hint="@string/quintity"
             android:inputType="number"
             android:padding="10dp"
-            android:singleLine="true"
+            android:maxLines="1"
+            android:scrollHorizontally="true"
             android:textColor="@color/white"
             android:textColorHint="@color/white"
             android:textSize="16sp" />
@@ -112,29 +119,11 @@
             android:layout_height="1px"
             android:background="@color/white_greyish" />
 
-        <EditText
-            android:id="@+id/date"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:background="@android:color/transparent"
-            android:drawablePadding="8dp"
-            android:gravity="center_vertical"
-            android:hint=" تاريخ الطلب"
-            android:drawableRight="@drawable/calendar"
-            android:padding="10dp"
-            android:singleLine="true"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:textSize="16sp" />
-        <View
-            android:layout_width="fill_parent"
-            android:layout_height="1px"
-            android:background="@color/white_greyish" />
+
 
 
         <Button
-            android:id="@+id/order"
+            android:id="@+id/orderBtn"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"

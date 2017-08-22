@@ -1,9 +1,12 @@
 package com.example.elashry.eleman.Activities;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,31 +15,36 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Order extends AppCompatActivity {
-    EditText cname,cphone,caddress,amount;
+    EditText cname,cphone,order_address,order_amount;
     ProgressDialog progressDialog;
-    String dates;
+    AlertDialog.Builder mdialog;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_order);
         cname= (EditText) findViewById(R.id.cname);
         cphone= (EditText) findViewById(R.id.cphone);
-        caddress= (EditText) findViewById(R.id.address);
-        amount= (EditText) findViewById(R.id.quintity);
+        order_address= (EditText) findViewById(R.id.order_address);
+        order_amount= (EditText) findViewById(R.id.quintity);
+        mdialog       = new AlertDialog.Builder(this);
+        mdialog.setCancelable(false);
+        mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialogInterface, int i) {
 
-        DateFormat df = new SimpleDateFormat("EEE, d MMM yyyy, HH:mm");
-        dates = df.format(Calendar.getInstance().getTime());
+            }
+        });
 
         progressDialog=new ProgressDialog(this);
         progressDialog.setCancelable(false);
@@ -55,56 +63,88 @@ public class Order extends AppCompatActivity {
 
 
     public void registerOrder(View view) {
-        if(   cname.getText().toString().isEmpty()&&cphone.getText().toString().isEmpty()&&
-                caddress.getText().toString().isEmpty()&&amount.getText().toString().isEmpty())
+        String client_name          = cname.getText().toString();
+        String client_phone         = cphone.getText().toString();
+        String order_location       = order_address.getText().toString();
+        String order_quantity       = order_amount.getText().toString();
+
+
+
+        if(TextUtils.isEmpty(client_name))
         {
-            Toast.makeText(Order.this,"You Should Enter data",Toast.LENGTH_LONG).show();
-        }else
+            mdialog.setMessage("تاكد من ادخال اسم العميل");
+            mdialog.show();
+        }
+        else if (TextUtils.isEmpty(client_phone))
+        {
+            mdialog.setMessage("تاكد من ادخال رقم المحمول");
+            mdialog.show();
+        }
+        else if (!client_phone.matches("^(010|011|012)[0-9]{8}$"))
+        {
+            mdialog.setMessage("تاكد من ادخال رقم المحمول بشكل صحيح");
+            mdialog.show();
+        }
+        else if (TextUtils.isEmpty(order_location))
+        {
+            mdialog.setMessage("تاكد من ادخال العنوان");
+            mdialog.show();
+        }
+        else if (TextUtils.isEmpty(order_quantity))
+        {
+            mdialog.setMessage("تاكد من ادخال الكميه");
+            mdialog.show();
+        }
+        else
         {
 
-
-
+            String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa").format(new Date().getTime());
             progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
             progressDialog.show();
-            StringRequest strReq = new StringRequest(Request.Method.POST,
-                    "http://semicolonsoft.com/clients/emc/api/addorders", new Response.Listener<String>() {
-
-                @Override
-                public void onResponse(String response) {
-
-                    progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(),
-                            response, Toast.LENGTH_LONG).show();
-                }
-            }, new Response.ErrorListener() {
-
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(),
-                            error.getMessage(), Toast.LENGTH_LONG).show();
-                    finish();
-
-                }
-            }) {
-
-                @Override
-                protected Map<String, String> getParams() {
-                    // Posting params to register url
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("client_name", cname.getText().toString());
-                    params.put("client_phone", cphone.getText().toString());
-                    params.put("order_location", caddress.getText().toString());
-                    params.put("quantity", amount.getText().toString());
-                    params.put("order_date", dates);
-
-                    return params;
-                }
-
-            };
-            // Adding request to request queue
-            Controller.getInstance().addToRequestQueue(strReq,"re");
+            add_order(client_name,client_phone,order_location,order_quantity,date);
 
         }
+    }
+    private void add_order(final String c_name, final String c_phone, final String o_address, final String o_amount,final String date)
+    {
+        StringRequest strReq = new StringRequest(Request.Method.POST,
+                App_URL.app_orders, new Response.Listener<String>() {
+
+            @Override
+            public void onResponse(String response) {
+
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(),
+                        response, Toast.LENGTH_LONG).show();
+            }
+        }, new Response.ErrorListener() {
+
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                progressDialog.dismiss();
+                Toast.makeText(getApplicationContext(),
+                        error.getMessage(), Toast.LENGTH_LONG).show();
+                finish();
+
+            }
+        }) {
+
+            @Override
+            protected Map<String, String> getParams() {
+                // Posting params to register url
+                Map<String, String> params = new HashMap<String, String>();
+                params.put("client_name", c_name);
+                params.put("client_phone", c_phone);
+                params.put("order_location", o_address);
+                params.put("quantity", o_amount);
+                params.put("order_date", date);
+
+                return params;
+            }
+
+        };
+        // Adding request to request queue
+        Controller.getInstance().addToRequestQueue(strReq,"re");
+
     }
 }

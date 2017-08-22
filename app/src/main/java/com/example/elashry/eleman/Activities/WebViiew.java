@@ -9,7 +9,7 @@ import android.widget.ProgressBar;
 import com.example.elashry.eleman.R;
 
 public class WebViiew extends AppCompatActivity {
-    private String postUrl = "https://www.facebook.com/";
+    private String postUrl = "http://semicolonsoft.com/clients/emc/erpsystem/store";
     private WebView webView;
     private ProgressBar progressBar;
 

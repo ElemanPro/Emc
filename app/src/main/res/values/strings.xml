@@ -57,6 +57,7 @@
     <string name="home4">امكانيه حجز جهاز او قطعه غيار عن طريق ادخال البيانات</string>
     <string name="intro5">الصيانه</string>
     <string name="home5">شاشه الصيانه وهى امكانيه عمل صيانه لاى جهاز عن طريق ادخال البيانات فقط</string>
+    <string name="title_activity_maps">Map</string>
 
 
 </resources>

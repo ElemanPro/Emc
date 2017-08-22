@@ -85,7 +85,6 @@ public class Washer extends Fragment {
                         {
                             try {
                                 object =response.getJSONObject(index);
-                                Toast.makeText(mContext, object.get("cat_id_fk").toString(), Toast.LENGTH_SHORT).show();
                                 if (object.get("cat_id_fk").toString().equals("1"))
                                 {
                                     pro_List.add(new Product_Model(object.get("product_id_pk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
@@ -102,7 +101,6 @@ public class Washer extends Fragment {
                             mrRecyclerView.setVisibility(View.VISIBLE);
                             progBar_container.setVisibility(View.GONE);
                             mRefreshLayout.setRefreshing(false);
-                            Toast.makeText(mContext,pro_List.size()+"", Toast.LENGTH_SHORT).show();
                         }
                         else if (pro_List.size()==0)
                         {

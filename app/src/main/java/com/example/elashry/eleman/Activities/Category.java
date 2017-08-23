@@ -36,7 +36,7 @@ import java.util.List;
 
 
 public class Category extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
-    HashMap<String, String> file_maps;
+    HashMap<String, RequestCreator> file_maps;
     private SliderLayout mDemoSlider;
     private final String ads_url =App_URL.advertisement;
     private List<AdvertsmentModel> adsModelList;
@@ -184,7 +184,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
 
                                 file_maps = new HashMap<>();
                                 for(int i=0;i<names.size();i++){
-                                    file_maps.put(names.get(i), App_URL.image_url+imges.get(i));
+                                    file_maps.put(names.get(i), Picasso.with(Category.this).load( App_URL.image_url+imges.get(i)));
                                 }
 
 

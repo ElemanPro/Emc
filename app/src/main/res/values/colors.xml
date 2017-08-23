@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<color name="colorPrimary">#575a7c</color>
-<color name="colorPrimaryDark">#f2ebf5</color>
+<color name="colorPrimary">#474a6c</color>
+<color name="colorPrimaryDark">#e0beef</color>
 <color name="colorAccent">#31334A</color>
 <color name="shadowColorRadial">#555555</color>
 
-    <color name="background_color">#f2ebf5</color>
+    <color name="background_color">#e0beef</color>
     <color name="back">#31334A</color>
 
 

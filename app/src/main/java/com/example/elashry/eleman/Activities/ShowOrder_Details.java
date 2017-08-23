@@ -27,7 +27,7 @@ public class ShowOrder_Details extends AppCompatActivity {
 
     private TextView client_name,client_phone,dev_categ,dev_name,dev_quantity,order_address,order_date;
     private ImageView dev_image;
-    //private final String products_url ="http://semicolonsoft.com/clients/emc/api/find/products";
+    private LinearLayout linear_dept;
     private TextView nopro_txt;
     private LinearLayout progBar_container,order_data_container;
     @Override
@@ -44,18 +44,38 @@ public class ShowOrder_Details extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getExtras()!=null)
         {
-            final OrderModel orderModel = (OrderModel) intent.getSerializableExtra("order_data");
-            Getproduct_data(App_URL.product_url,orderModel);
-            dev_image.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
+            if (intent.getExtras().get("flag").toString().equals("matgar_order"))
+            {
+                final OrderModel orderModel = (OrderModel) intent.getSerializableExtra("order_data");
+                Get_matgar_Data(orderModel);
+                dev_image.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
 
-                    Intent intent = new Intent(ShowOrder_Details.this, Zooming_Image.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    intent.putExtra("pro_data",orderModel);
-                    intent.putExtra("flag","2");
-                    startActivity(intent);
+                        Intent intent = new Intent(ShowOrder_Details.this, Zooming_Image.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        intent.putExtra("pro_data",orderModel);
+                        intent.putExtra("flag","3");
+                        startActivity(intent);
+                    }
+                });
+
+            }
+            else if (intent.getExtras().get("flag").toString().equals("order_data"))
+                {
+                    final OrderModel orderModel = (OrderModel) intent.getSerializableExtra("order_data");
+                    Getproduct_data(App_URL.product_url,orderModel);
+                    dev_image.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+
+                            Intent intent = new Intent(ShowOrder_Details.this, Zooming_Image.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            intent.putExtra("pro_data",orderModel);
+                            intent.putExtra("flag","2");
+                            startActivity(intent);
+                        }
+                    });
                 }
-            });
+
 
         }
     }
@@ -139,6 +159,59 @@ public class ShowOrder_Details extends AppCompatActivity {
         Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
 
     }
+    private void Get_matgar_Data(final OrderModel orderModel)
+    {
+        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(App_URL.app_matgar,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        JSONObject object;
+
+                        for (int index=0;index<response.length();index++)
+                        {
+                            try {
+                                object =response.getJSONObject(index);
+                                if (object.get("matgar_pk").toString().equals(orderModel.getMatgar_id_fk().toString()))
+                                {
+
+                                    client_name.setText(orderModel.getClient_name().toString());
+                                    client_phone.setText(orderModel.getClient_phone().toString());
+
+                                    Picasso.with(ShowOrder_Details.this).load(App_URL.image_url+object.get("product_image").toString()).noFade().into(dev_image);
+                                    dev_name.setText(object.get("product_name").toString());
+                                    dev_quantity.setText(orderModel.getQuantity().toString());
+                                    order_address.setText(orderModel.getOrder_address().toString());
+                                    order_date.setText(orderModel.getOrder_date().toString());
+                                    linear_dept.setVisibility(View.GONE);
+                                    order_data_container.setVisibility(View.VISIBLE);
+                                    progBar_container.setVisibility(View.GONE);
+
+                                   /* asyn_task task = new asyn_task(holder);
+                                    task.execute(object.get("product_image").toString());*/
+
+
+
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                }
+                ,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
+
+    }
 
     private void init_View() {
         getSupportActionBar().setDisplayShowTitleEnabled(true);
@@ -156,7 +229,7 @@ public class ShowOrder_Details extends AppCompatActivity {
         dev_quantity   = (TextView) findViewById(R.id.order_details_devquantity);
         order_date     = (TextView) findViewById(R.id.order_details_orderdate);
 
-
+        linear_dept    = (LinearLayout) findViewById(R.id.linear_dept);
         progBar_container    = (LinearLayout)findViewById(R.id.progressBar_container);
         order_data_container = (LinearLayout)findViewById(R.id.order_data_container);
         order_data_container.setVisibility(View.GONE);

@@ -63,6 +63,12 @@ public class Zooming_Image extends AppCompatActivity {
                 OrderModel model = (OrderModel) intent.getSerializableExtra("pro_data");
                 GetProData(model);
             }
+            else if (intent.getExtras().getString("flag").toString().equals("3"))
+            {
+                OrderModel model = (OrderModel) intent.getSerializableExtra("pro_data");
+                Get_matgar_Data(model);
+            }
+
 
         }
     }
@@ -83,6 +89,45 @@ public class Zooming_Image extends AppCompatActivity {
                                 {
                                     Picasso.with(Zooming_Image.this).load(App_URL.image_url+object.get("product_photo").toString()).noFade().into(image);
                                     image_details.setText(object.get("product_title").toString());
+
+
+                                }
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
+                        }
+
+                    }
+                }
+                ,
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                    }
+                }
+        );
+        Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
+
+    }
+    private void Get_matgar_Data(final OrderModel orderModel)
+    {
+        JsonArrayRequest mJsonArrayRequest = new JsonArrayRequest(App_URL.app_matgar,
+                new Response.Listener<JSONArray>() {
+                    @Override
+                    public void onResponse(JSONArray response) {
+
+                        JSONObject object;
+
+                        for (int index=0;index<response.length();index++)
+                        {
+                            try {
+                                object =response.getJSONObject(index);
+                                if (object.get("matgar_pk").toString().equals(orderModel.getMatgar_id_fk().toString()))
+                                {
+                                    Picasso.with(Zooming_Image.this).load(App_URL.image_url+object.get("product_image").toString()).noFade().into(image);
+                                    image_details.setText(object.get("product_name").toString());
+
 
 
                                 }

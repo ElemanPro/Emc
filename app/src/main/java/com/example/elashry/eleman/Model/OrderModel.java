@@ -7,25 +7,28 @@ import java.io.Serializable;
  */
 
 public class OrderModel implements Serializable{
+
     String order_id;
     String product_id;
+    String matgar_id_fk;
     String quantity;
     String client_name;
     String client_phone;
     String order_date;
     String order_address;
 
-    public OrderModel(String order_id, String product_id, String quantity, String client_name, String client_phone, String order_date, String order_address) {
+    public OrderModel() {
+    }
+
+    public OrderModel(String order_id, String product_id, String matgar_id_fk, String quantity, String client_name, String client_phone, String order_date, String order_address) {
         this.order_id = order_id;
         this.product_id = product_id;
+        this.matgar_id_fk = matgar_id_fk;
         this.quantity = quantity;
         this.client_name = client_name;
         this.client_phone = client_phone;
         this.order_date = order_date;
         this.order_address = order_address;
-    }
-
-    public OrderModel() {
     }
 
     public String getOrder_id() {
@@ -42,6 +45,14 @@ public class OrderModel implements Serializable{
 
     public void setProduct_id(String product_id) {
         this.product_id = product_id;
+    }
+
+    public String getMatgar_id_fk() {
+        return matgar_id_fk;
+    }
+
+    public void setMatgar_id_fk(String matgar_id_fk) {
+        this.matgar_id_fk = matgar_id_fk;
     }
 
     public String getQuantity() {

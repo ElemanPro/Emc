@@ -23,7 +23,8 @@
            android:textColor="@color/colorPrimary"
            android:textSize="@dimen/txt_14sp"
            android:gravity="center|left"
-           android:layout_gravity="right|center"
+           android:layout_gravity="left|center"
+           android:layout_marginBottom="5dp"
            />
 
        <LinearLayout
@@ -32,6 +33,45 @@
            android:orientation="horizontal"
            android:weightSum="2"
            >
+           <LinearLayout
+               android:layout_width="0dp"
+               android:layout_weight="1.5"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+
+               >
+               <TextView
+                   android:id="@+id/mngr_order_clientname"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_gravity="right|center"
+                   android:gravity="right|center"
+                   android:textSize="16sp"
+                   android:textStyle="bold"
+                   android:textColor="@color/black"
+                   android:padding="@dimen/pad_5dp"
+                   android:scrollHorizontally="true"
+                   android:ellipsize="end"
+                   android:maxLines="1"
+
+
+                   />
+               <TextView
+                   android:id="@+id/mngr_order_dev_name"
+                   android:layout_width="match_parent"
+                   android:layout_height="match_parent"
+                   android:layout_gravity="center|right"
+                   android:gravity="right|center"
+                   android:textColor="@color/black"
+                   android:textSize="@dimen/txt_14sp"
+                   android:padding="@dimen/pad_5dp"
+                   android:scrollHorizontally="true"
+                   android:ellipsize="end"
+                   android:maxLines="1"
+                   />
+
+           </LinearLayout>
+
            <FrameLayout
                android:layout_width="0dp"
                android:layout_weight=".5"
@@ -57,44 +97,6 @@
                    />
            </FrameLayout>
 
-           <LinearLayout
-               android:layout_width="0dp"
-               android:layout_weight="1.5"
-               android:layout_height="wrap_content"
-               android:orientation="vertical"
-
-               >
-               <TextView
-                   android:id="@+id/mngr_order_clientname"
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:layout_gravity="right|center"
-                   android:gravity="left|center"
-                   android:textSize="16sp"
-                   android:textStyle="bold"
-                   android:textColor="@color/black"
-                   android:padding="@dimen/pad_5dp"
-                   android:scrollHorizontally="true"
-                   android:ellipsize="end"
-                   android:maxLines="1"
-
-
-                   />
-               <TextView
-                   android:id="@+id/mngr_order_dev_name"
-                   android:layout_width="match_parent"
-                   android:layout_height="match_parent"
-                   android:layout_gravity="center|right"
-                   android:gravity="left|center"
-                   android:textColor="@color/black"
-                   android:textSize="@dimen/txt_14sp"
-                   android:padding="@dimen/pad_5dp"
-                   android:scrollHorizontally="true"
-                   android:ellipsize="end"
-                   android:maxLines="1"
-                   />
-
-           </LinearLayout>
 
 
        </LinearLayout>
@@ -109,6 +111,7 @@
            android:textColor="@color/colorPrimary"
            android:textStyle="bold"
            android:textSize="@dimen/txt_12sp"
+           android:layout_marginTop="5dp"
            />
 
 </LinearLayout>

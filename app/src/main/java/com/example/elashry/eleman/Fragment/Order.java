@@ -70,9 +70,14 @@ public class Order extends Fragment {
                         JSONObject object;
                         for (int index =0;index<response.length();index++)
                         {
+
                             try {
                                 object =response.getJSONObject(index);
-                                orderList.add(new OrderModel(object.get("order_id_pk").toString(),object.get("product_id_fk").toString(),object.get("quantity").toString(),object.get("client_name").toString(),object.get("client_phone").toString(),object.get("order_date").toString(),object.get("order_location").toString()));
+                                if (!object.get("product_id_fk").toString().equals("0"))
+                                {
+                                    orderList.add(new OrderModel(object.get("order_id_pk").toString(),object.get("product_id_fk").toString(),object.get("matgar_id_fk").toString(),object.get("quantity").toString(),object.get("client_name").toString(),object.get("client_phone").toString(),object.get("order_date").toString(),object.get("order_location").toString()));
+
+                                }
 
                             } catch (JSONException e) {
                                 e.printStackTrace();

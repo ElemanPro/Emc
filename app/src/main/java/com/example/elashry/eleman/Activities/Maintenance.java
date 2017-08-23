@@ -25,6 +25,9 @@ import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.R;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
@@ -152,11 +155,40 @@ public class Maintenance extends AppCompatActivity {
                 @Override
                 public void onResponse(String response) {
 
-                    progressDialog.dismiss();
-                    Toast.makeText(getApplicationContext(),
-                            response, Toast.LENGTH_LONG).show();
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String msg = jsonResponse.get("message").toString();
+                        if (msg.equals("1"))
+                        {
+                            progressDialog.dismiss();
+                            mdialog.setMessage("تم ارسال الطلب بنجاح");
+                            mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    finish();
+                                }
+                            });
+                            mdialog.show();
+
+                        }
+                        else
+                            {
+                                progressDialog.dismiss();
+                                mdialog.setMessage("خطا اثناء ارسال البيانات ");
+                                mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        Toast.makeText(Maintenance.this, "إلغاء", Toast.LENGTH_SHORT).show();
+                                    }
+                                });
+                                mdialog.show();
+                            }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        progressDialog.dismiss();
+                    }
                     Log.e("response",response.toString());
-                    //finish();
+
                 }
             }, new Response.ErrorListener() {
 

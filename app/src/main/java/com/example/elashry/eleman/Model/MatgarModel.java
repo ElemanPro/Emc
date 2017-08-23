@@ -6,6 +6,7 @@ import java.io.Serializable;
  * Created by Lincoln on 18/05/16.
  */
 public class MatgarModel implements Serializable{
+    private String matgar_pk;
     private String client_name ;
     private String client_details;
     private String product_name;
@@ -16,13 +17,22 @@ public class MatgarModel implements Serializable{
     public MatgarModel() {
     }
 
-    public MatgarModel(String client_name, String client_details, String product_name, String product_price, String product_image, String date) {
+    public MatgarModel(String matgar_pk, String client_name, String client_details, String product_name, String product_price, String product_image, String date) {
+        this.matgar_pk = matgar_pk;
         this.client_name = client_name;
         this.client_details = client_details;
         this.product_name = product_name;
         this.product_price = product_price;
         this.product_image = product_image;
         this.date = date;
+    }
+
+    public String getMatgar_pk() {
+        return matgar_pk;
+    }
+
+    public void setMatgar_pk(String matgar_pk) {
+        this.matgar_pk = matgar_pk;
     }
 
     public String getClient_name() {

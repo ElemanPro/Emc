@@ -86,7 +86,7 @@ public class Search_Matgar extends AppCompatActivity {
                         {
                             try {
                                 object =response.getJSONObject(index);
-                                MatgarModel matgarModel = new MatgarModel(object.get("client_name").toString(),object.get("client_details").toString(),object.get("product_name").toString(),object.get("product_price").toString(),object.get("product_image").toString(),object.get("date_add").toString());
+                                MatgarModel matgarModel = new MatgarModel(object.get("matgar_pk").toString(),object.get("client_name").toString(),object.get("client_details").toString(),object.get("product_name").toString(),object.get("product_price").toString(),object.get("product_image").toString(),object.get("date_add").toString());
                                 matgarModelList.add(matgarModel);
 
                             } catch (JSONException e) {
@@ -137,7 +137,7 @@ public class Search_Matgar extends AppCompatActivity {
                             try {
                                 object =response.getJSONObject(index);
                                 if (object.get("product_name").toString().startsWith(text_search.toString())) {
-                                    MatgarModel matgarModel = new MatgarModel(object.get("client_name").toString(), object.get("client_details").toString(), object.get("product_name").toString(), object.get("product_price").toString(), object.get("product_image").toString(), object.get("date_add").toString());
+                                    MatgarModel matgarModel = new MatgarModel(object.get("matgar_pk").toString(),object.get("client_name").toString(), object.get("client_details").toString(), object.get("product_name").toString(), object.get("product_price").toString(), object.get("product_image").toString(), object.get("date_add").toString());
                                     matgarModelList.add(matgarModel);
                                 }
                             } catch (JSONException e) {

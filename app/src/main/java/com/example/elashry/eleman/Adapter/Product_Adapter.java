@@ -123,6 +123,7 @@ public class Product_Adapter extends RecyclerView.Adapter <Product_Adapter.ViewH
                             Product_Model model = pro_List.get(position);
                             Intent intent = new Intent(mContext, Order.class);
                             intent.putExtra("pro_data",model);
+                            intent.putExtra("flag","0");
                             mContext.startActivity(intent);
                             return true;
 

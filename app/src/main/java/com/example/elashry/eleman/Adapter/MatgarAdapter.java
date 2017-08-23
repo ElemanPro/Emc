@@ -113,6 +113,9 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
                 case R.id.action_regiter:
 
                     Intent i =new Intent(mContext, Order.class);
+                    MatgarModel matgarModel1 = matgarModelList.get(holder.getLayoutPosition());
+                    i.putExtra("matgar_item_data",matgarModel1);
+                    i.putExtra("flag","1");
                     mContext.startActivity(i);
                     return true;
                 case R.id.action_detail:

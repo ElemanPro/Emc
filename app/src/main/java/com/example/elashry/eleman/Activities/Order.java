@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
+import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
 
@@ -33,6 +34,8 @@ public class Order extends AppCompatActivity {
     private ProgressDialog progressDialog;
     private AlertDialog.Builder mdialog;
     private Product_Model model;
+    private MatgarModel matgarModel;
+    private static String flag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,7 +64,18 @@ public class Order extends AppCompatActivity {
         Intent intent = getIntent();
         if (intent.getExtras()!=null)
         {
-            model = (Product_Model) intent.getSerializableExtra("pro_data");
+            if (intent.getExtras().getString("flag").toString().equals("1"))
+            {
+                flag = intent.getExtras().getString("flag").toString();
+                matgarModel = (MatgarModel) intent.getSerializableExtra("matgar_item_data");
+
+            }
+            else if (intent.getExtras().getString("flag").toString().equals("0")){
+                model = (Product_Model) intent.getSerializableExtra("pro_data");
+                flag = intent.getExtras().getString("flag").toString();
+            }
+
+
         }
     }
 
@@ -105,79 +119,91 @@ public class Order extends AppCompatActivity {
             String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa").format(new Date().getTime());
             progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
             progressDialog.show();
-            add_order(client_name,client_phone,order_location,order_quantity,date,model);
+            if (flag.toString().equals("0"))
+            {
+                add_order(App_URL.add_itemCateg_data,client_name,client_phone,order_location,order_quantity,date,model.getProduct_id_fk().toString(),"0");
+            }
+            else if (flag.toString().equals("1"))
+            {
+                add_order(App_URL.matgar_order,client_name,client_phone,order_location,order_quantity,date,"0",matgarModel.getMatgar_pk().toString());
+            }
+
 
         }
     }
-    private void add_order(final String c_name, final String c_phone, final String o_address, final String o_amount, final String date, final Product_Model pro_model)
+    private void add_order(String url,final String c_name, final String c_phone, final String o_address, final String o_amount, final String date, final String pro_id_fk,final String matger_id_fk)
     {
-        StringRequest strReq = new StringRequest(Request.Method.POST,
-                App_URL.add_itemCateg_data, new Response.Listener<String>() {
 
-            @Override
-            public void onResponse(String response) {
+            StringRequest strReq = new StringRequest(Request.Method.POST,
+                    url, new Response.Listener<String>() {
 
-                try {
-                    JSONObject jsonResponse = new JSONObject(response);
-                    String msg = jsonResponse.get("message").toString();
-                    if (msg.equals("1"))
-                    {
+                @Override
+                public void onResponse(String response) {
+
+                    try {
+                        JSONObject jsonResponse = new JSONObject(response);
+                        String msg = jsonResponse.get("message").toString();
+                        if (msg.equals("1"))
+                        {
+                            progressDialog.dismiss();
+                            mdialog.setMessage("تم ارسال الطلب بنجاح");
+                            mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+
+                                    finish();
+                                }
+                            });
+                            mdialog.show();
+
+                        }
+                        else
+                        {
+                            progressDialog.dismiss();
+                            mdialog.setMessage("خطا اثناء ارسال البيانات ");
+                            mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    Toast.makeText(Order.this, "إلغاء", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                            mdialog.show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
                         progressDialog.dismiss();
-                        mdialog.setMessage("تم ارسال الطلب بنجاح");
-                        mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                                finish();
-                            }
-                        });
-                        mdialog.show();
-
                     }
-                    else
-                    {
-                        progressDialog.dismiss();
-                        mdialog.setMessage("خطا اثناء ارسال البيانات ");
-                        mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                Toast.makeText(Order.this, "إلغاء", Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        mdialog.show();
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
-                    progressDialog.dismiss();
                 }
-            }
-        }, new Response.ErrorListener() {
+            }, new Response.ErrorListener() {
 
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                progressDialog.dismiss();
-                Toast.makeText(getApplicationContext(),
-                        error.getMessage(), Toast.LENGTH_LONG).show();
-            }
-        }) {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    progressDialog.dismiss();
+                    Toast.makeText(getApplicationContext(),
+                            error.getMessage(), Toast.LENGTH_LONG).show();
+                }
+            }) {
 
-            @Override
-            protected Map<String, String> getParams() {
-                // Posting params to register url
-                Map<String, String> params = new HashMap<String, String>();
-                params.put("product_id_fk",pro_model.getProduct_id_fk().toString());
-                params.put("client_name",c_name);
-                params.put("client_phone",c_phone);
-                params.put("order_location",o_address);
-                params.put("quantity",o_amount);
-                params.put("order_date",date);
+                @Override
+                protected Map<String, String> getParams() {
+                    // Posting params to register url
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("product_id_fk",pro_id_fk);
+                    params.put("client_name",c_name);
+                    params.put("client_phone",c_phone);
+                    params.put("order_location",o_address);
+                    params.put("quantity",o_amount);
+                    params.put("order_date",date);
+                    params.put("matgar_id_fk",matger_id_fk);
 
-                return params;
-            }
+                    return params;
+                }
 
-        };
-        // Adding request to request queue
-        Controller.getInstance().addToRequestQueue(strReq,"re");
+            };
+            // Adding request to request queue
+            Controller.getInstance().addToRequestQueue(strReq,"re");
 
-    }
+        }
+
+
 }

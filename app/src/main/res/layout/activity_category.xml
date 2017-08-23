@@ -131,6 +131,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="صيانه"
+                            android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
                             />
                     </LinearLayout>
@@ -161,6 +162,8 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="قطع غيار"
+                            android:textColor="@color/colorPrimary"
+
                             android:textStyle="bold"
                             android:textSize="25dp"
                            />                    </LinearLayout>
@@ -197,6 +200,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="المتجر "
+                            android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
                             />
                     </LinearLayout>
@@ -228,6 +232,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text=" الوصول"
+                            android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
                             />
                     </LinearLayout>
@@ -265,6 +270,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="عن المركز"
+                            android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
                             />
                     </LinearLayout>
@@ -295,6 +301,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="تواصل معنا"
+                            android:textColor="@color/colorPrimary"
                             android:textSize="25dp"
                             android:textStyle="bold"
                            />

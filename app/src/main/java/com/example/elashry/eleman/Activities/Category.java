@@ -23,8 +23,6 @@ import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.AdvertsmentModel;
 import com.example.elashry.eleman.R;
-import com.squareup.picasso.Picasso;
-import com.squareup.picasso.RequestCreator;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -36,7 +34,7 @@ import java.util.List;
 
 
 public class Category extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
-    HashMap<String, RequestCreator> file_maps;
+    HashMap<String, String> file_maps;
     private SliderLayout mDemoSlider;
     private final String ads_url =App_URL.advertisement;
     private List<AdvertsmentModel> adsModelList;
@@ -130,6 +128,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
     }
 
 
+
     @Override
     protected void onStop() {
         // To prevent a memory leak on rotation, make sure to call stopAutoCycle() on the slider before activity or fragment is destroyed
@@ -184,7 +183,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
 
                                 file_maps = new HashMap<>();
                                 for(int i=0;i<names.size();i++){
-                                    file_maps.put(names.get(i), Picasso.with(Category.this).load( App_URL.image_url+imges.get(i)));
+                                    file_maps.put(names.get(i),  App_URL.image_url+imges.get(i));
                                 }
 
 

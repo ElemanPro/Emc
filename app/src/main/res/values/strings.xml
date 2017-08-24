@@ -35,13 +35,7 @@
     <string name="check_manager_pass">تأكد من كلمه المرور</string>
     <string name="check_manager_id">تأكد من الرقم القومي</string>
     <string name="quintity">الكميه</string>
-
-    <string-array name="mySpinner">
-        <item>داخل الضمان</item>
-        <item>خارج الضمان</item>
-
-    </string-array>
-
+    
     <string name="title_activity_fullscreen">FullscreenActivity</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">DUMMY\nCONTENT</string>

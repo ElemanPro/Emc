@@ -187,7 +187,6 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
                         }
                         if (adsModelList.size()>0)
                         {
-                            Toast.makeText(Category.this,adsModelList.size()+"", Toast.LENGTH_SHORT).show();
                             Map<String,String> map = new HashMap<>();
                             for (int index=0;index<adsModelList.size();index++)
                             {
@@ -209,7 +208,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
                             mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
                             mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
                             mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-                            mDemoSlider.setDuration(3000);
+                            mDemoSlider.setDuration(4000);
                             mDemoSlider.addOnPageChangeListener(Category.this);
 
                         }

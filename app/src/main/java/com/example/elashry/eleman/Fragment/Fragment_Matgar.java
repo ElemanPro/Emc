@@ -1,8 +1,10 @@
 package com.example.elashry.eleman.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Rect;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -21,6 +23,7 @@ import android.view.ViewGroup;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.elashry.eleman.Activities.Check_Internet_connection;
 import com.example.elashry.eleman.Adapter.MatgarAdapter;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
@@ -51,7 +54,18 @@ public class Fragment_Matgar extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_matgar,container,false);
         init_View(view);
-        Get_matagar_pro_Data();
+        boolean isConnected = Check_Network();
+        if (isConnected==true)
+        {
+            Get_matagar_pro_Data();        }
+        else
+        {
+            Intent intent = new Intent(mContext, Check_Internet_connection.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("flag","3");
+            mContext.startActivity(intent);
+        }
+
         return view;
     }
 
@@ -161,6 +175,22 @@ public class Fragment_Matgar extends Fragment {
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+    }
+    private boolean Check_Network()
+    {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean mobile_data = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+
+        if (!wifi&&!mobile_data)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
     }
 
 }

@@ -1,17 +1,13 @@
 package com.example.elashry.eleman.Activities;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.View;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.FrameLayout;
 
 import com.example.elashry.eleman.R;
 import com.vansuita.materialabout.builder.AboutBuilder;
-import com.vansuita.materialabout.builder.Item;
 import com.vansuita.materialabout.views.AboutView;
-
-import java.util.List;
 
 public class About extends AppCompatActivity {
 
@@ -79,5 +75,10 @@ public class About extends AppCompatActivity {
         AboutView view = builder.build();
 
         flHolder.addView(view);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(About.this,Category.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }

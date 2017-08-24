@@ -161,8 +161,10 @@ public class Televtion extends Fragment {
 
         if (!wifi && !data)
         {
-            startActivity(new Intent(mContext, Check_Internet_connection.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
-
+            Intent intent = new Intent(mContext, Check_Internet_connection.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("flag","1");
+            mContext.startActivity(intent);
         }
         else {
         }

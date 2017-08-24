@@ -27,8 +27,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Order extends AppCompatActivity {
@@ -120,7 +121,7 @@ public class Order extends AppCompatActivity {
             boolean isConnected = Check_Network();
             if (isConnected==true)
             {
-                String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa").format(new Date().getTime());
+                String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa", new Locale("ar","SA")).format(Calendar.getInstance().getTime());
                 progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
                 progressDialog.show();
                 if (flag.toString().equals("0"))

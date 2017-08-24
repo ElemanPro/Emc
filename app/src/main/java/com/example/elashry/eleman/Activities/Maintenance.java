@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -31,8 +32,9 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 public class Maintenance extends AppCompatActivity {
@@ -144,7 +146,7 @@ public class Maintenance extends AppCompatActivity {
             {
                 progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
                 progressDialog.show();
-                String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa").format(new Date().getTime());
+                String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa", new Locale("ar","SA")).format(Calendar.getInstance().getTime());
                 Add_Maintenance_order(client_name,client_phone,client_address,device_name,device_marka,device_warranty_state,device_damage_type,date);
             }
             else
@@ -251,5 +253,10 @@ public class Maintenance extends AppCompatActivity {
                 return true;
             }
 
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Maintenance.this,Category.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }

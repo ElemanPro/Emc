@@ -226,5 +226,4 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
         Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
     }
 
-
 }

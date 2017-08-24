@@ -1,5 +1,6 @@
 package com.example.elashry.eleman.Activities;
 
+import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
@@ -43,6 +44,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng sydney = new LatLng(30.6141958, 30.9765788);
         mMap.addMarker(new MarkerOptions().position(sydney).title("mm"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+    }
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(MapsActivity.this,Category.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }
 

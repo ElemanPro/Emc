@@ -14,16 +14,23 @@ import com.example.elashry.eleman.R;
 public class Check_Internet_connection extends AppCompatActivity {
 
     private ImageButton refresh_btn;
+    private static String flag;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_check__internet_connection);
         init_View();
+
+        Intent intent = getIntent();
+        if (intent.getExtras()!=null)
+        {
+            flag = intent.getExtras().getString("flag");
+
+        }
     }
 
     private void init_View() {
         refresh_btn = (ImageButton) findViewById(R.id.refresh_btn);
-
         refresh_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -44,7 +51,21 @@ public class Check_Internet_connection extends AppCompatActivity {
             Toast.makeText(this, "تحقق من الاتصال بالانترنت", Toast.LENGTH_SHORT).show();
         }
         else {
-            startActivity(new Intent(Check_Internet_connection.this,ItemCategory.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+            if (flag.toString().equals("1"))
+            {
+                startActivity(new Intent(Check_Internet_connection.this,ItemCategory.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+            }
+            else if (flag.toString().equals("2"))
+            {
+                startActivity(new Intent(Check_Internet_connection.this,Manager.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+            }
+            else if (flag.toString().equals("3"))
+            {
+                startActivity(new Intent(Check_Internet_connection.this,Matgar.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
+            }
         }
     }
 

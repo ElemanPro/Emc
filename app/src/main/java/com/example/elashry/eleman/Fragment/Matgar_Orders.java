@@ -1,7 +1,9 @@
 package com.example.elashry.eleman.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.PorterDuff;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonArrayRequest;
+import com.example.elashry.eleman.Activities.Check_Internet_connection;
 import com.example.elashry.eleman.Adapter.Matgar_OrderAdapter;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
@@ -49,7 +52,18 @@ public class Matgar_Orders extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.matgar_orders,container,false);
         init_View(view);
-        GetOrder_Data();
+        boolean isConnected = Check_Network();
+        if (isConnected==true)
+        {
+            GetOrder_Data();
+        }
+        else
+        {
+            Intent intent = new Intent(mContext, Check_Internet_connection.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("flag","2");
+            mContext.startActivity(intent);
+        }
         return view;
     }
     private void GetOrder_Data() {
@@ -90,7 +104,7 @@ public class Matgar_Orders extends Fragment {
                         {
                             mRecyclerView.setVisibility(View.GONE);
                             pbc.setVisibility(View.GONE);
-                            no_order_txt.setText(View.VISIBLE);
+                            no_order_txt.setVisibility(View.VISIBLE);
                             mRefreshLayout.setRefreshing(false);
                         }
 
@@ -126,4 +140,16 @@ public class Matgar_Orders extends Fragment {
         });
 
     }
-}
+    private boolean Check_Network() {
+        ConnectivityManager cm = (ConnectivityManager) getActivity().getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean mobile_data = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+
+        if (!wifi && !mobile_data) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
+    }

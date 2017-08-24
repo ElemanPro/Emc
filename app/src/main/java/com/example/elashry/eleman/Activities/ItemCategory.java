@@ -43,6 +43,7 @@ public class  ItemCategory extends AppCompatActivity {
     private Toolbar mToolbar;
     private List<String> suggestion;
     private List<Product_Model> pro_List;
+    private Context mContext;
     //private MaterialSearchView mSearchView;
     private final String products_url ="http://semicolonsoft.com/clients/emc/api/find/products";
 
@@ -65,6 +66,7 @@ public class  ItemCategory extends AppCompatActivity {
         mToolbar    = (Toolbar) findViewById(R.id.mToolBar);
         setSupportActionBar(mToolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mContext = ItemCategory.this;
 
 
     }
@@ -243,6 +245,8 @@ public class  ItemCategory extends AppCompatActivity {
         if (!wifi && !data)
         {
             Intent intent = new Intent(ItemCategory.this,Check_Internet_connection.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            intent.putExtra("flag","1");
             startActivity(intent);
         }
         else {
@@ -253,6 +257,6 @@ public class  ItemCategory extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        finish();
+        startActivity(new Intent(ItemCategory.this,Category.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
     }
 }

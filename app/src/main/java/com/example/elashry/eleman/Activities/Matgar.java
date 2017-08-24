@@ -110,4 +110,9 @@ public class Matgar extends AppCompatActivity {
         }
         return true;
     }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        startActivity(new Intent(Matgar.this,Category.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+    }
 }

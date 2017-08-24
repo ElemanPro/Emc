@@ -31,6 +31,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class Category extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
@@ -39,6 +40,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
     private final String ads_url =App_URL.advertisement;
     private List<AdvertsmentModel> adsModelList;
     public static ArrayList<String> names,imges,links;
+    public static List<HashMap<String,String>> adv_list;
     private Toolbar mCat_ToolBar;
     ImageView img ,img2 ,img3,img4,img5,img6;
     @Override
@@ -164,11 +166,12 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
                     @Override
                     public void onResponse(JSONArray response) {
                         Log.e("data",response.toString());
+                        adv_list = new ArrayList<>();
                         JSONObject object;
                         adsModelList = new ArrayList<>();
-                        names = new ArrayList<>();
+                        /*names = new ArrayList<>();
                         imges = new ArrayList<>();
-                        links = new ArrayList<>();
+                        links = new ArrayList<>();*/
                         for (int index=0;index<response.length();index++)
                         {
                             try {
@@ -177,53 +180,38 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
 
                                 AdvertsmentModel adsModel = new AdvertsmentModel(object.get("ads_name").toString(),object.get("ads_detailes").toString(),object.get("ads_images").toString(),object.get("ads_date_add").toString());
                                 adsModelList.add(adsModel);
-                               names.add(object.get("ads_name").toString());
-                               imges.add(object.get("ads_images").toString());
-                               links.add(object.get("ads_detailes").toString());
-
-                                file_maps = new HashMap<>();
-                                for(int i=0;i<names.size();i++){
-                                    file_maps.put(names.get(i),  App_URL.image_url+imges.get(i));
-                                }
-
-
-//                                for (String name : file_maps.keySet()) {
-//                                    TextSliderView textSliderView = new TextSliderView(Category.this);
-//                                    // initialize a SliderLayout
-//                                    textSliderView.description(name)
-//                                            .image(name)
-//                                            .setScaleType(BaseSliderView.ScaleType.Fit)
-//                                            .setOnSliderClickListener(Category.this);
-//
-//                                    //add your extra information
-//                                    textSliderView.bundle(new Bundle());
-//                                    textSliderView.getBundle().putString("extra", name);
-//                                    mDemoSlider.addSlider(textSliderView);
-//                                }
-                                for(int i=0;i<links.size();i++) {
-                                    TextSliderView textSliderView = new TextSliderView(Category.this);
-                                    // initialize a SliderLayout
-                                    textSliderView.description(names.get(i))
-                                            .image(names.get(i))
-                                            .setScaleType(BaseSliderView.ScaleType.Fit)
-                                            .setOnSliderClickListener(Category.this);
-
-                                    //add your extra information
-                                    textSliderView.bundle(new Bundle());
-                                    textSliderView.getBundle().putString("extra", links.get(i));
-                                    mDemoSlider.addSlider(textSliderView);
-                                }
-                                mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
-                                mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
-                                mDemoSlider.setCustomAnimation(new DescriptionAnimation());
-                                mDemoSlider.setDuration(3000);
-                                mDemoSlider.addOnPageChangeListener(Category.this);
-
-
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
                             }
+                        }
+                        if (adsModelList.size()>0)
+                        {
+                            Toast.makeText(Category.this,adsModelList.size()+"", Toast.LENGTH_SHORT).show();
+                            Map<String,String> map = new HashMap<>();
+                            for (int index=0;index<adsModelList.size();index++)
+                            {
+                                map.put(adsModelList.get(index).getAds_name().toString(),adsModelList.get(index).getAds_image().toString());
+
+                            }
+
+                            for (String name :map.keySet())
+                            {
+                                TextSliderView textSliderView = new TextSliderView(Category.this);
+                                // initialize a SliderLayout
+                                textSliderView.description(name.toString())
+                                        .image(App_URL.image_url+map.get(name).toString())
+                                        .setScaleType(BaseSliderView.ScaleType.Fit)
+                                        .setOnSliderClickListener(Category.this);
+                                textSliderView.bundle(new Bundle());
+                                    mDemoSlider.addSlider(textSliderView);
+                            }
+                            mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
+                            mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
+                            mDemoSlider.setCustomAnimation(new DescriptionAnimation());
+                            mDemoSlider.setDuration(3000);
+                            mDemoSlider.addOnPageChangeListener(Category.this);
+
                         }
 
                     }

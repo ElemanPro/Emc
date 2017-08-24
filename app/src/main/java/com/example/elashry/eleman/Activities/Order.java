@@ -2,8 +2,10 @@ package com.example.elashry.eleman.Activities;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -115,18 +117,35 @@ public class Order extends AppCompatActivity {
         }
         else
         {
+            boolean isConnected = Check_Network();
+            if (isConnected==true)
+            {
+                String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa").format(new Date().getTime());
+                progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
+                progressDialog.show();
+                if (flag.toString().equals("0"))
+                {
+                    add_order(App_URL.add_itemCateg_data,client_name,client_phone,order_location,order_quantity,date,model.getProduct_id_fk().toString(),"0");
+                }
+                else if (flag.toString().equals("1"))
+                {
+                    add_order(App_URL.matgar_order,client_name,client_phone,order_location,order_quantity,date,"0",matgarModel.getMatgar_pk().toString());
+                }
 
-            String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa").format(new Date().getTime());
-            progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
-            progressDialog.show();
-            if (flag.toString().equals("0"))
-            {
-                add_order(App_URL.add_itemCateg_data,client_name,client_phone,order_location,order_quantity,date,model.getProduct_id_fk().toString(),"0");
             }
-            else if (flag.toString().equals("1"))
+            else
             {
-                add_order(App_URL.matgar_order,client_name,client_phone,order_location,order_quantity,date,"0",matgarModel.getMatgar_pk().toString());
+                progressDialog.dismiss();
+                mdialog.setMessage("تحقق من الاتصال بالانترنت");
+                mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        Toast.makeText(Order.this, "إلغاء", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                mdialog.show();
             }
+
 
 
         }
@@ -204,6 +223,21 @@ public class Order extends AppCompatActivity {
             Controller.getInstance().addToRequestQueue(strReq,"re");
 
         }
+    private boolean Check_Network()
+    {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean mobile_data = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
 
+        if (!wifi&&!mobile_data)
+        {
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+
+    }
 
 }

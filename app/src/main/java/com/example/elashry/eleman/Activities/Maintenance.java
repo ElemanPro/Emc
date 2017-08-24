@@ -2,8 +2,10 @@ package com.example.elashry.eleman.Activities;
 
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -136,15 +138,28 @@ public class Maintenance extends AppCompatActivity {
         else
         {
 
+            boolean isConnected = Check_Network();
+            if (isConnected==true)
 
-            Toast.makeText(Maintenance.this,cname.getText().toString()+"\n"+cphone.getText().toString()+"\n"+caddress.getText().toString()+"\n"+dtype.getText().toString()+"\n"+ marka.getText().toString()+"\n"+"\n"+damage.getText().toString(), Toast.LENGTH_SHORT).show();
-
-            progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
-            progressDialog.show();
-
-            String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa").format(new Date().getTime());
-            Add_Maintenance_order(client_name,client_phone,client_address,device_name,device_marka,device_warranty_state,device_damage_type,date);
-        }
+            {
+                progressDialog.setMessage("sending "+ cname.getText().toString()+" data to server");
+                progressDialog.show();
+                String date = new SimpleDateFormat("EEE ,dd MMM yyyy HH:mm aa").format(new Date().getTime());
+                Add_Maintenance_order(client_name,client_phone,client_address,device_name,device_marka,device_warranty_state,device_damage_type,date);
+            }
+            else
+                {
+                    progressDialog.dismiss();
+                    mdialog.setMessage("تحقق من الاتصال بالانترنت");
+                    mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            Toast.makeText(Maintenance.this, "إلغاء", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    mdialog.show();
+                }
+                    }
     }
     private void Add_Maintenance_order(final String c_name, final String c_phone, final String c_address, final String dev_name, final String dev_marka, final String dev_warranty_state, final String dev_damage_type, final String date)
     {
@@ -220,5 +235,21 @@ public class Maintenance extends AppCompatActivity {
             };
             // Adding request to request queue
             Controller.getInstance().addToRequestQueue(strReq,"re");
+    }
+    private boolean Check_Network()
+    {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean mobile_data = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+
+        if (!wifi&&!mobile_data)
+        {
+            return false;
+        }
+        else
+            {
+                return true;
+            }
+
     }
 }

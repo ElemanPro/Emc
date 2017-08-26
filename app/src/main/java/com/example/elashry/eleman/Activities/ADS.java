@@ -54,7 +54,7 @@ public class ADS extends AppCompatActivity {
                     try {
 
                         JSONObject obj = response.getJSONObject(i);
-                        AdsModel feeds = new AdsModel(obj.getString("ads_images"), obj.getString("ads_name"));
+                        AdsModel feeds = new AdsModel(obj.getString("ads_images"), obj.getString("ads_name"),obj.getString("ads_detailes"));
 
                         // adding movie to movies array
                         feedsList.add(feeds);

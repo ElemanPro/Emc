@@ -1,14 +1,21 @@
 package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.example.elashry.eleman.Activities.ADS;
+import com.example.elashry.eleman.Activities.Category;
+import com.example.elashry.eleman.Activities.WebViiew;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.R;
 
@@ -23,11 +30,12 @@ import java.util.List;
 /**
  * Created by AndroidNovice on 6/5/2016.
  */
-public class AdapterAds extends RecyclerView.Adapter<AdapterAds.MyViewHolder> {
+public class AdapterAds extends RecyclerView.Adapter<AdapterAds.MyViewHolder> implements View.OnClickListener{
 
     private List<AdsModel> feedsList;
     private Context context;
     private LayoutInflater inflater;
+    ADS ads;
 
     public AdapterAds(Context context, List<AdsModel> feedsList) {
 
@@ -56,6 +64,28 @@ public class AdapterAds extends RecyclerView.Adapter<AdapterAds.MyViewHolder> {
     @Override
     public int getItemCount() {
         return feedsList.size();
+    }
+
+
+    @Override
+    public void onClick(View v) {
+
+        int position = (int) v.getTag();
+
+        AdsModel   feeds = feedsList.get(position);
+
+      Toast t=  Toast.makeText(context, feeds.getLink() + "222", Toast.LENGTH_SHORT);
+        View vt=t.getView();
+        vt.setBackgroundColor(Color.CYAN);
+
+        t.show();
+
+
+        Intent i=new Intent(ads,WebViiew.class);
+
+        i.putExtra("link",feeds.getLink());
+
+        ads.startActivity(i);
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

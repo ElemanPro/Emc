@@ -65,6 +65,10 @@ public class Check_Internet_connection extends AppCompatActivity {
             {
                 startActivity(new Intent(Check_Internet_connection.this,Matgar.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
 
+            } else if (flag.toString().equals("4"))
+            {
+                startActivity(new Intent(Check_Internet_connection.this,ADS.class).setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP));
+
             }
         }
     }

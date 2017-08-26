@@ -39,7 +39,7 @@ public class ADS extends AppCompatActivity {
         setContentView(R.layout.activity_ads);
         //Initialize RecyclerView
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        adapter = new AdapterAds(this, feedsList);
+        adapter = new AdapterAds(this, feedsList,this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         recyclerView.setAdapter(adapter);

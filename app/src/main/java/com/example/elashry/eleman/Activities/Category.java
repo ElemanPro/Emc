@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Map;
 
 
-public class Category extends AppCompatActivity  implements BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
+public class Category extends AppCompatActivity  implements  BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     HashMap<String, String> file_maps;
     private SliderLayout mDemoSlider;
     private final String ads_url =App_URL.advertisement;
@@ -140,7 +140,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
 
     @Override
     public void onSliderClick(BaseSliderView slider) {
-        Toast.makeText(this, slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
+       // Toast.makeText(this, slider.getBundle().get("extra") + "", Toast.LENGTH_SHORT).show();
         Intent i=new Intent(Category.this,WebViiew.class);
         i.putExtra( "link",slider.getBundle().get("extra")+"");
         startActivity(i);
@@ -188,9 +188,11 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
                         if (adsModelList.size()>0)
                         {
                             Map<String,String> map = new HashMap<>();
+                            Map<String,String> links = new HashMap<>();
                             for (int index=0;index<adsModelList.size();index++)
                             {
                                 map.put(adsModelList.get(index).getAds_name().toString(),adsModelList.get(index).getAds_image().toString());
+                                links.put(adsModelList.get(index).getAds_name().toString(),adsModelList.get(index).getAds_details().toString());
 
                             }
 
@@ -200,11 +202,14 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
                                 // initialize a SliderLayout
                                 textSliderView.description(name.toString())
                                         .image(App_URL.image_url+map.get(name).toString())
-                                        .setScaleType(BaseSliderView.ScaleType.Fit);
+                                        .setScaleType(BaseSliderView.ScaleType.Fit)
+                                        .setOnSliderClickListener(Category.this);
+
                                 textSliderView.bundle(new Bundle());
                                 textSliderView.getBundle()
-                                        .putString("extra", String.valueOf(name));
+                                        .putString("extra", String.valueOf(links.get(name)));
                                     mDemoSlider.addSlider(textSliderView);
+
                             }
                             mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
                             mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);

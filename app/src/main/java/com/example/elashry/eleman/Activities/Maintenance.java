@@ -37,6 +37,8 @@ import java.util.HashMap;
 import java.util.Locale;
 import java.util.Map;
 
+import static com.example.elashry.eleman.Adapter.MaintenanceAdapter.mflag;
+
 public class Maintenance extends AppCompatActivity {
     Button maintenance_order_Btn;
     EditText cname,cphone,caddress,dtype ,marka ,damage;
@@ -179,10 +181,11 @@ public class Maintenance extends AppCompatActivity {
                         {
                             progressDialog.dismiss();
                             mdialog.setMessage("تم ارسال الطلب بنجاح");
-                            mdialog.setNegativeButton("إلغاء", new DialogInterface.OnClickListener() {
+                            mdialog.setNegativeButton("موافق", new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
                                     finish();
+                                    mflag="0";
                                 }
                             });
                             mdialog.show();

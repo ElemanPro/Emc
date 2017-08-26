@@ -2,10 +2,12 @@ package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.elashry.eleman.Activities.ShowMaintenance_Details;
@@ -19,6 +21,8 @@ import java.util.List;
  */
 
 public class MaintenanceAdapter extends RecyclerView.Adapter <MaintenanceAdapter.ViewHoler>{
+
+    public static String mflag;
 
     Context mContext;
     LayoutInflater inflater;
@@ -42,18 +46,23 @@ public class MaintenanceAdapter extends RecyclerView.Adapter <MaintenanceAdapter
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 intent.putExtra("maintenance_data",maintenanceModel);
                 mContext.startActivity(intent);
+
             }
         });
         return holder;
     }
-
-
 
     @Override
     public void onBindViewHolder(MaintenanceAdapter.ViewHoler holder, int position) {
         holder.client_name.setText(maintenance_List.get(position).getCname().toString());
         holder.dev_name.setText(maintenance_List.get(position).getDtype().toString()+" "+maintenance_List.get(position).getDbrand().toString());
         holder.date.setText(maintenance_List.get(position).getOdate().toString());
+       /* if(mflag.equals("0")){
+            // rm.setBackgroundColor(ContextCompat.getColor(mContext,R.color.colorPrimary));
+            holder.rm.setBackgroundColor(Color.parseColor("#000000"));
+        }else {
+            holder.rm.setBackgroundColor(Color.parseColor("#ffffff"));
+        }*/
     }
 
     @Override
@@ -61,16 +70,19 @@ public class MaintenanceAdapter extends RecyclerView.Adapter <MaintenanceAdapter
         return maintenance_List.size();
     }
 
-
     class ViewHoler extends RecyclerView.ViewHolder{
 
         TextView client_name,dev_name,date;
+        LinearLayout rm;
         public ViewHoler(View itemView) {
             super(itemView);
 
             client_name = (TextView) itemView.findViewById(R.id.mngr_main_client_name);
             dev_name = (TextView) itemView.findViewById(R.id.mngr_main_dev_name);
             date = (TextView) itemView.findViewById(R.id.mngr_main_date);
+            rm             =(LinearLayout) itemView.findViewById(R.id.maintenancerow) ;
+
+
         }
 
     }

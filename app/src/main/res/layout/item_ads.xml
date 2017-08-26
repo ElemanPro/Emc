@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:padding="3dp"
+    android:orientation="vertical"
+    android:background="@color/background_color">
+
+
+    <com.github.siyamed.shapeimageview.RoundedImageView
+        android:id="@+id/img"
+        android:layout_width="match_parent"
+        android:layout_height="180dp"
+        android:layout_margin="5dp"
+        android:src="@drawable/engine"
+        app:siRadius="6dp"
+        app:siBorderWidth="4dp"
+        app:siBorderColor="@color/colorPrimary"
+        app:siSquare="false"/>
+
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:gravity="center"
+        android:text="50%  علي عروضنا في تصاميم  "
+        android:textColor="@color/background_color"
+        android:textSize="20dp"
+        android:background="@drawable/blubuttom"
+        android:textStyle="bold"/>
+</RelativeLayout>

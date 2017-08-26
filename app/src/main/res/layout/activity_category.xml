@@ -227,13 +227,14 @@
 
                         <TextView
                             android:id="@+id/fann"
-                            android:textSize="25dp"
                             android:paddingTop="@dimen/pad_10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text=" الوصول"
+                            android:text="عملائنا"
                             android:textColor="@color/colorPrimary"
+                            android:textSize="25dp"
                             android:textStyle="bold"
+
                             />
                     </LinearLayout>
                 </LinearLayout>

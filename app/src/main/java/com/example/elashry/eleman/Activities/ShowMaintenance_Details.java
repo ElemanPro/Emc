@@ -8,8 +8,11 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.elashry.eleman.Adapter.MaintenanceAdapter;
 import com.example.elashry.eleman.Model.MaintenanceModel;
 import com.example.elashry.eleman.R;
+
+import static com.example.elashry.eleman.Adapter.MaintenanceAdapter.mflag;
 
 public class ShowMaintenance_Details extends AppCompatActivity {
 
@@ -49,6 +52,7 @@ public class ShowMaintenance_Details extends AppCompatActivity {
     }
     private void GetDataFromIntent() {
 
+        mflag="1";
         Intent intent = getIntent();
         if (intent.getExtras()!=null)
         {
@@ -75,6 +79,7 @@ public class ShowMaintenance_Details extends AppCompatActivity {
         if (item.getItemId()==android.R.id.home)
         {
             finish();
+            mflag="1";
         }
         return super.onOptionsItemSelected(item);
 

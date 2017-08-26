@@ -2,6 +2,7 @@ package com.example.elashry.eleman.Fragment;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.net.ConnectivityManager;
 import android.os.Bundle;
@@ -35,6 +36,8 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import static com.example.elashry.eleman.Adapter.MaintenanceAdapter.mflag;
 
 /**
  * Created by Delta on 06/08/2017.
@@ -126,7 +129,6 @@ public class Maintenance extends Fragment {
                 }
         );
         Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
-
     }
     private void init_View(View view) {
         mContext =view.getContext();
@@ -139,6 +141,7 @@ public class Maintenance extends Fragment {
         mRefreshLayout.setColorSchemeColors(ContextCompat.getColor(mContext,R.color.colorPrimary));
         mrRecyclerView = (RecyclerView) view.findViewById(R.id.maintenance_RecyView);
         mrRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+
 
 
 

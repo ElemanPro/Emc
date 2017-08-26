@@ -76,7 +76,7 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
         img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i =new Intent(Category.this,MapsActivity.class);
+                Intent i =new Intent(Category.this,ADS.class);
                 startActivity(i);
             }
         });
@@ -200,9 +200,10 @@ public class Category extends AppCompatActivity  implements BaseSliderView.OnSli
                                 // initialize a SliderLayout
                                 textSliderView.description(name.toString())
                                         .image(App_URL.image_url+map.get(name).toString())
-                                        .setScaleType(BaseSliderView.ScaleType.Fit)
-                                        .setOnSliderClickListener(Category.this);
+                                        .setScaleType(BaseSliderView.ScaleType.Fit);
                                 textSliderView.bundle(new Bundle());
+                                textSliderView.getBundle()
+                                        .putString("extra", String.valueOf(name));
                                     mDemoSlider.addSlider(textSliderView);
                             }
                             mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);

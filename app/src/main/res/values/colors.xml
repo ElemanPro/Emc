@@ -7,7 +7,7 @@
 
     <color name="background_color">#813e9e</color>
     <color name="back">#042b5c</color>
-    <color name="tvbg">#F7AD0A</color>
+    <color name="tvbg">#7e57c2</color>
 
 
     <color name="accent_color">@color/colorAccent</color>

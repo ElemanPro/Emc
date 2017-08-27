@@ -2,10 +2,7 @@ package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
-import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -25,11 +22,6 @@ import com.example.elashry.eleman.Model.Product_Model;
 import com.example.elashry.eleman.R;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -157,46 +149,5 @@ public class Product_Adapter extends RecyclerView.Adapter <Product_Adapter.ViewH
 
     }
 
-    class asyn_task extends AsyncTask<String ,Void,Bitmap>{
-        ViewHoler holer;
-        URL url =null;
-        InputStream input = null;
-        HttpURLConnection urlConnection=null;
-        Bitmap bitmap=null;
-        public asyn_task(ViewHoler holer) {
-            this.holer = holer;
-        }
 
-        @Override
-        protected void onPreExecute() {
-
-
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-            try {
-                url = new URL(strings[0]);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.connect();
-                input = urlConnection.getInputStream();
-                bitmap = BitmapFactory.decodeStream(input);
-                return bitmap;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            super.onPostExecute(bitmap);
-            holer.product_image.setImageBitmap(bitmap);
-            holer.prog_bar.setVisibility(View.GONE);
-            holer.product_image.setVisibility(View.VISIBLE);
-        }
-    }
 }

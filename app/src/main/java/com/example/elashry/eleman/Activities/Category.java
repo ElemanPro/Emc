@@ -119,13 +119,12 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
         this.setSupportActionBar(mCat_ToolBar);
 
         List<Success_Partners_Model> list_Success_partners_models = new ArrayList<>();
-        list_Success_partners_models.add(new Success_Partners_Model("emad","emad.png"));
-        list_Success_partners_models.add(new Success_Partners_Model("mohammed","mohammed.png"));
-        list_Success_partners_models.add(new Success_Partners_Model("ahmed","ahmed.png"));
-        list_Success_partners_models.add(new Success_Partners_Model("ali","ali.png"));
-        list_Success_partners_models.add(new Success_Partners_Model("abdallah","abdallah.png"));
-        list_Success_partners_models.add(new Success_Partners_Model("khairy","khairy.png"));
-        list_Success_partners_models.add(new Success_Partners_Model("shady","shady.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("وكيل صيانه يونيون اير","emad.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("وكيل صيانه توشيبا العربي","mohammed.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("وكيل صيانه ال جي","ahmed.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("وكيل صيانه عبوده العشماوي","ali.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("وكيل صيانه ","abdallah.png"));
+
         success_Partners_recyclerView = (RecyclerView) findViewById(R.id.success_Partners_recyclerView);
         success_Partners_recyclerView.setNestedScrollingEnabled(false);
         success_Partners_recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayout.HORIZONTAL,false));

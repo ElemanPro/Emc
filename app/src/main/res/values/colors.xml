@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-<color name="colorPrimary">#042b5c</color>
-<color name="colorPrimaryDark">#e0beef</color>
+<color name="colorPrimary">#7b1fa2</color>
+<color name="colorPrimaryDark">#813e9e</color>
 <color name="colorAccent">#31334A</color>
 <color name="shadowColorRadial">#555555</color>
 
-    <color name="background_color">#e0beef</color>
+    <color name="background_color">#813e9e</color>
     <color name="back">#042b5c</color>
+    <color name="tvbg">#F7AD0A</color>
 
 
     <color name="accent_color">@color/colorAccent</color>

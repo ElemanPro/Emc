@@ -59,10 +59,9 @@ public class Splach extends AwesomeSplash {
         //Customize Logo
         configSplash.setLogoSplash(R.drawable.semi); //or any other drawable
         configSplash.setAnimLogoSplashDuration(2000); //int ms
-        configSplash.setAnimLogoSplashTechnique(Techniques.Bounce); //choose one form Techniques (ref: https://github.com/daimajia/AndroidViewAnimations)
-
-
-        //Customize Path
+        configSplash.setAnimLogoSplashTechnique(Techniques.Bounce);
+        //choose one form Techniques (ref: https://github.com/daimajia/AndroidViewAnimations)
+          //Customize Path
         //  configSplash.setPathSplash(Constants.lo); //set path String
         configSplash.setOriginalHeight(400); //in relation to your svg (path) resource
         configSplash.setOriginalWidth(400); //in relation to your svg (path) resource

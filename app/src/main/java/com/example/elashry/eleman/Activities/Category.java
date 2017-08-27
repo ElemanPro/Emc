@@ -3,13 +3,16 @@ package com.example.elashry.eleman.Activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -19,9 +22,11 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.elashry.eleman.Adapter.success_Partners_Adapter;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.AdvertsmentModel;
+import com.example.elashry.eleman.Model.Success_Partners_Model;
 import com.example.elashry.eleman.R;
 
 import org.json.JSONArray;
@@ -37,20 +42,22 @@ import java.util.Map;
 public class Category extends AppCompatActivity  implements  BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
     HashMap<String, String> file_maps;
     private SliderLayout mDemoSlider;
+    private TextView sp_tv;
     private final String ads_url =App_URL.advertisement;
     private List<AdvertsmentModel> adsModelList;
     public static ArrayList<String> names,imges,links;
     public static List<HashMap<String,String>> adv_list;
     private Toolbar mCat_ToolBar;
-    ImageView img ,img2 ,img3,img4,img5,img6;
+    ImageView img ,img2 ,img4,img5,img6;
+    private RecyclerView success_Partners_recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_category);
         init_View();
+
         img = (ImageView) findViewById(R.id.img1);
         img2 = (ImageView) findViewById(R.id.img2);
-        img3 = (ImageView) findViewById(R.id.img3);
         img4 = (ImageView) findViewById(R.id.img4);
         img5 = (ImageView) findViewById(R.id.img5);
         img6 = (ImageView) findViewById(R.id.img6);
@@ -73,13 +80,13 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
             }
         });
 
-        img3.setOnClickListener(new View.OnClickListener() {
+        /*img3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i =new Intent(Category.this,ADS.class);
                 startActivity(i);
             }
-        });
+        });*/
         img4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -110,6 +117,20 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
         mCat_ToolBar = (Toolbar) findViewById(R.id.mCat_ToolBar);
         this.setSupportActionBar(mCat_ToolBar);
+
+        List<Success_Partners_Model> list_Success_partners_models = new ArrayList<>();
+        list_Success_partners_models.add(new Success_Partners_Model("emad","emad.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("mohammed","mohammed.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("ahmed","ahmed.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("ali","ali.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("abdallah","abdallah.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("khairy","khairy.png"));
+        list_Success_partners_models.add(new Success_Partners_Model("shady","shady.png"));
+        success_Partners_recyclerView = (RecyclerView) findViewById(R.id.success_Partners_recyclerView);
+        success_Partners_recyclerView.setNestedScrollingEnabled(false);
+        success_Partners_recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayout.HORIZONTAL,false));
+        success_Partners_recyclerView.setHasFixedSize(true);
+        success_Partners_recyclerView.setAdapter(new success_Partners_Adapter(this,list_Success_partners_models));
 
     }
 

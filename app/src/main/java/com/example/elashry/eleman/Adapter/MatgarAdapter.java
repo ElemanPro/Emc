@@ -62,7 +62,15 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
     @Override
     public void onBindViewHolder(final MyViewHolder holder, final int position) {
         holder.pro_name.setText(matgarModelList.get(position).getProduct_name().toString());
-        holder.pro_price.setText(matgarModelList.get(position).getProduct_price().toString()+" "+"جنيه");
+        if(!matgarModelList.get(position).getProduct_price().isEmpty())
+        {
+            holder.pro_price.setText(matgarModelList.get(position).getProduct_price().toString()+" "+"جنيه");
+        }
+        else
+            {
+
+            }
+
         holder.date.setText("منذ"+" "+matgarModelList.get(position).getDate().toString());
         Picasso.with(mContext).load(App_URL.image_url+matgarModelList.get(position).getProduct_image().toString()). fit().into(holder.pro_image);
         holder.pro_image.setVisibility(View.VISIBLE);

@@ -10,7 +10,7 @@
     <string name="forgot">Forgot password?</string>
     <string name="closebutton">Close Button for Activity</string>
     <string name="newUser">Not a Member yet? Sign Up here.</string>
-    <string name="fullName">الاسم العميل</string>
+    <string name="fullName">الاسم المسئول</string>
     <string name="mobileNumber">رقم المحمول</string>
     <string name="location">عنوان الطلب</string>
     <string name="type">اسم الجهاز</string>

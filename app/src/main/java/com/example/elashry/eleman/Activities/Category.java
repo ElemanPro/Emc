@@ -49,6 +49,7 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
     public static List<HashMap<String,String>> adv_list;
     private Toolbar mCat_ToolBar;
     ImageView img ,img2 ,img4,img5,img6;
+    LinearLayout about,cut;
     private RecyclerView success_Partners_recyclerView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +61,9 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
         img2 = (ImageView) findViewById(R.id.img2);
         img4 = (ImageView) findViewById(R.id.img4);
         img5 = (ImageView) findViewById(R.id.img5);
-        img6 = (ImageView) findViewById(R.id.img6);
+       // img6 = (ImageView) findViewById(R.id.img6);
+        about = (LinearLayout) findViewById(R.id.about);
+        cut = (LinearLayout) findViewById(R.id.cut);
 
 
         img.setOnClickListener(new View.OnClickListener() {
@@ -72,7 +75,7 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
         });
 
 
-        img2.setOnClickListener(new View.OnClickListener() {
+        cut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i =new Intent(Category.this,ItemCategory.class);
@@ -101,7 +104,7 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
                 startActivity(i);
             }
         });
-        img6.setOnClickListener(new View.OnClickListener() {
+        about.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent i =new Intent(Category.this,About.class);

@@ -124,14 +124,17 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:background="@drawable/back"
+                        android:layout_margin="5dp"
+                        android:padding="@dimen/pad_5dp"
                         android:orientation="vertical"
                         android:focusableInTouchMode="true"
                         android:focusable="true"
                         >
 
                         <ImageView
-                            android:layout_width="70dp"
-                            android:layout_height="80dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:id="@+id/img1"
                             android:src="@drawable/pp" />
 
@@ -149,26 +152,30 @@
                             />
                     </LinearLayout>
 
-                    <View
+                  <!--  <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="2dp"
                         android:layout_marginTop="2dp"
                         android:background="@color/colorPrimary" />
-
+-->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
+                        android:layout_margin="5dp"
                         android:gravity="center"
+                        android:padding="@dimen/pad_5dp"
+                        android:background="@drawable/back"
                         android:orientation="vertical"
                         android:focusableInTouchMode="true"
+                        android:id="@+id/cut"
                         android:focusable="true"
                         >
 
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:id="@+id/img2"
                             android:src="@drawable/pair" />
 
@@ -185,10 +192,10 @@
                            />                    </LinearLayout>
                 </LinearLayout>
 
-                <View
+              <!--  <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
-                    android:background="@color/colorPrimary" />
+                    android:background="@color/colorPrimary" />-->
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -207,11 +214,15 @@
                         android:orientation="vertical"
                         android:focusableInTouchMode="true"
                         android:focusable="true"
+                        android:padding="@dimen/pad_5dp"
+                        android:layout_margin="5dp"
+                        android:background="@drawable/back"
+
                         >
 
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:id="@+id/img4"
                             android:src="@drawable/market" />
 
@@ -227,25 +238,29 @@
                             />
                     </LinearLayout>
 
-                    <View
+                  <!--  <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="2dp"
                         android:layout_marginTop="2dp"
-                        android:background="@color/colorPrimary" />
+                        android:background="@color/colorPrimary" />-->
 
                     <LinearLayout
+                        android:background="@drawable/back"
+
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
                         android:gravity="center"
+                        android:layout_margin="5dp"
+                        android:padding="@dimen/pad_5dp"
                         android:orientation="vertical"
                         android:focusableInTouchMode="true"
                         android:focusable="true"
                         >
                         <ImageView
-                            android:layout_width="80dp"
-                            android:layout_height="80dp"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
                             android:id="@+id/img5"
                             android:src="@drawable/contact" />
 
@@ -279,11 +294,11 @@
                 </LinearLayout>
 
 
-                <View
+             <!--   <View
                     android:layout_width="match_parent"
                     android:layout_height="1dp"
                     android:background="@color/colorPrimary" />
-
+-->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -306,28 +321,30 @@
 
                     </LinearLayout>
 
-                    <View
+                 <!--   <View
                         android:layout_width="1dp"
                         android:layout_height="match_parent"
                         android:layout_marginBottom="2dp"
                         android:layout_marginTop="2dp"
-                        android:background="@color/colorPrimary" />
+                        android:background="@color/colorPrimary" />-->
 
                     <LinearLayout
-                        android:layout_width="0dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="1"
                         android:gravity="center"
                         android:orientation="vertical"
                         android:focusableInTouchMode="true"
                         android:focusable="true"
+                        android:id="@+id/about"
+                        android:background="@drawable/back"
+
                         >
 
-                        <ImageView
+                     <!--   <ImageView
                             android:layout_width="80dp"
                             android:layout_height="80dp"
                             android:id="@+id/img6"
-                            android:src="@drawable/about" />
+                            android:src="@drawable/about" />-->
 
                         <TextView
                             android:id="@+id/lcd"
@@ -356,16 +373,16 @@
 
 
                 >
-                <View
+              <!--  <View
                     android:layout_width="0dp"
                     android:layout_weight=".5"
                     android:layout_height="2px"
                     android:background="@color/colorPrimary"
                     android:layout_gravity="center"
-                    />
+                    />-->
                 <TextView
                     android:id="@+id/sp_tv"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
                     android:text="شركاء النجاح"
@@ -373,16 +390,17 @@
                     android:gravity="center"
                     android:textSize="18sp"
                     android:textStyle="bold"
-                    android:textColor="@color/colorPrimary"
+                    android:background="@drawable/blubuttom"
+                    android:textColor="@color/white"
 
                     />
-                <View
+             <!--   <View
                     android:layout_width="0dp"
                     android:layout_weight=".5"
                     android:layout_height="2px"
                     android:background="@color/colorPrimary"
                     android:layout_gravity="center"
-                    />
+                    />-->
 
             </LinearLayout>
             <android.support.v7.widget.RecyclerView

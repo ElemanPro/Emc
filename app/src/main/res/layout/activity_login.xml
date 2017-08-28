@@ -75,7 +75,7 @@
         android:textSize="16sp"
 
         />
-
+<!--
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"
@@ -95,8 +95,7 @@
         android:maxLines="1"
         android:textColor="@color/white"
         android:textColorHint="@color/white"
-        android:textSize="16sp" />
-
+        android:textSize="16sp" />-->
     <View
         android:layout_width="fill_parent"
         android:layout_height="1px"

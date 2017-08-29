@@ -34,8 +34,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:focusableInTouchMode="true"
-            android:focusable="true"
+
             >
 
             <RelativeLayout
@@ -101,13 +100,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-
                 android:orientation="vertical"
                 android:paddingBottom="20dp"
                 android:paddingLeft="6dp"
                 android:paddingRight="6dp"
-                android:focusableInTouchMode="true"
-                android:focusable="true"
                 >
 
                 <LinearLayout
@@ -115,42 +111,43 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="5dp"
-                    android:focusableInTouchMode="true"
-                    android:focusable="true"
                     >
 
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:gravity="center"
-                        android:background="@drawable/back"
-                        android:layout_margin="5dp"
-                        android:padding="@dimen/pad_5dp"
-                        android:orientation="vertical"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
-                        >
-
-                        <ImageView
-                            android:layout_width="100dp"
-                            android:layout_height="100dp"
-                            android:id="@+id/img1"
-                            android:src="@drawable/pp" />
-
-
-
-                        <TextView
-                            android:id="@+id/rkm"
-                            android:paddingTop="@dimen/pad_10dp"
-                            android:textSize="25dp"
-                            android:layout_width="wrap_content"
+                        <LinearLayout
+                            android:id="@+id/linear_maintinance"
+                            android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:text="صيانه"
-                            android:textColor="@color/colorPrimary"
-                            android:textStyle="bold"
-                            />
-                    </LinearLayout>
+                            android:layout_weight="1"
+                            android:gravity="center"
+                            android:background="@drawable/back"
+                            android:layout_margin="5dp"
+                            android:padding="@dimen/pad_5dp"
+                            android:orientation="vertical"
+                            android:descendantFocusability="blocksDescendants"
+                            android:clickable="true"
+                            >
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:id="@+id/img1"
+                                android:src="@drawable/pp" />
+
+
+
+                            <TextView
+                                android:id="@+id/rkm"
+                                android:paddingTop="@dimen/pad_10dp"
+                                android:textSize="25dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="صيانه"
+                                android:textColor="@color/colorPrimary"
+                                android:textStyle="bold"
+                                />
+                        </LinearLayout>
+
+
 
                   <!--  <View
                         android:layout_width="1dp"
@@ -160,6 +157,7 @@
                         android:background="@color/colorPrimary" />
 -->
                     <LinearLayout
+                        android:id="@+id/linear_item_categ"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -168,9 +166,8 @@
                         android:padding="@dimen/pad_5dp"
                         android:background="@drawable/back"
                         android:orientation="vertical"
-                        android:focusableInTouchMode="true"
-                        android:id="@+id/cut"
-                        android:focusable="true"
+                        android:descendantFocusability="blocksDescendants"
+                        android:clickable="true"
                         >
 
                         <ImageView
@@ -202,11 +199,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
                     android:padding="5dp"
-                    android:focusableInTouchMode="true"
-                    android:focusable="true"
                     >
 
                     <LinearLayout
+                        android:id="@+id/linear_matgar"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -217,6 +213,8 @@
                         android:padding="@dimen/pad_5dp"
                         android:layout_margin="5dp"
                         android:background="@drawable/back"
+                        android:descendantFocusability="blocksDescendants"
+                        android:clickable="true"
 
                         >
 
@@ -246,8 +244,8 @@
                         android:background="@color/colorPrimary" />-->
 
                     <LinearLayout
+                        android:id="@+id/linear_contact"
                         android:background="@drawable/back"
-
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
@@ -255,8 +253,8 @@
                         android:layout_margin="5dp"
                         android:padding="@dimen/pad_5dp"
                         android:orientation="vertical"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
+                        android:descendantFocusability="blocksDescendants"
+                        android:clickable="true"
                         >
                         <ImageView
                             android:layout_width="100dp"
@@ -333,10 +331,11 @@
                         android:layout_height="wrap_content"
                         android:gravity="center"
                         android:orientation="vertical"
-                        android:focusableInTouchMode="true"
-                        android:focusable="true"
-                        android:id="@+id/about"
+                        android:descendantFocusability="blocksDescendants"
+                        android:clickable="true"
+                        android:id="@+id/linear_about"
                         android:background="@drawable/back"
+
 
                         >
 
@@ -349,12 +348,12 @@
                         <TextView
                             android:id="@+id/lcd"
                             android:textSize="25dp"
-                            android:paddingTop="@dimen/pad_10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="عن المركز"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
+                            android:gravity="center|top"
                             />
                            />
                     </LinearLayout>

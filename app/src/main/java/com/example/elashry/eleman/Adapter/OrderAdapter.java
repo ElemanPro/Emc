@@ -2,10 +2,7 @@ package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
-import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -30,11 +27,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -148,49 +140,5 @@ public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
         );
         Controller.getInstance().addToRequestQueue(mJsonArrayRequest,"json array req");
 
-    }
-    class asyn_task extends AsyncTask<String ,Void,Bitmap> {
-        ViewHoler holer;
-        URL url =null;
-        InputStream input = null;
-        HttpURLConnection urlConnection=null;
-        Bitmap bitmap=null;
-        public asyn_task(ViewHoler holer) {
-            this.holer = holer;
-        }
-
-
-
-        @Override
-        protected void onPreExecute() {
-
-
-        }
-
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-            try {
-                url = new URL(strings[0]);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.connect();
-                input = urlConnection.getInputStream();
-                bitmap = BitmapFactory.decodeStream(input);
-                return bitmap;
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            super.onPostExecute(bitmap);
-            holer.dev_image.setImageBitmap(bitmap);
-            holer.dev_image.setVisibility(View.VISIBLE);
-            holer.progBar.setVisibility(View.GONE);
-        }
     }
 }

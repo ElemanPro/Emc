@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.elashry.eleman.Model.Success_Partners_Model;
 import com.example.elashry.eleman.R;
 
 import java.util.List;
@@ -46,7 +45,7 @@ public class success_Partners_Adapter extends RecyclerView.Adapter<success_Partn
     }
       class ViewHolder extends RecyclerView.ViewHolder {
           private TextView success_partner_Name;
-          //private CircleImageView success_partner_Image;
+            //private CircleImageView success_partner_Image;
         public ViewHolder(View itemView) {
             super(itemView);
             success_partner_Name = (TextView) itemView.findViewById(R.id.success_partner_name);

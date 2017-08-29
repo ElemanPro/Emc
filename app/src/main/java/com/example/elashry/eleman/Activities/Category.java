@@ -12,7 +12,6 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.TextView;
 
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -22,11 +21,9 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
-import com.example.elashry.eleman.Adapter.success_Partners_Adapter;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.AdvertsmentModel;
-import com.example.elashry.eleman.Model.Success_Partners_Model;
 import com.example.elashry.eleman.R;
 
 import org.json.JSONArray;
@@ -40,17 +37,17 @@ import java.util.Map;
 
 
 public class Category extends AppCompatActivity  implements  BaseSliderView.OnSliderClickListener, ViewPagerEx.OnPageChangeListener {
-    HashMap<String, String> file_maps;
     private SliderLayout mDemoSlider;
-    private TextView sp_tv;
     private final String ads_url =App_URL.advertisement;
     private List<AdvertsmentModel> adsModelList;
+    private List<AdvertsmentModel> adsModelList_success_partner;
     public static ArrayList<String> names,imges,links;
     public static List<HashMap<String,String>> adv_list;
     private Toolbar mCat_ToolBar;
-    ImageView img ,img2 ,img4,img5,img6;
-    LinearLayout about,cut;
+    ImageView img ,img2 ,img4,img5;
+    LinearLayout linear_maintinance,linear_item_categ,linear_matgar,linear_contact,linear_about;
     private RecyclerView success_Partners_recyclerView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,57 +58,6 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
         img2 = (ImageView) findViewById(R.id.img2);
         img4 = (ImageView) findViewById(R.id.img4);
         img5 = (ImageView) findViewById(R.id.img5);
-       // img6 = (ImageView) findViewById(R.id.img6);
-        about = (LinearLayout) findViewById(R.id.about);
-        cut = (LinearLayout) findViewById(R.id.cut);
-
-
-        img.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i =new Intent(Category.this,Maintenance.class);
-                startActivity(i);
-            }
-        });
-
-
-        cut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i =new Intent(Category.this,ItemCategory.class);
-                startActivity(i);
-            }
-        });
-
-        /*img3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i =new Intent(Category.this,ADS.class);
-                startActivity(i);
-            }
-        });*/
-        img4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i =new Intent(Category.this,Matgar.class);
-                startActivity(i);
-            }
-        });
-        img5.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i =new Intent(Category.this,Contact.class);
-                startActivity(i);
-            }
-        });
-        about.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent i =new Intent(Category.this,About.class);
-                startActivity(i);
-            }
-        });
-
 
     }
 
@@ -121,18 +67,58 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
         mCat_ToolBar = (Toolbar) findViewById(R.id.mCat_ToolBar);
         this.setSupportActionBar(mCat_ToolBar);
 
-        List<Success_Partners_Model> list_Success_partners_models = new ArrayList<>();
-        list_Success_partners_models.add(new Success_Partners_Model("وكيل صيانه يونيون اير","emad.png"));
-        list_Success_partners_models.add(new Success_Partners_Model("وكيل صيانه توشيبا العربي","mohammed.png"));
-        list_Success_partners_models.add(new Success_Partners_Model("وكيل صيانه ال جي","ahmed.png"));
-        list_Success_partners_models.add(new Success_Partners_Model("وكيل صيانه عبوده العشماوي","ali.png"));
-        list_Success_partners_models.add(new Success_Partners_Model("وكيل صيانه ","abdallah.png"));
+        linear_maintinance = (LinearLayout) findViewById(R.id.linear_maintinance);
+        linear_item_categ  = (LinearLayout)findViewById(R.id.linear_item_categ);
+        linear_matgar      = (LinearLayout) findViewById(R.id.linear_matgar);
+        linear_contact     = (LinearLayout) findViewById(R.id.linear_contact);
+        linear_about       = (LinearLayout) findViewById(R.id.linear_about);
+        linear_maintinance.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(Category.this,Maintenance.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+
+        linear_item_categ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(Category.this,ItemCategory.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+        linear_matgar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(Category.this,Matgar.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+        linear_contact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(Category.this,Contact.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
+        linear_about.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i =new Intent(Category.this,About.class);
+                i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(i);
+            }
+        });
 
         success_Partners_recyclerView = (RecyclerView) findViewById(R.id.success_Partners_recyclerView);
         success_Partners_recyclerView.setNestedScrollingEnabled(false);
         success_Partners_recyclerView.setLayoutManager(new LinearLayoutManager(this,LinearLayout.HORIZONTAL,false));
         success_Partners_recyclerView.setHasFixedSize(true);
-        success_Partners_recyclerView.setAdapter(new success_Partners_Adapter(this,list_Success_partners_models));
+
 
     }
 
@@ -192,16 +178,13 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
                         adv_list = new ArrayList<>();
                         JSONObject object;
                         adsModelList = new ArrayList<>();
-                        /*names = new ArrayList<>();
-                        imges = new ArrayList<>();
-                        links = new ArrayList<>();*/
+
                         for (int index=0;index<response.length();index++)
                         {
                             try {
 
                                 object =response.getJSONObject(index);
-
-                                AdvertsmentModel adsModel = new AdvertsmentModel(object.get("ads_name").toString(),object.get("ads_detailes").toString(),object.get("ads_images").toString(),object.get("ads_date_add").toString());
+                                AdvertsmentModel adsModel = new AdvertsmentModel(object.get("ads_name").toString(),object.get("ads_detailes").toString(),object.get("ads_images").toString(),object.get("ads_date_add").toString(),object.get("expiry_date").toString(),object.get("ads_type").toString());
                                 adsModelList.add(adsModel);
 
                             } catch (JSONException e) {

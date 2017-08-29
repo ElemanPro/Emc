@@ -2,29 +2,21 @@ package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.elashry.eleman.Activities.ADS;
-import com.example.elashry.eleman.Activities.Category;
 import com.example.elashry.eleman.Activities.WebViiew;
 import com.example.elashry.eleman.App_URL;
-import com.example.elashry.eleman.R;
-
-import com.android.volley.toolbox.NetworkImageView;
-import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.AdsModel;
+import com.example.elashry.eleman.R;
 import com.squareup.picasso.Picasso;
-
 
 import java.util.List;
 
@@ -87,7 +79,6 @@ public class AdapterAds extends RecyclerView.Adapter<AdapterAds.MyViewHolder> im
         public MyViewHolder(View itemView) {
             super(itemView);
             imageview = (ImageView) itemView.findViewById(R.id.img);
-
             title = (TextView) itemView.findViewById(R.id.title);
             cardView = (CardView) itemView.findViewById(R.id.Card);
 

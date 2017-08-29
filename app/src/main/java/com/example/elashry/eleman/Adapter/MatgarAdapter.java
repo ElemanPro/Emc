@@ -2,10 +2,7 @@ package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.PorterDuff;
-import android.os.AsyncTask;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.PopupMenu;
 import android.support.v7.widget.RecyclerView;
@@ -27,11 +24,6 @@ import com.example.elashry.eleman.Model.MatgarModel;
 import com.example.elashry.eleman.R;
 import com.squareup.picasso.Picasso;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.List;
 
 /**
@@ -160,51 +152,4 @@ public class MatgarAdapter extends RecyclerView.Adapter<MatgarAdapter.MyViewHold
         return matgarModelList.size();
     }
 
-    public class asyn_task extends AsyncTask<String,Void,Bitmap>
-    {
-        MyViewHolder holder;
-        URL url =null;
-        HttpURLConnection urlConnection=null;
-        InputStream inputStream = null;
-
-        public asyn_task(MyViewHolder holder) {
-            this.holder = holder;
-        }
-
-
-        @Override
-        protected Bitmap doInBackground(String... strings) {
-            try {
-                url = new URL(strings[0]);
-                urlConnection = (HttpURLConnection) url.openConnection();
-                urlConnection.connect();
-                inputStream = urlConnection.getInputStream();
-                Bitmap bitmap= BitmapFactory.decodeStream(inputStream);
-
-                return bitmap;
-
-            } catch (MalformedURLException e) {
-                e.printStackTrace();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }finally {
-
-                try {
-                    inputStream.close();
-                    urlConnection.disconnect();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Bitmap bitmap) {
-            super.onPostExecute(bitmap);
-            holder.pro_image.setImageBitmap(bitmap);
-            holder.mBar.setVisibility(View.GONE);
-            holder.pro_image.setVisibility(View.VISIBLE);
-        }
-    }
 }

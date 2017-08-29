@@ -6,7 +6,8 @@ package com.example.elashry.eleman;
 
 public class App_URL {
     public static final String product_url           ="http://semicolonsoft.com/clients/emc/api/find/products";
-    public static final String advertisement         ="http://semicolonsoft.com/clients/emc/api/find/advertisement";
+    //public static final String advertisement         ="http://semicolonsoft.com/clients/emc/api/find/advertisement";
+    public static final String advertisement         ="http://semicolonsoft.com/clients/emc/api/ads";
     public static final String app_maintenance       ="http://semicolonsoft.com/clients/emc/api/find/app_maintenance";
     public static final String add_maintenance_order ="http://semicolonsoft.com/clients/emc/api/addmentanaceorder";
     public static final String matgar_order          ="http://semicolonsoft.com/clients/emc/api/matgarorders";

@@ -2,9 +2,7 @@ package com.example.elashry.eleman.Model;
 
 import java.io.Serializable;
 
-/**
- * Created by elashry on 8/6/2017.
- */
+
 
 public class MaintenanceModel implements Serializable{
     String cname;

@@ -1,8 +1,6 @@
 package com.example.elashry.eleman;
 
-/**
- * Created by Delta on 18/08/2017.
- */
+
 
 public class App_URL {
     public static final String product_url           ="http://semicolonsoft.com/clients/emc/api/find/products";

@@ -2,9 +2,7 @@ package com.example.elashry.eleman.Model;
 
 import java.io.Serializable;
 
-/**
- * Created by elashry on 7/31/2017.
- */
+
 
 public class DataModel implements Serializable{
 

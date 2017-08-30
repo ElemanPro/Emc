@@ -36,9 +36,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Delta on 22/08/2017.
- */
+
 
 public class Matgar_Orders extends Fragment {
     private LinearLayout pbc;

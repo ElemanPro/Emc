@@ -2,9 +2,7 @@ package com.example.elashry.eleman.Model;
 
 import java.io.Serializable;
 
-/**
- * Created by Delta on 06/08/2017.
- */
+
 
 public class OrderModel implements Serializable{
 

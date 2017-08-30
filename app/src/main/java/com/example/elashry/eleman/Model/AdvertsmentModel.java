@@ -1,8 +1,6 @@
 package com.example.elashry.eleman.Model;
 
-/**
- * Created by elashry on 8/16/2017.
- */
+
 
 public class AdvertsmentModel {
 

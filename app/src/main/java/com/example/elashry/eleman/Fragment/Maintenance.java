@@ -39,9 +39,7 @@ import java.util.List;
 
 import static com.example.elashry.eleman.Adapter.MaintenanceAdapter.mflag;
 
-/**
- * Created by Delta on 06/08/2017.
- */
+
 
 public class Maintenance extends Fragment {
 

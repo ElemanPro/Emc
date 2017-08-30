@@ -17,9 +17,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by Delta on 27/08/2017.
- */
+
 
 public class success_Partners_Adapter extends RecyclerView.Adapter<success_Partners_Adapter.ViewHolder> {
 

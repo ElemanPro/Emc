@@ -29,9 +29,7 @@ import org.json.JSONObject;
 
 import java.util.List;
 
-/**
- * Created by elashry on 8/6/2017.
- */
+
 
 public class OrderAdapter extends RecyclerView.Adapter <OrderAdapter.ViewHoler>{
 

@@ -37,9 +37,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Delta on 16/08/2017.
- */
+
 
 public class Fragment_Matgar extends Fragment {
     private RecyclerView recyclerView;

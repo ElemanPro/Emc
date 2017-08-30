@@ -36,9 +36,7 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Delta on 06/08/2017.
- */
+
 
 public class Order extends Fragment {
 

@@ -20,9 +20,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by AndroidNovice on 6/5/2016.
- */
+
 public class AdapterAds extends RecyclerView.Adapter<AdapterAds.MyViewHolder> implements View.OnClickListener{
 
     private List<AdsModel> feedsList;

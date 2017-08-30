@@ -7,9 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.elashry.eleman.Fragment.Maintenance;
 import com.example.elashry.eleman.Fragment.Order;
 
-/**
- * Created by Delta on 18/08/2017.
- */
+
 
 public class Manager_ViewPager extends FragmentPagerAdapter {
     int tab_count;

@@ -24,9 +24,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
-/**
- * Created by Delta on 01/08/2017.
- */
+
 
 public class Product_Adapter extends RecyclerView.Adapter <Product_Adapter.ViewHoler>{
 

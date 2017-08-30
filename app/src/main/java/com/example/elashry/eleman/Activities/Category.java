@@ -2,6 +2,8 @@ package com.example.elashry.eleman.Activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +23,7 @@ import com.daimajia.slider.library.SliderLayout;
 import com.daimajia.slider.library.SliderTypes.BaseSliderView;
 import com.daimajia.slider.library.SliderTypes.TextSliderView;
 import com.daimajia.slider.library.Tricks.ViewPagerEx;
+import com.example.elashry.eleman.Adapter.success_Partners_Adapter;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Controller;
 import com.example.elashry.eleman.Model.AdvertsmentModel;
@@ -44,6 +47,7 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
     public static ArrayList<String> names,imges,links;
     public static List<HashMap<String,String>> adv_list;
     private Toolbar mCat_ToolBar;
+    private SwipeRefreshLayout categ_swip_refresh;
     ImageView img ,img2 ,img4,img5;
     LinearLayout linear_maintinance,linear_item_categ,linear_matgar,linear_contact,linear_about;
     private RecyclerView success_Partners_recyclerView;
@@ -62,6 +66,19 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
     }
 
     private void init_View() {
+        categ_swip_refresh = (SwipeRefreshLayout) findViewById(R.id.categ_swip_refresh);
+        categ_swip_refresh.setNestedScrollingEnabled(false);
+        categ_swip_refresh.setColorSchemeColors(ContextCompat.getColor(this,R.color.colorPrimary));
+        categ_swip_refresh.setSoundEffectsEnabled(true);
+        categ_swip_refresh.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                //Get_Ads_Data();
+                Intent intent = getIntent();
+                finish();
+                startActivity(intent);
+            }
+        });
         Get_Ads_Data();
         mDemoSlider = (SliderLayout) findViewById(R.id.slider);
         mCat_ToolBar = (Toolbar) findViewById(R.id.mCat_ToolBar);
@@ -176,6 +193,7 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
                     public void onResponse(JSONArray response) {
                         Log.e("data",response.toString());
                         adv_list = new ArrayList<>();
+                        adsModelList_success_partner = new ArrayList<>();
                         JSONObject object;
                         adsModelList = new ArrayList<>();
 
@@ -184,15 +202,26 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
                             try {
 
                                 object =response.getJSONObject(index);
-                                AdvertsmentModel adsModel = new AdvertsmentModel(object.get("ads_name").toString(),object.get("ads_detailes").toString(),object.get("ads_images").toString(),object.get("ads_date_add").toString(),object.get("expiry_date").toString(),object.get("ads_type").toString());
-                                adsModelList.add(adsModel);
+                                if (object.get("ads_type").toString().equals("ads"))
+                                {
+                                    AdvertsmentModel adsModel = new AdvertsmentModel(object.get("ads_name").toString(),object.get("ads_detailes").toString(),object.get("ads_images").toString(),object.get("ads_date_add").toString(),object.get("expiry_date").toString(),object.get("ads_type").toString());
+                                    adsModelList.add(adsModel);
+                                }
+                                else if (object.get("ads_type").toString().equals("sponsor"))
+                                {
+                                    AdvertsmentModel adsModel = new AdvertsmentModel(object.get("ads_name").toString(),object.get("ads_detailes").toString(),object.get("ads_images").toString(),object.get("ads_date_add").toString(),object.get("expiry_date").toString(),object.get("ads_type").toString());
+                                    adsModelList_success_partner.add(adsModel);
+                                }
+
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                categ_swip_refresh.setRefreshing(false);
                             }
                         }
                         if (adsModelList.size()>0)
                         {
+
                             Map<String,String> map = new HashMap<>();
                             Map<String,String> links = new HashMap<>();
                             for (int index=0;index<adsModelList.size();index++)
@@ -201,7 +230,6 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
                                 links.put(adsModelList.get(index).getAds_name().toString(),adsModelList.get(index).getAds_details().toString());
 
                             }
-
                             for (String name :map.keySet())
                             {
                                 TextSliderView textSliderView = new TextSliderView(Category.this);
@@ -216,14 +244,30 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
                                         .putString("extra", String.valueOf(links.get(name)));
                                     mDemoSlider.addSlider(textSliderView);
 
+
                             }
                             mDemoSlider.setPresetTransformer(SliderLayout.Transformer.Accordion);
                             mDemoSlider.setPresetIndicator(SliderLayout.PresetIndicators.Center_Bottom);
                             mDemoSlider.setCustomAnimation(new DescriptionAnimation());
                             mDemoSlider.setDuration(4000);
                             mDemoSlider.addOnPageChangeListener(Category.this);
-
+                            categ_swip_refresh.setRefreshing(false);
                         }
+                        else
+                            {
+                                categ_swip_refresh.setRefreshing(false);
+                            }
+                        if (adsModelList_success_partner.size()>0)
+                        {
+                            success_Partners_Adapter  adapter = new success_Partners_Adapter(Category.this,adsModelList_success_partner);
+                            success_Partners_recyclerView.setAdapter(adapter);
+                            adapter.notifyDataSetChanged();
+                            categ_swip_refresh.setRefreshing(false);
+                        }
+                        else
+                            {
+                                categ_swip_refresh.setRefreshing(false);
+                            }
 
                     }
                 }
@@ -231,7 +275,7 @@ public class Category extends AppCompatActivity  implements  BaseSliderView.OnSl
                 new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
-
+                        categ_swip_refresh.setRefreshing(false);
                     }
                 }
         );

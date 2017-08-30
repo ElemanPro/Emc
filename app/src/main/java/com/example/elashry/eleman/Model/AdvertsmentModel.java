@@ -12,6 +12,7 @@ public class AdvertsmentModel {
     private String ads_add_date;
     private String ads_expire_date;
     private String ads_type;
+    //comment
 
     public AdvertsmentModel() {
     }

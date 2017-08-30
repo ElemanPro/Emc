@@ -5,9 +5,13 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.elashry.eleman.App_URL;
+import com.example.elashry.eleman.Model.AdvertsmentModel;
 import com.example.elashry.eleman.R;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -18,10 +22,10 @@ import java.util.List;
 public class success_Partners_Adapter extends RecyclerView.Adapter<success_Partners_Adapter.ViewHolder> {
 
     Context mContext;
-    private List<Success_Partners_Model> list_success_Partners;
+    private List<AdvertsmentModel> list_success_Partners;
     private LayoutInflater inflater;
 
-    public success_Partners_Adapter(Context mContext, List<Success_Partners_Model> list_success_Partners) {
+    public success_Partners_Adapter(Context mContext, List<AdvertsmentModel> list_success_Partners) {
         this.mContext = mContext;
         this.list_success_Partners = list_success_Partners;
         inflater =LayoutInflater.from(mContext);
@@ -36,7 +40,9 @@ public class success_Partners_Adapter extends RecyclerView.Adapter<success_Partn
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        holder.success_partner_Name.setText(list_success_Partners.get(position).getName().toString());
+        holder.success_partner_Name.setText(list_success_Partners.get(position).getAds_name().toString());
+        Picasso.with(mContext).load(App_URL.image_url+list_success_Partners.get(position).getAds_image().toString()).noFade().into(holder.success_partner_Image);
+
     }
 
     @Override
@@ -45,11 +51,11 @@ public class success_Partners_Adapter extends RecyclerView.Adapter<success_Partn
     }
       class ViewHolder extends RecyclerView.ViewHolder {
           private TextView success_partner_Name;
-            //private CircleImageView success_partner_Image;
+          private ImageView success_partner_Image;
         public ViewHolder(View itemView) {
             super(itemView);
             success_partner_Name = (TextView) itemView.findViewById(R.id.success_partner_name);
-            //success_partner_Image= (CircleImageView) itemView.findViewById(R.id.success_partner_image);
+            success_partner_Image= (ImageView) itemView.findViewById(R.id.success_partner_image);
         }
     }
 }

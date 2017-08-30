@@ -56,6 +56,14 @@ public class Product_Adapter extends RecyclerView.Adapter <Product_Adapter.ViewH
         holder.product_image.setVisibility(View.VISIBLE);
         holder.product_categ.setText(pro_List.get(position).getProduct_Category_fk().toString());
         holder.product_name.setText(pro_List.get(position).getProduct_title().toString());
+        if (pro_List.get(position).getProduct_price().isEmpty())
+        {
+
+        }
+        else
+            {
+                holder.product_price.setText(pro_List.get(position).getProduct_price().toString()+" "+"جنيه");
+            }
 
 
 
@@ -135,7 +143,7 @@ public class Product_Adapter extends RecyclerView.Adapter <Product_Adapter.ViewH
     }
     class ViewHoler extends RecyclerView.ViewHolder{
         ImageView product_image,categ_icon,product_popmenu_icon;
-        TextView product_categ,product_name;
+        TextView product_categ,product_name,product_price;
         ProgressBar prog_bar;
         public ViewHoler(View itemView) {
             super(itemView);
@@ -143,6 +151,7 @@ public class Product_Adapter extends RecyclerView.Adapter <Product_Adapter.ViewH
             categ_icon           = (ImageView) itemView.findViewById(R.id.categ_icon);
             product_categ        = (TextView) itemView.findViewById(R.id.product_categ);
             product_name         = (TextView) itemView.findViewById(R.id.product_name);
+            product_price         = (TextView) itemView.findViewById(R.id.product_price);
             prog_bar             = (ProgressBar) itemView.findViewById(R.id.prog_bar);
             product_popmenu_icon = (ImageView) itemView.findViewById(R.id.product_popmenu_icon);
         }

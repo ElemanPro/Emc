@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.webkit.WebView;
+import android.webkit.WebViewClient;
 import android.widget.ProgressBar;
 
 import com.example.elashry.eleman.R;
@@ -17,17 +18,29 @@ public class WebViiew extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_web_viiew);
-
-        Intent i=getIntent();
-        String  postUrl=  i.getStringExtra("link");
         webView = (WebView) findViewById(R.id.webView);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
+        webView.getSettings().setJavaScriptEnabled(true);
         initCollapsingToolbar();
 
-        webView.getSettings().setJavaScriptEnabled(true);
-        webView.loadUrl(postUrl);
+
         webView.setHorizontalScrollBarEnabled(false);
+        Intent i=getIntent();
+        if (i.getExtras()!=null)
+        {
+            String  postUrl=  i.getStringExtra("link");
+            webView.loadUrl(postUrl);
+        }
+
+        webView.setWebViewClient(new WebViewClient()
+        {
+            @Override
+                public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
+                return true;
+            }
+        });
+
     }
 
 

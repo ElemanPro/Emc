@@ -1,6 +1,7 @@
 package com.example.elashry.eleman.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.elashry.eleman.Activities.WebViiew;
 import com.example.elashry.eleman.App_URL;
 import com.example.elashry.eleman.Model.AdvertsmentModel;
 import com.example.elashry.eleman.R;
@@ -34,7 +36,16 @@ public class success_Partners_Adapter extends RecyclerView.Adapter<success_Partn
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = inflater.inflate(R.layout.success_partners_row,parent,false);
-        ViewHolder vHolder = new ViewHolder(view);
+        final ViewHolder vHolder = new ViewHolder(view);
+        vHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(mContext, WebViiew.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("link",list_success_Partners.get(vHolder.getLayoutPosition()).getAds_details().toString());
+                mContext.startActivity(intent);
+            }
+        });
         return vHolder;
     }
 

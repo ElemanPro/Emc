@@ -90,7 +90,7 @@ public class Search_ItemCategory_Activity extends AppCompatActivity {
                             try {
                                 object =response.getJSONObject(index);
 
-                                    pro_List.add(new Product_Model(object.get("product_id_pk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
+                                    pro_List.add(new Product_Model(object.get("product_id_pk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("price").toString(),object.get("product_photo").toString()));
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
@@ -140,7 +140,7 @@ public class Search_ItemCategory_Activity extends AppCompatActivity {
                             try {
                                 object =response.getJSONObject(index);
                                 if (object.get("product_title").toString().startsWith(text_search)) {
-                                    pro_List.add(new Product_Model(object.get("product_id_pk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
+                                    pro_List.add(new Product_Model(object.get("product_id_pk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("price").toString(),object.get("product_photo").toString()));
                                 }
                             } catch (JSONException e) {
                                 e.printStackTrace();

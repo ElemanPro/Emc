@@ -186,7 +186,7 @@ public class  ItemCategory extends AppCompatActivity {
                                 object =response.getJSONObject(index);
                                 if (object.get("product_title").toString().equals(pro_name))
                                 {
-                                    pro_List.add(new Product_Model(object.get("product_id_pk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("product_photo").toString()));
+                                    pro_List.add(new Product_Model(object.get("product_id_pk").toString(),object.get("cat_id_fk").toString(),object.get("product_title").toString(),object.get("price").toString(),object.get("product_photo").toString()));
 
                                 }
 

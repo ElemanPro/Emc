@@ -113,7 +113,7 @@ public class Login extends AppCompatActivity {
                 {
                     create_AlertDialog(getString(R.string.id_empty));
                 }*/
-                else if (!mngr_name.equals("محمد الشاذلى"))
+                else if (!mngr_name.equals("محمد الشاذلي"))
                     {
                         create_AlertDialog(getString(R.string.check_manager_name));
                     }

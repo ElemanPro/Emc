@@ -1,11 +1,17 @@
 package com.example.elashry.eleman.Activities;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.ConnectivityManager;
 import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 
 import com.daimajia.androidanimations.library.Techniques;
 import com.example.elashry.eleman.R;
+import com.nispok.snackbar.Snackbar;
+import com.nispok.snackbar.SnackbarManager;
+import com.nispok.snackbar.listeners.ActionClickListener;
 import com.viksaa.sssplash.lib.activity.AwesomeSplash;
 import com.viksaa.sssplash.lib.model.ConfigSplash;
 
@@ -84,9 +90,46 @@ public class Splach extends AwesomeSplash {
 
     @Override
     public void animationsFinished() {
-        Intent i =new Intent(this,Category.class);
-        startActivity(i);
+        boolean isConnected = Network_aviliable();
+        if (isConnected == true)
+        {
+            Intent i =new Intent(this,Category.class);
+            startActivity(i);
+        }
+        else
+            {
+                SnackbarManager.show(com.nispok.snackbar.Snackbar.with(this)
+                .actionLabel("Undo")
+                .actionColor(ContextCompat.getColor(this,R.color.colorPrimary))
+                .text("تحقق من الاتصال بالانترنت")
+                .actionListener(new ActionClickListener() {
+                    @Override
+                    public void onActionClicked(Snackbar snackbar) {
+                        finish();
+                    }
+                })
+                 .color(ContextCompat.getColor(this,R.color.yellow))
+                 .duration(Snackbar.SnackbarDuration.LENGTH_INDEFINITE)
+                 .animation(false)
+
+                );
+            }
+
         //transit to another activity here
         //or do whatever you want
+    }
+    private boolean Network_aviliable()
+    {
+        ConnectivityManager cm = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean wifi = cm.getNetworkInfo(ConnectivityManager.TYPE_WIFI).isConnectedOrConnecting();
+        boolean data = cm.getNetworkInfo(ConnectivityManager.TYPE_MOBILE).isConnectedOrConnecting();
+
+        if (!wifi && !data)
+        {
+            return false;
+        }
+        else {
+            return true;
+        }
     }
 }

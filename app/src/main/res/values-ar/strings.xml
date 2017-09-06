@@ -2,7 +2,6 @@
     <string name="app_name">صيانه اون لاين</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    <string name="arrive">توصبل</string>
     <string name="passowrd">Password</string>
     <string name="login">LOGIN</string>
     <string name="show_pwd">Show Password</string>
@@ -10,7 +9,7 @@
     <string name="forgot">Forgot password?</string>
     <string name="closebutton">Close Button for Activity</string>
     <string name="newUser">Not a Member yet? Sign Up here.</string>
-    <string name="fullName">الاسم المسئول</string>
+    <string name="fullName">الاسم العميل</string>
     <string name="mobileNumber">رقم المحمول</string>
     <string name="location">عنوان الطلب</string>
     <string name="type">اسم الجهاز</string>
@@ -51,6 +50,40 @@
     <string name="home4">امكانيه حجز جهاز او قطعه غيار عن طريق ادخال البيانات</string>
     <string name="intro5">الصيانه</string>
     <string name="home5">شاشه الصيانه وهى امكانيه عمل صيانه لاى جهاز عن طريق ادخال البيانات فقط</string>
+    <string name="mentainance">طلب صيانه</string>
+    <string name="parts">قطع غيار</string>
+    <string name="souq">المتجر</string>
+    <string name="contact">تواصل معنا </string>
+    <string name="about">عن المركز</string>
+    <string name="partner">شركاء النجاح</string>
+    <string name="manager">المدير</string>
+    <string name="register">حجز</string>
+    <string name="detail">تفاصيل</string>
+    <string name="washers">غسالات</string>
+    <string name="Refrigerators">ثلاجات</string>
+    <string name="Potgaz">بوتجازات</string>
+    <string name="screens">شاشات</string>
+    <string name="Televisions">تلفزيونات</string>
+    <string name="out">خروج</string>
+    <string name="watsup">واتس اب</string>
+    <string name="hot_line">الخط الساخن </string>
+    <string name="address">العنوان</string>
+    <string name="addresseman">البتانون – بجوار مول عبودة العشماوي</string>
+    <string name="Section">القسم</string>
+    <string name="price">السعر</string>
+    <string name="cdata">بيانات العميل</string>
+    <string name="cname">اسم العميل</string>
+    <string name="device_data">بيانات الجهاز</string>
+    <string name="dtype">نوع الجهاز</string>
+    <string name="guarantee">ضمان</string>
+    <string name="date">تاريخ الطلب</string>
+    <string name="damage">العطل</string>
+    <string name="dname">اسم الجهاز</string>
+    <string name="category">القسم</string>
+    <string name="loading">جارى التحميل....</string>
+    <string name="noitem">لا يوجد اي طلبات</string>
+    <string name="marka">ماركة الجهاز</string>
+    <string name="internet">تحقق من الاتصال بالانترنت</string>
 
 
 </resources>

@@ -4,10 +4,10 @@
     <item
         android:id="@+id/action_regiter"
         android:orderInCategory="100"
-        android:title="حجز" />
+        android:title="@string/register" />
 
     <item
         android:id="@+id/action_detail"
         android:orderInCategory="101"
-        android:title="تفاصيل" />
+        android:title="@string/detail" />
 </menu>

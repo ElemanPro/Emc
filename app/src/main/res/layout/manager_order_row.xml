@@ -19,7 +19,7 @@
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="حجز جهاز"
+           android:text="@string/register"
            android:textColor="@color/colorPrimary"
            android:textSize="@dimen/txt_14sp"
            android:gravity="center|left"

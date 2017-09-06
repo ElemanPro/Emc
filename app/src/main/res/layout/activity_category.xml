@@ -143,10 +143,10 @@
                             <TextView
                                 android:id="@+id/rkm"
                                 android:paddingTop="@dimen/pad_10dp"
-                                android:textSize="25dp"
+                                android:textSize="20dp"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="طلب صيانه"
+                                android:text="@string/mentainance"
                                 android:textColor="@color/colorPrimary"
                                 android:textStyle="bold"
                                 />
@@ -186,11 +186,11 @@
                             android:paddingTop="@dimen/pad_10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="قطع غيار"
+                            android:text="@string/parts"
                             android:textColor="@color/colorPrimary"
 
                             android:textStyle="bold"
-                            android:textSize="25dp"
+                            android:textSize="20dp"
                            />                    </LinearLayout>
                 </LinearLayout>
 
@@ -231,11 +231,11 @@
 
                         <TextView
                             android:id="@+id/telev"
-                            android:textSize="25dp"
+                            android:textSize="20dp"
                             android:paddingTop="@dimen/pad_10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="المتجر "
+                            android:text="@string/souq"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
                             />
@@ -272,9 +272,9 @@
                             android:paddingTop="@dimen/pad_10dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="تواصل معنا"
+                            android:text="@string/contact"
                             android:textColor="@color/colorPrimary"
-                            android:textSize="25dp"
+                            android:textSize="20dp"
                             android:textStyle="bold"/>
                        <!-- <ImageView
                             android:layout_width="80dp"
@@ -355,7 +355,7 @@
                             android:textSize="25dp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="عن المركز"
+                            android:text="@string/about"
                             android:textColor="@color/colorPrimary"
                             android:textStyle="bold"
                             android:gravity="center|top"
@@ -389,7 +389,7 @@
                     android:layout_width="match_parent"
                     android:layout_weight="1"
                     android:layout_height="wrap_content"
-                    android:text="شركاء النجاح"
+                    android:text="@string/partner"
                     android:layout_gravity="center"
                     android:gravity="center"
                     android:textSize="18sp"

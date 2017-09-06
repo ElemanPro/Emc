@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:padding="10dp"
-            android:text="عمل طلب شراء"
+            android:text="@string/intro4"
             android:textColor="@color/white_greyish"
             android:textSize="25sp"
             android:textStyle="bold" />

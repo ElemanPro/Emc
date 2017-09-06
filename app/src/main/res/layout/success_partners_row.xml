@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Emad magdy mohammed"
+        android:text="mohammed"
         android:textStyle="italic"
         android:textSize="14sp"
         android:paddingLeft="2dp"

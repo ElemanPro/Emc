@@ -124,7 +124,7 @@ public class Washer extends Fragment {
 
                         mRefreshLayout.setRefreshing(false);
                         Log.e("fff",error.getMessage());
-                        if (error.getMessage().toString().contains("java.net.UnknownHostException: Unable to resolve host \"semicolonsoft.com\": No address associated with hostname"))
+                        if (error.getMessage().toString().contains("java.net.UnknownHostException: Unable to resolve host \"emcmisir.com\": No address associated with hostname"))
                         {
                             mrRecyclerView.setVisibility(View.GONE);
                             progBar_container.setVisibility(View.GONE);

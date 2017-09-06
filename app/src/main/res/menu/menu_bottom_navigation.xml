@@ -5,33 +5,33 @@
         android:id="@+id/action_call"
         android:checked="true"
         android:icon="@drawable/washer"
-        android:title="غسالات"
+        android:title="@string/washers"
         app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/action_contact"
         android:checked="false"
         android:icon="@drawable/refrigerator"
-        android:title="ثلاجات"
+        android:title="@string/Refrigerators"
 
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_botgaz"
         android:checked="false"
         android:icon="@drawable/oven"
-        android:title="بوتجازات"
+        android:title="@string/Potgaz"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_washer"
         android:checked="false"
         android:icon="@drawable/ttv"
-        android:title="شاشات"
+        android:title="@string/screens"
         app:showAsAction="ifRoom" />
     <item
         android:id="@+id/action_refreger"
         android:checked="false"
         android:icon="@drawable/tv"
-        android:title="تلفزيونات"
+        android:title="@string/Televisions"
         app:showAsAction="ifRoom" />
 
 </menu>

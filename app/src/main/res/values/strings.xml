@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">EMC</string>
+    <string name="app_name">Online Maintenance</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
     <string name="passowrd">Password</string>
@@ -82,6 +82,14 @@
     <string name="noitem">There are no requests</string>
     <string name="marka">Device brand</string>
     <string name="internet">Check your Internet connection</string>
+    <string name="in">Inside warranty</string>
+    <string name="oute">outside warranty</string>
+    <string name="state">state of warranty</string>
+<array name="warranty">
+    <item>Inside warranty</item>
+    <item>outside warranty</item>
+    <item>outside warranty</item>
 
+</array>
 
 </resources>

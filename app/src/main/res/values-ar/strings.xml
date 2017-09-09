@@ -74,5 +74,13 @@
     <string name="marka">ماركة الجهاز</string>
     <string name="internet">تحقق من الاتصال بالانترنت</string>
 
+    <string name="in">داخل الضمان</string>
+    <string name="oute">داخل الضمان</string>
+    <string name="state">حاله الجهاز من الضمان</string>
+    <array name="warranty">
+        <item>Inside warranty</item>
+        <item>outside warranty</item>
+        <item>outside warranty</item>
 
+    </array>
 </resources>

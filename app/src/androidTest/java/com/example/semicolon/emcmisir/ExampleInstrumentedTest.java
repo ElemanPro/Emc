@@ -1,4 +1,4 @@
-package com.example.elashry.eleman;
+package com.example.semicolon.emcmisir;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

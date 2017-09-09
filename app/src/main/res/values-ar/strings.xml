@@ -1,28 +1,20 @@
 <resources>
     <string name="app_name">صيانه اون لاين</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="passowrd">Password</string>
-    <string name="login">LOGIN</string>
-    <string name="show_pwd">Show Password</string>
-    <string name="hide_pwd">Hide Password</string>
-    <string name="forgot">Forgot password?</string>
-    <string name="closebutton">Close Button for Activity</string>
-    <string name="newUser">Not a Member yet? Sign Up here.</string>
+    <string name="action_settings">اعدادات</string>
+    <string name="passowrd">كلمة المرور</string>
+    <string name="login">تسجيل دخول</string>
+    <string name="show_pwd">اظهار كلمة المرور</string>
+    <string name="hide_pwd">اخفاء كلمة المرور</string>
+    <string name="forgot">نسيت كلمة المرور?</string>
+    <string name="closebutton">اغلاق</string>
+    <string name="newUser">لست مستخدم . تسجيل.</string>
     <string name="fullName">الاسم العميل</string>
     <string name="mobileNumber">رقم المحمول</string>
     <string name="location">عنوان الطلب</string>
     <string name="type">اسم الجهاز</string>
     <string name="terms_conditions">متاكد من البيانات السابقه واريد الارسال</string>
     <string name="signUp">عمل طلب صيانه</string>
-    <string name="already_user">Already have Account? Login here.</string>
-    <string name="registered_emailid">Please enter your Registered Email Id below:</string>
-    <string name="submit">SUBMIT</string>
-    <string name="back">BACK</string>
 
-    <string name="tab1">CALLS</string>
-    <string name="tab2">CHATS</string>
-    <string name="tab3">CONTACTS</string>
     <string name="password">كلمه المرور</string>
     <string name="manager_txt">المدير</string>
     <string name="login_text">تسجيل الدخول</string>
@@ -35,9 +27,6 @@
     <string name="check_manager_id">تأكد من الرقم القومي</string>
     <string name="quintity">الكميه</string>
 
-    <string name="title_activity_fullscreen">FullscreenActivity</string>
-    <string name="dummy_button">Dummy Button</string>
-    <string name="dummy_content">DUMMY\nCONTENT</string>
     <string name="backdrop_title">مركز الايمان للصيانه </string>
     <string name="backdrop_subtitle">كل ماتريده بضغطه زر واحده </string>
     <string name="intro1">عن الشركه</string>

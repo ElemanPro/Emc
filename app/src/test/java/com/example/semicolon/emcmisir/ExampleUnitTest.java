@@ -1,4 +1,4 @@
-package com.example.elashry.eleman;
+package com.example.semicolon.emcmisir;
 
 import org.junit.Test;
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.elashry.eleman.Activities.Zooming_Image"
+    tools:context="com.example.semicolon.emcmisir.Activities.Zooming_Image"
     android:background="@color/black"
     >
     <TextView

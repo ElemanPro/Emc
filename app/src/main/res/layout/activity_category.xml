@@ -7,7 +7,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:fitsSystemWindows="true"
     android:orientation="vertical"
-    tools:context="com.example.elashry.eleman.Activities.Category">
+    tools:context="com.example.semicolon.emcmisir.Activities.Category">
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

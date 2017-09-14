@@ -81,7 +81,7 @@
         android:drawableRight="@drawable/location"
         android:drawablePadding="8dp"
         android:gravity="center|right"
-        android:hint="@string/location"
+        android:hint="@string/cadress"
         android:inputType="textCapWords"
         android:padding="10dp"
         android:maxLines="1"
@@ -183,8 +183,9 @@
         android:background="@drawable/loginbutton_selector"
         android:padding="3dp"
         android:text="@string/register"
+        android:textSize="20sp"
+        android:textAllCaps="false"
         android:textColor="@color/colorPrimary"
-        android:textSize="27sp"
         android:textStyle="bold"
 
         />

@@ -131,8 +131,9 @@
             android:background="@drawable/loginbutton_selector"
             android:padding="3dp"
             android:text="طلب"
+            android:textSize="20sp"
+            android:textAllCaps="false"
             android:textColor="@color/colorPrimary"
-            android:textSize="27sp"
             android:textStyle="bold" />
 
 

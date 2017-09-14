@@ -65,6 +65,7 @@
     <string name="device_data">بيانات الجهاز</string>
     <string name="dtype">نوع الجهاز</string>
     <string name="guarantee">ضمان</string>
+    <string name="cadress">العنوان</string>
     <string name="date">تاريخ الطلب</string>
     <string name="damage">العطل</string>
     <string name="dname">اسم الجهاز</string>
@@ -77,10 +78,26 @@
     <string name="in">داخل الضمان</string>
     <string name="oute">داخل الضمان</string>
     <string name="state">حاله الجهاز من الضمان</string>
-    <array name="warranty">
-        <item>Inside warranty</item>
-        <item>outside warranty</item>
-        <item>outside warranty</item>
+    <string-array name="warranty_array">
+        <item>الضمان</item>
+        <item>داخل الضمان</item>
+        <item>خارج الضمان</item>
 
-    </array>
+    </string-array>
+    <string name="warranty_txt">الضمان</string>
+
+    <string name="ch_cn">تأكد من ادخال اسم العميل</string>
+    <string name="ch_cph">تاكد من ادخال رقم المحمول</string>
+    <string name="ch_cph2">تاكد من ادخال رقم المحمول بشكل صحيح</string>
+    <string name="ch_cadrss">تاكد من ادخال العنوان</string>
+    <string name="ch_dn">تاكد من ادخال اسم الجهاز</string>
+    <string name="ch_dws">تاكد من ادخال حاله الجهاز من الضمان</string>
+    <string name="ch_ddt">تاكد من ادخال نوع العطل</string>
+    <string name="ch_dmarka">تاكد من ادخال ماركه الجهاز</string>
+    <string name="ch_qu">تاكد من ادخال الكميه</string>
+    <string name="cancel_txt">إلغاء</string>
+    <string name="ok_txt">موافق</string>
+    <string name="error_txt">خطا اثناء ارسال البيانات </string>
+    <string name="succ_txt">تم ارسال البيانات بنجاح </string>
+    <string name="btn_ordertxt">طلب</string>
 </resources>

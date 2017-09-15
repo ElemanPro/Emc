@@ -92,6 +92,7 @@ public class SlideUpActivity extends Activity implements AnimationListener {
 			Intent i =new Intent(this,Category.class);
 			startActivity(i);
 		}
+
 		else
 		{
 			SnackbarManager.show(com.nispok.snackbar.Snackbar.with(this)

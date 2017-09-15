@@ -108,13 +108,10 @@ public class SlideUpActivity extends Activity implements AnimationListener {
 					.duration(Snackbar.SnackbarDuration.LENGTH_INDEFINITE)
 					.animation(false)
 
-
-
 			);
 		}
 
 	}
-
 
 	@Override
 	public void onAnimationRepeat(Animation animation) {

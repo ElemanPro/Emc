@@ -85,11 +85,27 @@
     <string name="in">Inside warranty</string>
     <string name="oute">outside warranty</string>
     <string name="state">state of warranty</string>
-<array name="warranty">
-    <item>Inside warranty</item>
-    <item>outside warranty</item>
-    <item>outside warranty</item>
+    <string-array name="warranty_array">
+        <item>warranty</item>
+        <item>Inside warranty</item>
+        <item>outside warranty</item>
 
-</array>
+    </string-array>
+    <string name="warranty_txt">warranty</string>
+    <string name="ch_cn">Make sure you enter the customer name</string>
+    <string name="ch_cph">Check phone number</string>
+    <string name="ch_cph2">Be sure to enter the mobile number correctly</string>
+    <string name="ch_cadrss">Be sure to enter the address</string>
+    <string name="ch_dn">Be sure to enter the device name</string>
+    <string name="ch_dws">Be sure to enter the device condition of the warranty</string>
+    <string name="ch_ddt">Be sure to enter the type of damage</string>
+    <string name="ch_dmarka">Be sure to insert the device brand</string>
 
+    <string name="ch_qu">Make sure to enter the quantity</string>
+    <string name="cancel_txt">Cancel</string>
+    <string name="ok_txt">Ok</string>
+    <string name="error_txt">Error while sending data </string>
+    <string name="succ_txt">Data sent successfully</string>
+    <string name="btn_ordertxt">Order</string>
+    <string name="cadress">Customer address</string>
 </resources>
